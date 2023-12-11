@@ -1,0 +1,42 @@
+﻿@model Learning_Content_Models.Models.StudyMaterial
+
+<h2>Edit StudyMaterial</h2>
+<form method="post" asp-controller="StudyMaterials" asp-action="Edit">
+    <div class="form-control">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="URL" class="form-label"></label>
+        <input asp-for="URL" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="form-label"></label>
+        <input asp-for="Description" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoryId"></label>
+        @* <select asp-for="Genre" asp-items="@(new SelectList(ViewBag.Genres,"Title"))"
+        class="form-control"></select>*@
+        <input asp-for="CategoryId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="TypeFileId"></label>
+        @* <select asp-for="Genre" asp-items="@(new SelectList(ViewBag.Genres,"Title"))"
+        class="form-control"></select>*@
+        <input asp-for="TypeFileId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Subject" class="form-label"></label>
+        <input asp-for="Subject" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Class" class="form-label"></label>
+        <input asp-for="Class" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="CreateDate" class="form-label"></label>
+        <input asp-for="CreateDate" type="date" class="form-control" />
+    </div>
+    <input type="submit" value="Update" class="btn btn-primary" asp-controller="StudyMaterials" />
+</form>

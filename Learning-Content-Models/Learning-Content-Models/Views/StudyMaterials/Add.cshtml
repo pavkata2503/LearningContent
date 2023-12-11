@@ -1,0 +1,56 @@
+﻿@model Learning_Content_Models.Models.StudyMaterial
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create StudyMaterial</h2>
+<form method="post" asp-action="Add" asp-controller="StudyMaterials">
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="TypeFileId"></label>
+        @* <select asp-for="VidId" asp-items="@(new SelectList(ViewBag.Vids, "Title"))" class="form-control">
+        <option value="">-- Select Vid --</option>
+        </select> *@
+        <input asp-for="TypeFileId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="URL"></label>
+        <input asp-for="URL" class="form-control" />
+    </div>
+    @* <div class="form-group">
+        <label asp-for="Teacher"></label>
+        <input asp-for="Teacher" class="form-control" />
+    </div> *@
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoryId"></label>
+        @* <select asp-for="CategoryId" asp-items="@(new SelectList(ViewBag.Categories, "Title"))" class="form-control">
+            <option value="">-- Select Category --</option>
+        </select> *@
+        <input asp-for="CategoryId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="CreateDate"></label>
+        <input asp-for="CreateDate" type="date" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Subject"></label>
+        <input asp-for="Subject" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Class"></label>
+        <input asp-for="Class" class="form-control" />
+    </div>@* 
+    @if (true)
+    {
+        Model.CreatedByName = Model.ApplicationUser.Name;
+    } *@
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
