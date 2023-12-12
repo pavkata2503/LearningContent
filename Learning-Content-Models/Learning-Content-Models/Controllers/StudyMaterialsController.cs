@@ -12,6 +12,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
+using System.Drawing.Printing;
 
 namespace Learning_Content_Models.Controllers
 {
@@ -24,6 +25,66 @@ namespace Learning_Content_Models.Controllers
         {
             this.context = context;
             this._userManager = userManager;
+        }
+        //Pagination Working
+        public IActionResult Index(int? pageSize, int? pageNumber)
+        {
+            var materials = context.StudyMaterials.AsQueryable();
+
+            // Pagination
+            pageSize = pageSize ?? 6; // Default page size is 5
+            pageNumber = pageNumber ?? 1; // Default page number is 1
+            ViewBag.PageSize = pageSize.Value;
+            ViewBag.CurrentPage = pageNumber.Value;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)materials.Count() / pageSize.Value);
+
+            var paginatedMaterials = materials.Skip((pageNumber.Value - 1) * pageSize.Value)
+                                             .Take(pageSize.Value);
+
+            // Pass the paginated materials to the view
+            return View(paginatedMaterials.ToList());
+        }
+
+
+        public IActionResult Search(string searchString, string sortOrder, int? pageSize, int? pageNumber)
+		{
+			// Get all study materials
+			var materials = context.StudyMaterials.ToList();
+
+			// Apply search filter
+			if (!string.IsNullOrEmpty(searchString))
+			{
+				materials = materials.Where(m => m.Title.Contains(searchString) || m.Description.Contains(searchString)).ToList();
+			}
+            // Apply other filters (author, category, type, subject, class)
+            // ...
+
+            // Apply sorting
+            switch (sortOrder)
+            {
+                case "Title":
+                    materials = materials.OrderBy(m => m.Title).ToList();
+                    break;
+                case "Date":
+                    materials = materials.OrderBy(m => m.CreateDate).ToList();
+                    break;
+                // Add more cases for other sorting options if needed
+                default:
+                    break;
+            }
+
+            // Pagination
+            pageSize = pageSize ?? 6; // Default page size is 5
+            pageNumber = pageNumber ?? 1; // Default page number is 1
+            ViewBag.PageSize = pageSize.Value;
+            ViewBag.CurrentPage = pageNumber.Value;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)materials.Count() / pageSize.Value);
+
+            var paginatedMaterials = materials.Skip((pageNumber.Value - 1) * pageSize.Value)
+                                             .Take(pageSize.Value);
+
+            // Pass the paginated materials to the view
+            return View(paginatedMaterials.ToList());
         }
 		//public IActionResult Index(string searchString, string authorFilter, string categoryFilter, string typeFilter, string subjectFilter, int classFilter, string sortOrder)
 		//{
@@ -129,26 +190,7 @@ namespace Learning_Content_Models.Controllers
 		//	return View(materials.ToList());
 		//}
 
-		//Pagination Working
-		public IActionResult Index(int? pageSize, int? pageNumber)
-		{
-			var materials = context.StudyMaterials.AsQueryable();
-
-			// Pagination
-			pageSize = pageSize ?? 6; // Default page size is 5
-			pageNumber = pageNumber ?? 1; // Default page number is 1
-			ViewBag.PageSize = pageSize.Value;
-			ViewBag.CurrentPage = pageNumber.Value;
-			ViewBag.TotalPages = (int)Math.Ceiling((double)materials.Count() / pageSize.Value);
-
-			var paginatedMaterials = materials.Skip((pageNumber.Value - 1) * pageSize.Value)
-											 .Take(pageSize.Value);
-
-			// Pass the paginated materials to the view
-			return View(paginatedMaterials.ToList());
-		}
-
-
+		
 
 		//public IActionResult Index()
 		//      {

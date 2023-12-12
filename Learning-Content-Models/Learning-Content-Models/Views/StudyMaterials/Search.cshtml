@@ -1,17 +1,5 @@
 ﻿@model IEnumerable<Learning_Content_Models.Models.StudyMaterial>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@ViewData["Title"]</title>
 
-
-
-
-    <link rel="stylesheet" href="/css/StudyMaterial.css" asp-append-version="true" />
-    @* @await RenderSectionAsync("Head", false) *@
-</head>
-<!-- Add the following form for search and sorting -->
 <form method="get" action="@Url.Action("Search")">
     <div class="form-group">
         <label for="searchString">Search:</label>
