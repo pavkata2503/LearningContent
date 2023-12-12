@@ -19,7 +19,8 @@ namespace Learning_Content_Models.Models
         [EnumDataType(typeof(TypeFile))]
         public TypeFile TypeFile { get; set; }
         public string Subject { get; set; }
-		public int Class { get; set; }
+        //[Range(1, 12)]
+        public int Class { get; set; }
 		public DateTime CreateDate { get; set; }
 
 		// New property to store the name of the user who created the study material
