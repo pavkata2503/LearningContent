@@ -36,7 +36,17 @@
 		<input type="submit" value="Apply Filters">
 	</p>
 } *@
-
+@* <form method="get" action="@Url.Action("Index")"> *@
+@* <form method="get">
+	<div class="form-group">
+		<label for="searchString">Search:</label>
+		<input type="text" name="searchString" class="form-control" />
+	</div>
+	<!-- Add other filter fields as needed -->
+	<a asp-ccontroller="StudyMaterials" asp-action="Index" class="btn btn-sm btn-outline-secondary">View</a>
+	<button type="submit" class="btn btn-primary">Apply Filters</button>
+</form>
+ *@
 <div class="album py-5 bg-body-tertiary">
 	<div class="container">
 
@@ -103,4 +113,4 @@
 			</li>
 		</ul>
 	</nav>
-</div>
+</div> 

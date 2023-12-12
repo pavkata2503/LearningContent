@@ -25,6 +25,59 @@ namespace Learning_Content_Models.Controllers
             this.context = context;
             this._userManager = userManager;
         }
+		//public IActionResult Index(string searchString, string authorFilter, string categoryFilter, string typeFilter, string subjectFilter, int classFilter, string sortOrder)
+		//{
+		//	// Get all study materials
+		//	var materials = context.StudyMaterials.ToList();
+
+		//	// Apply search filter
+		//	if (!string.IsNullOrEmpty(searchString))
+		//	{
+		//		materials = materials.Where(m => m.Title.Contains(searchString) || m.Description.Contains(searchString)).ToList();
+		//	}
+
+		//	// Apply other filters
+		//	if (!string.IsNullOrEmpty(authorFilter))
+		//	{
+		//		materials = materials.Where(m => m.CreatedByName == authorFilter).ToList();
+		//	}
+
+		//	if (!string.IsNullOrEmpty(categoryFilter))
+		//	{
+		//		materials = materials.Where(m => Convert.ToString(m.Category) == categoryFilter).ToList();
+		//	}
+
+		//	if (!string.IsNullOrEmpty(typeFilter))
+		//	{
+		//		materials = materials.Where(m => Convert.ToString(m.Category) == typeFilter).ToList();
+		//	}
+
+		//	if (!string.IsNullOrEmpty(subjectFilter))
+		//	{
+		//		materials = materials.Where(m => m.Subject == subjectFilter).ToList();
+		//	}
+
+		//	if (!string.IsNullOrEmpty(Convert.ToString(classFilter)))
+		//	{
+		//		materials = materials.Where(m => m.Class == classFilter).ToList();
+		//	}
+
+		//	// Apply sorting
+		//	switch (sortOrder)
+		//	{
+		//		case "Title":
+		//			materials = materials.OrderBy(m => m.Title).ToList();
+		//			break;
+		//		case "Date":
+		//			materials = materials.OrderBy(m => m.CreateDate).ToList();
+		//			break;
+		//		// Add more cases for other sorting options if needed
+		//		default:
+		//			break;
+		//	}
+
+		//	return View(materials);
+		//}
 
 		//public IActionResult Index(string searchString, string authorFilter, string categoryFilter, string subjectFilter, int classFilter, string sortOrder)
 		//{
@@ -76,12 +129,13 @@ namespace Learning_Content_Models.Controllers
 		//	return View(materials.ToList());
 		//}
 
+		//Pagination Working
 		public IActionResult Index(int? pageSize, int? pageNumber)
 		{
 			var materials = context.StudyMaterials.AsQueryable();
 
 			// Pagination
-			pageSize = pageSize ?? 5; // Default page size is 5
+			pageSize = pageSize ?? 6; // Default page size is 5
 			pageNumber = pageNumber ?? 1; // Default page number is 1
 			ViewBag.PageSize = pageSize.Value;
 			ViewBag.CurrentPage = pageNumber.Value;
@@ -97,15 +151,15 @@ namespace Learning_Content_Models.Controllers
 
 
 		//public IActionResult Index()
-  //      {
-  //          var materials = context.StudyMaterials
-  //          .ToList();
+		//      {
+		//          var materials = context.StudyMaterials
+		//          .ToList();
 
-  //          return View(materials);
-  //      }
-        //Add Movie
+		//          return View(materials);
+		//      }
+		//Add Movie
 
-        public IActionResult Add()
+		public IActionResult Add()
         {
             return View();
         }
