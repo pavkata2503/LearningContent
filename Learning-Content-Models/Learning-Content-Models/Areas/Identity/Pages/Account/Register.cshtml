@@ -33,6 +33,7 @@
                 <label asp-for="Input.ConfirmPassword">Confirm Password</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
+            @*Админа може да добавя users с роли*@
             @if (User.IsInRole("Admin"))
             {
                 <div class="form-floating mb-3">

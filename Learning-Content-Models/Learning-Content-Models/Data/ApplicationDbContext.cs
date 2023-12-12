@@ -13,8 +13,6 @@ namespace Learning_Content_Models.Data
         {
         }
         public DbSet<StudyMaterial> StudyMaterials { get; set; }
-        public DbSet<TypeFile> TypeFiles { get; set; }
-        public DbSet<Category> Categories { get; set; }
         public DbSet<Message> Messages { get; set; }
         //public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }

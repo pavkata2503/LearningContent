@@ -1,5 +1,7 @@
 ﻿using Humanizer.Localisation;
+using Learning_Content_Models.Models.Enums;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 namespace Learning_Content_Models.Models
 {
@@ -11,15 +13,12 @@ namespace Learning_Content_Models.Models
 		public string URL { get; set; }	
 		public string Description { get; set; }
 
-		//public string Category {  get; set; }
+        [EnumDataType(typeof(Category))]
+        public Category Category { get; set; }
 
-		public int CategoryId { get; set; }
-		public Category Category { get; set; }
-
-		//public string Type { get; set; }
-		public int TypeFileId { get; set; }
-		public TypeFile TypeFile { get; set; }
-		public string Subject { get; set; }
+        [EnumDataType(typeof(TypeFile))]
+        public TypeFile TypeFile { get; set; }
+        public string Subject { get; set; }
 		public int Class { get; set; }
 		public DateTime CreateDate { get; set; }
 

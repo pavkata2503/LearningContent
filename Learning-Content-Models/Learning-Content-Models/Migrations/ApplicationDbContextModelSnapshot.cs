@@ -93,23 +93,6 @@ namespace Learning_Content_Models.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Learning_Content_Models.Models.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Categories");
-                });
-
             modelBuilder.Entity("Learning_Content_Models.Models.Message", b =>
                 {
                     b.Property<int>("Id")
@@ -118,10 +101,7 @@ namespace Learning_Content_Models.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ApplicationUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ApplicationUserId1")
+                    b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Receiver")
@@ -130,6 +110,9 @@ namespace Learning_Content_Models.Migrations
 
                     b.Property<DateTime>("SendDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -141,7 +124,7 @@ namespace Learning_Content_Models.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId1");
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Messages");
                 });
@@ -154,7 +137,7 @@ namespace Learning_Content_Models.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("Category")
                         .HasColumnType("int");
 
                     b.Property<int>("Class")
@@ -179,7 +162,7 @@ namespace Learning_Content_Models.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TypeFileId")
+                    b.Property<int>("TypeFile")
                         .HasColumnType("int");
 
                     b.Property<string>("URL")
@@ -188,28 +171,7 @@ namespace Learning_Content_Models.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("TypeFileId");
-
                     b.ToTable("StudyMaterials");
-                });
-
-            modelBuilder.Entity("Learning_Content_Models.Models.TypeFile", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TypeFiles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -349,28 +311,9 @@ namespace Learning_Content_Models.Migrations
                 {
                     b.HasOne("Learning_Content_Models.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("Messages")
-                        .HasForeignKey("ApplicationUserId1");
+                        .HasForeignKey("ApplicationUserId");
 
                     b.Navigation("ApplicationUser");
-                });
-
-            modelBuilder.Entity("Learning_Content_Models.Models.StudyMaterial", b =>
-                {
-                    b.HasOne("Learning_Content_Models.Models.Category", "Category")
-                        .WithMany("StudyMaterials")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Learning_Content_Models.Models.TypeFile", "TypeFile")
-                        .WithMany("StudyMaterials")
-                        .HasForeignKey("TypeFileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("TypeFile");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -427,16 +370,6 @@ namespace Learning_Content_Models.Migrations
             modelBuilder.Entity("Learning_Content_Models.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Messages");
-                });
-
-            modelBuilder.Entity("Learning_Content_Models.Models.Category", b =>
-                {
-                    b.Navigation("StudyMaterials");
-                });
-
-            modelBuilder.Entity("Learning_Content_Models.Models.TypeFile", b =>
-                {
-                    b.Navigation("StudyMaterials");
                 });
 #pragma warning restore 612, 618
         }

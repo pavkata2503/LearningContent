@@ -8758,11 +8758,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\Learning-Content-Management-System\\Learning-Content-Models\\Learning-Content-Models\\Learning-Content-Models.csproj",
+      "projectUniqueName": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Learning-Content-Models.csproj",
       "projectName": "Learning-Content-Models",
-      "projectPath": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\Learning-Content-Management-System\\Learning-Content-Models\\Learning-Content-Models\\Learning-Content-Models.csproj",
+      "projectPath": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Learning-Content-Models.csproj",
       "packagesPath": "C:\\Users\\pavka\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\Learning-Content-Management-System\\Learning-Content-Models\\Learning-Content-Models\\obj\\",
+      "outputPath": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pavka\\AppData\\Roaming\\NuGet\\NuGet.Config",

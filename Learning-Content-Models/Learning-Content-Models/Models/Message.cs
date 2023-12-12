@@ -1,5 +1,6 @@
 ﻿using Humanizer.Localisation;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Learning_Content_Models.Models
 {
@@ -9,9 +10,15 @@ namespace Learning_Content_Models.Models
 		public int Id { get; set; }
 		public string Text {  get; set; }
 
-		public int ApplicationUserId { get; set; }
 
-		public ApplicationUser ApplicationUser { get; set; }
+        // Други свойства...
+        //public string SenderId { get; set; }
+        // Външен ключ
+        //[ForeignKey("SenderId")]
+        //public ApplicationUser Sender { get; set; }
+        public int SenderId { get; set; }
+
+        public ApplicationUser ApplicationUser { get; set; }
 
 		//public string Sender { get; set; }
 

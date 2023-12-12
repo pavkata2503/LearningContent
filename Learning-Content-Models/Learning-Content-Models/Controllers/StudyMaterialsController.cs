@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Learning_Content_Models.Data;
 using Learning_Content_Models.Models;
-using Type = Learning_Content_Models.Models.TypeFile;
 using Microsoft.AspNetCore.Authorization;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Microsoft.AspNetCore.Identity;
@@ -29,8 +28,6 @@ namespace Learning_Content_Models.Controllers
         public IActionResult Index()
         {
             var materials = context.StudyMaterials
-            .Include(m => m.TypeFile)
-            .Include(m => m.Category)
             .ToList();
 
             return View(materials);
@@ -38,9 +35,6 @@ namespace Learning_Content_Models.Controllers
         //Add Movie
         public IActionResult Add()
         {
-            ViewBag.TypeFiles = context.TypeFiles.ToList();
-            ViewBag.Categories = context.Categories.ToList();
-
             return View();
         }
 
@@ -75,16 +69,11 @@ namespace Learning_Content_Models.Controllers
         public IActionResult Edit(int id)
         {
             var studyMaterial = context.StudyMaterials
-                .Include(m => m.TypeFile)
-                .Include(m => m.Category)
                 .FirstOrDefault(m => m.Id == id);
             if (studyMaterial == null)
             {
                 return NotFound();
             }
-
-            ViewBag.TypeFiles = context.TypeFiles.ToList();
-            ViewBag.Categories = context.Categories.ToList();
             ViewBag.User = User.Identity.Name.ToList();
 
             return View(studyMaterial);
