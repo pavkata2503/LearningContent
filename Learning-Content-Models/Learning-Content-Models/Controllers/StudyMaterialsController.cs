@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Learning_Content_Models.Controllers
 {
@@ -25,14 +26,85 @@ namespace Learning_Content_Models.Controllers
             this._userManager = userManager;
         }
 
-        public IActionResult Index()
-        {
-            var materials = context.StudyMaterials
-            .ToList();
+		//public IActionResult Index(string searchString, string authorFilter, string categoryFilter, string subjectFilter, int classFilter, string sortOrder)
+		//{
+		//	var materials = context.StudyMaterials.AsQueryable();
 
-            return View(materials);
-        }
+		//	// Apply filters
+		//	if (!string.IsNullOrEmpty(searchString))
+		//	{
+		//		materials = materials.Where(m =>
+		//			m.Title.Contains(searchString) ||
+		//			m.Description.Contains(searchString) ||
+		//			m.CreatedByName.Contains(searchString));
+		//	}
+
+		//	if (!string.IsNullOrEmpty(authorFilter))
+		//	{
+		//		materials = materials.Where(m => m.CreatedByName == authorFilter);
+		//	}
+
+		//	if (!string.IsNullOrEmpty(categoryFilter))
+		//	{
+		//		materials = materials.Where(m => Convert.ToString(m.Category) == categoryFilter);
+		//	}
+
+		//	if (!string.IsNullOrEmpty(subjectFilter))
+		//	{
+		//		materials = materials.Where(m => m.Subject == subjectFilter);
+		//	}
+		//	if (!string.IsNullOrEmpty(Convert.ToString(classFilter)))
+		//	{
+		//		materials = materials.Where(m => m.Class == classFilter);
+		//	}
+
+		//	// Apply sorting
+		//	switch (sortOrder)
+		//	{
+		//		case "title_desc":
+		//			materials = materials.OrderByDescending(m => m.Title);
+		//			break;
+		//		case "date_asc":
+		//			materials = materials.OrderBy(m => m.CreateDate);
+		//			break;
+		//		// Add more sorting options as needed
+		//		default:
+		//			materials = materials.OrderBy(m => m.Title);
+		//			break;
+		//	}
+
+		//	return View(materials.ToList());
+		//}
+
+		public IActionResult Index(int? pageSize, int? pageNumber)
+		{
+			var materials = context.StudyMaterials.AsQueryable();
+
+			// Pagination
+			pageSize = pageSize ?? 5; // Default page size is 5
+			pageNumber = pageNumber ?? 1; // Default page number is 1
+			ViewBag.PageSize = pageSize.Value;
+			ViewBag.CurrentPage = pageNumber.Value;
+			ViewBag.TotalPages = (int)Math.Ceiling((double)materials.Count() / pageSize.Value);
+
+			var paginatedMaterials = materials.Skip((pageNumber.Value - 1) * pageSize.Value)
+											 .Take(pageSize.Value);
+
+			// Pass the paginated materials to the view
+			return View(paginatedMaterials.ToList());
+		}
+
+
+
+		//public IActionResult Index()
+  //      {
+  //          var materials = context.StudyMaterials
+  //          .ToList();
+
+  //          return View(materials);
+  //      }
         //Add Movie
+
         public IActionResult Add()
         {
             return View();
