@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using Learning_Content_Models.Data;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Learning_Content_Models.Areas.Identity.Pages.Account
 {
@@ -102,6 +103,7 @@ namespace Learning_Content_Models.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
+            [RegularExpression("^(Teacher|Student)$", ErrorMessage = "The role should be 'Teacher' or 'Student' only.")]
             public string? Role { get; set; }
         }
 
@@ -133,7 +135,7 @@ namespace Learning_Content_Models.Areas.Identity.Pages.Account
                     {
                         await _userManager.AddToRoleAsync(user, Roles.Teacher.ToString());
                     }
-                    else
+                    else if (Input.Role == "Student")
                     {
                         await _userManager.AddToRoleAsync(user, Roles.Student.ToString());
                     }
@@ -159,12 +161,16 @@ namespace Learning_Content_Models.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
+                        if (!User.IsInRole("Admin"))
+                        {
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+                            return LocalRedirect(returnUrl);
+                        }
                     }
 
 
                 }
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
