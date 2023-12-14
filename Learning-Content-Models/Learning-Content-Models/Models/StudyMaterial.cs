@@ -25,6 +25,7 @@ namespace Learning_Content_Models.Models
 
 		// New property to store the name of the user who created the study material
 		public string CreatedByName { get; set; }
+		//public string FilePath { get; set; }
 
 	}
 }
