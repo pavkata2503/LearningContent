@@ -15,6 +15,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Drawing.Printing;
 using Learning_Content_Models.Service;
 using Learning_Content_Models.Service.IService;
+using Learning_Content_Models.Models.Enums;
 
 namespace Learning_Content_Models.Controllers
 {
@@ -30,184 +31,80 @@ namespace Learning_Content_Models.Controllers
             this._userManager = userManager;
 			/*_fileService = fileService;*/
 		}
-        //Pagination Working
-        public IActionResult Index(int? pageSize, int? pageNumber)
-        {
-            var materials = context.StudyMaterials.AsQueryable();
-
-            // Pagination
-            pageSize = pageSize ?? 6; // Default page size is 5
-            pageNumber = pageNumber ?? 1; // Default page number is 1
-            ViewBag.PageSize = pageSize.Value;
-            ViewBag.CurrentPage = pageNumber.Value;
-            ViewBag.TotalPages = (int)Math.Ceiling((double)materials.Count() / pageSize.Value);
-
-            var paginatedMaterials = materials.Skip((pageNumber.Value - 1) * pageSize.Value)
-                                             .Take(pageSize.Value);
-
-
-
-            // Pass the paginated materials to the view
-            return View(paginatedMaterials.ToList());
-        }
-
-
-  //      public IActionResult Search(string searchString, string sortOrder, int? pageSize, int? pageNumber)
+		//Pagination Working
+		//public IActionResult Index(int? pageSize, int? pageNumber)
 		//{
-		//	// Get all study materials
-		//	var materials = context.StudyMaterials.ToList();
+		//    var materials = context.StudyMaterials.AsQueryable();
 
-		//	// Apply search filter
-		//	if (!string.IsNullOrEmpty(searchString))
-		//	{
-		//		materials = materials.Where(m => m.Title.Contains(searchString) || m.Description.Contains(searchString)).ToList();
-		//	}
-  //          // Apply other filters (author, category, type, subject, class)
-  //          // ...
+		//    // Pagination
+		//    pageSize = pageSize ?? 6; // Default page size is 5
+		//    pageNumber = pageNumber ?? 1; // Default page number is 1
+		//    ViewBag.PageSize = pageSize.Value;
+		//    ViewBag.CurrentPage = pageNumber.Value;
+		//    ViewBag.TotalPages = (int)Math.Ceiling((double)materials.Count() / pageSize.Value);
 
-  //          // Apply sorting
-  //          switch (sortOrder)
-  //          {
-  //              case "Title":
-  //                  materials = materials.OrderBy(m => m.Title).ToList();
-  //                  break;
-  //              case "Date":
-  //                  materials = materials.OrderBy(m => m.CreateDate).ToList();
-  //                  break;
-  //              // Add more cases for other sorting options if needed
-  //              default:
-  //                  break;
-  //          }
+		//    var paginatedMaterials = materials.Skip((pageNumber.Value - 1) * pageSize.Value)
+		//                                     .Take(pageSize.Value);
 
-  //          // Pagination
-  //          pageSize = pageSize ?? 6; // Default page size is 5
-  //          pageNumber = pageNumber ?? 1; // Default page number is 1
-  //          ViewBag.PageSize = pageSize.Value;
-  //          ViewBag.CurrentPage = pageNumber.Value;
-  //          ViewBag.TotalPages = (int)Math.Ceiling((double)materials.Count() / pageSize.Value);
 
-  //          var paginatedMaterials = materials.Skip((pageNumber.Value - 1) * pageSize.Value)
-  //                                           .Take(pageSize.Value);
 
-  //          // Pass the paginated materials to the view
-  //          return View(paginatedMaterials.ToList());
-  //      }
-		//public IActionResult Index(string searchString, string authorFilter, string categoryFilter, string typeFilter, string subjectFilter, int classFilter, string sortOrder)
-		//{
-		//	// Get all study materials
-		//	var materials = context.StudyMaterials.ToList();
-
-		//	// Apply search filter
-		//	if (!string.IsNullOrEmpty(searchString))
-		//	{
-		//		materials = materials.Where(m => m.Title.Contains(searchString) || m.Description.Contains(searchString)).ToList();
-		//	}
-
-		//	// Apply other filters
-		//	if (!string.IsNullOrEmpty(authorFilter))
-		//	{
-		//		materials = materials.Where(m => m.CreatedByName == authorFilter).ToList();
-		//	}
-
-		//	if (!string.IsNullOrEmpty(categoryFilter))
-		//	{
-		//		materials = materials.Where(m => Convert.ToString(m.Category) == categoryFilter).ToList();
-		//	}
-
-		//	if (!string.IsNullOrEmpty(typeFilter))
-		//	{
-		//		materials = materials.Where(m => Convert.ToString(m.Category) == typeFilter).ToList();
-		//	}
-
-		//	if (!string.IsNullOrEmpty(subjectFilter))
-		//	{
-		//		materials = materials.Where(m => m.Subject == subjectFilter).ToList();
-		//	}
-
-		//	if (!string.IsNullOrEmpty(Convert.ToString(classFilter)))
-		//	{
-		//		materials = materials.Where(m => m.Class == classFilter).ToList();
-		//	}
-
-		//	// Apply sorting
-		//	switch (sortOrder)
-		//	{
-		//		case "Title":
-		//			materials = materials.OrderBy(m => m.Title).ToList();
-		//			break;
-		//		case "Date":
-		//			materials = materials.OrderBy(m => m.CreateDate).ToList();
-		//			break;
-		//		// Add more cases for other sorting options if needed
-		//		default:
-		//			break;
-		//	}
-
-		//	return View(materials);
+		//    // Pass the paginated materials to the view
+		//    return View(paginatedMaterials.ToList());
 		//}
+		public IActionResult Index(int? pageSize, int? pageNumber, string createdName, string category, string typfile, string subject, string classFilter)
+		{
+			var materials = context.StudyMaterials.AsQueryable();
 
-		//public IActionResult Index(string searchString, string authorFilter, string categoryFilter, string subjectFilter, int classFilter, string sortOrder)
-		//{
-		//	var materials = context.StudyMaterials.AsQueryable();
+			// Apply filters
+			if (!string.IsNullOrEmpty(createdName))
+			{
+				materials = materials.Where(m => m.CreatedByName == createdName);
+			}
 
-		//	// Apply filters
-		//	if (!string.IsNullOrEmpty(searchString))
-		//	{
-		//		materials = materials.Where(m =>
-		//			m.Title.Contains(searchString) ||
-		//			m.Description.Contains(searchString) ||
-		//			m.CreatedByName.Contains(searchString));
-		//	}
+			if (!string.IsNullOrEmpty(category) && Enum.TryParse<Category>(category, out var parsedCategory))
+			{
+				materials = materials.Where(m => m.Category == parsedCategory);
+			}
 
-		//	if (!string.IsNullOrEmpty(authorFilter))
-		//	{
-		//		materials = materials.Where(m => m.CreatedByName == authorFilter);
-		//	}
+			if (!string.IsNullOrEmpty(category) && Enum.TryParse<TypeFile>(category, out var parsedTypeFile))
+			{
+				materials = materials.Where(m => m.TypeFile == parsedTypeFile);
+			}
 
-		//	if (!string.IsNullOrEmpty(categoryFilter))
-		//	{
-		//		materials = materials.Where(m => Convert.ToString(m.Category) == categoryFilter);
-		//	}
+			if (!string.IsNullOrEmpty(subject))
+			{
+				materials = materials.Where(m => m.Subject == subject);
+			}
 
-		//	if (!string.IsNullOrEmpty(subjectFilter))
-		//	{
-		//		materials = materials.Where(m => m.Subject == subjectFilter);
-		//	}
-		//	if (!string.IsNullOrEmpty(Convert.ToString(classFilter)))
-		//	{
-		//		materials = materials.Where(m => m.Class == classFilter);
-		//	}
+			if (!string.IsNullOrEmpty(classFilter))
+			{
+				materials = materials.Where(m => (int)m.Class == int.Parse(classFilter));
+			}
 
-		//	// Apply sorting
-		//	switch (sortOrder)
-		//	{
-		//		case "title_desc":
-		//			materials = materials.OrderByDescending(m => m.Title);
-		//			break;
-		//		case "date_asc":
-		//			materials = materials.OrderBy(m => m.CreateDate);
-		//			break;
-		//		// Add more sorting options as needed
-		//		default:
-		//			materials = materials.OrderBy(m => m.Title);
-		//			break;
-		//	}
+			// Pagination
+			pageSize = pageSize ?? 6; // Default page size is 6
+			pageNumber = pageNumber ?? 1; // Default page number is 1
+			ViewBag.PageSize = pageSize.Value;
+			ViewBag.CurrentPage = pageNumber.Value;
+			ViewBag.TotalPages = (int)Math.Ceiling((double)materials.Count() / pageSize.Value);
 
-		//	return View(materials.ToList());
-		//}
+			var paginatedMaterials = materials.Skip((pageNumber.Value - 1) * pageSize.Value)
+											  .Take(pageSize.Value);
 
-		
+			// Pass the paginated materials to the view
+			return View(paginatedMaterials.ToList());
+		}
 
-		//public IActionResult Index()
-		//      {
-		//          var materials = context.StudyMaterials
-		//          .ToList();
+			//public IActionResult Index()
+			//      {
+			//          var materials = context.StudyMaterials
+			//          .ToList();
 
-		//          return View(materials);
-		//      }
-		//Add Movie
+			//          return View(materials);
+			//      }
+			//Add Movie
 
-		public IActionResult Add()
+			public IActionResult Add()
         {
             return View();
         }
@@ -253,8 +150,6 @@ namespace Learning_Content_Models.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
-
-        //Update Movie
         public IActionResult Edit(int id)
         {
             var studyMaterial = context.StudyMaterials
