@@ -1,6 +1,7 @@
 ﻿using Humanizer.Localisation;
 using Learning_Content_Models.Models.Enums;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
 
 namespace Learning_Content_Models.Models
@@ -25,7 +26,9 @@ namespace Learning_Content_Models.Models
 
 		// New property to store the name of the user who created the study material
 		public string CreatedByName { get; set; }
-		//public string FilePath { get; set; }
+		//Upload File
+		[NotMapped]
+		public IFormFile FileUpload { get; set; }
 
-	}
+    }
 }

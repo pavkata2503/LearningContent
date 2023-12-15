@@ -51,6 +51,13 @@
 						<p class="card-text">@item.Subject</p>
 						<p class="card-text">@item.CreatedByName</p>
 						<p class="card-text desc">@item.Description</p>
+
+						@if (!string.IsNullOrEmpty(item.Title))
+						{
+							<div class="col-md-4">
+								<p><img style="width:280px;height:400px" src="/Uploads/@item.FileUpload"></p>
+							</div>
+						}
 						<!-- Add other fields as needed -->
 						<div class="d-flex justify-content-between align-items-center">
 							<div class="btn-group">
@@ -110,9 +117,16 @@
 					<option value="@categoryValue">@categoryValue</option>
 				}
 			</select>
-
-			<label for="typеfile">Typе File:</label>
-			<input type="text" name="typfile" value="@ViewBag.TypFile" />
+			<label for="typefile">TypeFile:</label>
+			<select name="typefile">
+				<option value="">Select TypeFile</option>
+				@foreach (var typefileValue in Enum.GetValues(typeof(TypeFile)))
+				{
+					<option value="@typefileValue">@typefileValue</option>
+				}
+			</select>
+			@* <label for="typеfile">Typе File:</label>
+		<input type="text" name="typеfile" value="@ViewBag.TypеFile" /> *@
 
 			<label for="subject">Subject:</label>
 			<input type="text" name="subject" value="@ViewBag.Subject" />

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "L1rdgzm25Kyl2P7umITYj9clsI+DhmYktzR1o7/5QSc=",
+  "Hash": "Z7kmvhrtERuH7CMGDJosvy24xBp+G0AFs+uMC4L+luE=",
   "Source": "Learning-Content-Models",
   "BasePath": "_content/Learning-Content-Models",
   "Mode": "Default",
@@ -2390,6 +2390,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\Uploads\\864215c8-467f-4875-af0d-0f605f31763a.png",
+      "SourceId": "Learning-Content-Models",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\",
+      "BasePath": "_content/Learning-Content-Models",
+      "RelativePath": "Uploads/864215c8-467f-4875-af0d-0f605f31763a.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\864215c8-467f-4875-af0d-0f605f31763a.png"
+    },
+    {
+      "Identity": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\Uploads\\b73681c2-2d32-4d36-9d23-c504be0cda78.png",
+      "SourceId": "Learning-Content-Models",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\",
+      "BasePath": "_content/Learning-Content-Models",
+      "RelativePath": "Uploads/b73681c2-2d32-4d36-9d23-c504be0cda78.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\b73681c2-2d32-4d36-9d23-c504be0cda78.png"
     }
   ]
 }

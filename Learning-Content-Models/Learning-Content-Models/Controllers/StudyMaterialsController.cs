@@ -23,13 +23,13 @@ namespace Learning_Content_Models.Controllers
     {
         private readonly ApplicationDbContext context;
         private readonly UserManager<ApplicationUser> _userManager;
-		//private readonly IFileService _fileService;
+	    private readonly IFileService _fileService;
 
-		public StudyMaterialsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager/*IFileService fileService*/)
+		public StudyMaterialsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IFileService fileService)
         {
             this.context = context;
             this._userManager = userManager;
-			/*_fileService = fileService;*/
+			this._fileService = fileService;
 		}
 		//Pagination Working
 		//public IActionResult Index(int? pageSize, int? pageNumber)
@@ -51,7 +51,7 @@ namespace Learning_Content_Models.Controllers
 		//    // Pass the paginated materials to the view
 		//    return View(paginatedMaterials.ToList());
 		//}
-		public IActionResult Index(int? pageSize, int? pageNumber, string createdName, string category, string typfile, string subject, string classFilter)
+		public IActionResult Index(int? pageSize, int? pageNumber, string createdName, string category, string typefile, string subject, string classFilter)
 		{
 			var materials = context.StudyMaterials.AsQueryable();
 
@@ -66,7 +66,7 @@ namespace Learning_Content_Models.Controllers
 				materials = materials.Where(m => m.Category == parsedCategory);
 			}
 
-			if (!string.IsNullOrEmpty(category) && Enum.TryParse<TypeFile>(category, out var parsedTypeFile))
+			if (!string.IsNullOrEmpty(typefile) && Enum.TryParse<TypeFile>(typefile, out var parsedTypeFile))
 			{
 				materials = materials.Where(m => m.TypeFile == parsedTypeFile);
 			}
@@ -144,7 +144,19 @@ namespace Learning_Content_Models.Controllers
 
 			//await _signInManager.RefreshSignInAsync(user);
 			//StatusMessage = "Your profile has been updated";
-
+			if (studyMaterial.FileUpload!=null)
+			{
+				var fileResult = _fileService.SaveImage(studyMaterial.FileUpload);
+				//if (fileResult.Item1 == 1)
+				//{
+				//	studyMaterial.Title = fileResult.Item2;
+				//}
+				//else
+				//{
+				//	ModelState.AddModelError(string.Empty, fileResult.Item2);
+				//	return View(studyMaterial);
+				//}
+			}
 
 			context.StudyMaterials.Add(studyMaterial);
             context.SaveChanges();

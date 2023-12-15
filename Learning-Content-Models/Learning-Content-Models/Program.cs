@@ -1,5 +1,7 @@
 using Learning_Content_Models.Data;
 using Learning_Content_Models.Models;
+using Learning_Content_Models.Service;
+using Learning_Content_Models.Service.IService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +21,9 @@ builder.Services.AddIdentity<ApplicationUser,IdentityRole>().AddEntityFrameworkS
 //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 //    .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
+//Service configurations
+builder.Services.AddScoped<IFileService, FileService>();
 
 var app = builder.Build();
 
