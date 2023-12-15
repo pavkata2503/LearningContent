@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Learning-Content-Models")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+564967f13f4f40d74e7aaa6a2ecad8a1c6fc9ecc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b747b67c16fbedac9d2713f97bd84aaa6551e0d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Learning-Content-Models")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Learning-Content-Models")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

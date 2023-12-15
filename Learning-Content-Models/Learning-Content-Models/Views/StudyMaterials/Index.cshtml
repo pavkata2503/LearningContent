@@ -39,6 +39,28 @@
 
 <!-- Display the study materials -->
 <body>
+
+	@* <form asp-controller="StudyMaterials" asp-action="Index" method="get">
+	<label for="pageSize">Page Size:</label>
+	<select name="pageSize" id="pageSize" onchange="this.form.submit()">
+	@foreach (var option in ViewBag.PageSizeOptions)
+	{
+	<option value="@option">@option</option>
+	}
+	</select>
+	</form> *@
+
+	<div>
+		<label for="pageSize">Select the number of materials:</label>
+		<select id="pageSize" name="pageSize">
+			<option value="5">5</option>
+			<option value="10">10</option>
+			<option value="15">15</option>
+			<option value="20">20</option>
+		</select>
+		<button id="applyPageSize">Apply</button>
+	</div>
+
 	<input type="text" id="searchInput" placeholder="Search by title or desc..." />
 	<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 		@foreach (var item in Model)
@@ -52,12 +74,12 @@
 						<p class="card-text">@item.CreatedByName</p>
 						<p class="card-text desc">@item.Description</p>
 
-						@if (!string.IsNullOrEmpty(item.Title))
+						@* @if (!string.IsNullOrEmpty(item.Title))
 						{
 							<div class="col-md-4">
 								<p><img style="width:280px;height:400px" src="/Uploads/@item.FileUpload"></p>
 							</div>
-						}
+						} *@
 						<!-- Add other fields as needed -->
 						<div class="d-flex justify-content-between align-items-center">
 							<div class="btn-group">
@@ -74,6 +96,9 @@
 			</div>
 		}
 	</div>
+	<a asp-action="Add" asp-controller="StudyMaterials" class="btn btn-success">
+		Add New StudyMaterials
+	</a>
 	<div>
 		<nav aria-label="Page navigation">
 			<ul class="pagination">
@@ -173,7 +198,6 @@
 
 
 
-
 	<script>
 		function searchMaterial() {
 			// Get the search query from the input field
@@ -206,6 +230,38 @@
 			// Call the searchMovies function
 			searchMaterial();
 		});
-	</script>
+	</script> 
+
+	@section scripts {
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				// Attach event listener to the Apply button
+				document.getElementById("applyPageSize").addEventListener("click", function () {
+					// Get the selected page size
+					var pageSizeDropdown = document.getElementById("pageSize");
+					var pageSize = pageSizeDropdown.value;
+
+					// Set the selected value in the dropdown
+					for (var i = 0; i < pageSizeDropdown.options.length; i++) {
+						if (pageSizeDropdown.options[i].value === pageSize) {
+							pageSizeDropdown.selectedIndex = i;
+							break;
+						}
+					}
+
+					// Redirect to the Index action with the selected page size as a query parameter
+					window.location.href = "/StudyMaterials/Index?pageSize=" + pageSize;
+				});
+			});
+		</script>
+	}
+
+
+
+	@* <script>
+	document.getElementById("pageSize").onchange = function () {
+	this.form.submit();
+	};
+	</script> *@
 </body>
 </html>
