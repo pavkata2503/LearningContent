@@ -62,7 +62,7 @@
 	</div>
 
 	<input type="text" id="searchInput" placeholder="Search by title or desc..." />
-	<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+	 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 		@foreach (var item in Model)
 		{
 			<div class="col search">
@@ -75,11 +75,11 @@
 						<p class="card-text desc">@item.Description</p>
 
 						@* @if (!string.IsNullOrEmpty(item.Title))
-						{
-							<div class="col-md-4">
-								<p><img style="width:280px;height:400px" src="/Uploads/@item.FileUpload"></p>
-							</div>
-						} *@
+					{
+					<div class="col-md-4">
+					<p><img style="width:280px;height:400px" src="/Uploads/@item.FileUpload"></p>
+					</div>
+					} *@
 						<!-- Add other fields as needed -->
 						<div class="d-flex justify-content-between align-items-center">
 							<div class="btn-group">
@@ -230,7 +230,7 @@
 			// Call the searchMovies function
 			searchMaterial();
 		});
-	</script> 
+	</script>
 
 	@section scripts {
 		<script>
