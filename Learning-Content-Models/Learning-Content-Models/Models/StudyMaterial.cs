@@ -20,7 +20,7 @@ namespace Learning_Content_Models.Models
         [EnumDataType(typeof(TypeFile))]
         public TypeFile TypeFile { get; set; }
         public string Subject { get; set; }
-        //[Range(1, 12)]
+        [Range(1, 12)]
         public int Class { get; set; }
 		public DateTime CreateDate { get; set; }
 

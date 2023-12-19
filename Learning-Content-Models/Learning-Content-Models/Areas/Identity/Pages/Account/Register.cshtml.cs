@@ -164,8 +164,8 @@ namespace Learning_Content_Models.Areas.Identity.Pages.Account
                         if (!User.IsInRole("Admin"))
                         {
                             await _signInManager.SignInAsync(user, isPersistent: false);
-                            return LocalRedirect(returnUrl);
-                        }
+							return LocalRedirect(returnUrl);
+						}
                     }
 
 

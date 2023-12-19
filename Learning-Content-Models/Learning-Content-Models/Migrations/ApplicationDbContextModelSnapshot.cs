@@ -104,6 +104,9 @@ namespace Learning_Content_Models.Migrations
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Receiver")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -111,10 +114,7 @@ namespace Learning_Content_Models.Migrations
                     b.Property<DateTime>("SendDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("SenderId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Status")
+                    b.Property<string>("Sender")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -309,11 +309,9 @@ namespace Learning_Content_Models.Migrations
 
             modelBuilder.Entity("Learning_Content_Models.Models.Message", b =>
                 {
-                    b.HasOne("Learning_Content_Models.Models.ApplicationUser", "ApplicationUser")
+                    b.HasOne("Learning_Content_Models.Models.ApplicationUser", null)
                         .WithMany("Messages")
                         .HasForeignKey("ApplicationUserId");
-
-                    b.Navigation("ApplicationUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

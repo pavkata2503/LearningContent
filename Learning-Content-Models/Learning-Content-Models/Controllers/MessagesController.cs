@@ -35,6 +35,11 @@ namespace Learning_Content_Models.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(Message message)
         {
+            //This give the email of the user
+            //ApplicationUser currentUser = await _userManager.GetUserAsync(User);
+            //studyMaterial.CreatedByName = currentUser?.UserName;
+
+            
             var userId = User.Claims.FirstOrDefault(a => a.Type == ClaimTypes.NameIdentifier)?.Value;
 
             if (userId == null)
@@ -42,9 +47,11 @@ namespace Learning_Content_Models.Controllers
                 throw new ArgumentException("Invalid user.");
             }
             var user = await _userManager.FindByIdAsync(userId);
-            message.Receiver = user.Name;
+            message.Sender = user.Name;
+            message.SendDate= DateTime.Now;
+			message.IsRead = false; // Задаване на начален статус "непрочетено"
 
-            context.Messages.Add(message);
+			context.Messages.Add(message);
             context.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -61,6 +68,22 @@ namespace Learning_Content_Models.Controllers
 
 			context.Messages.Remove(message);
 			context.SaveChanges();
+			return RedirectToAction("Index");
+		}
+
+		[HttpPost]
+		public IActionResult MarkAsRead(int id)
+		{
+			var message = context.Messages.Find(id);
+
+			if (message == null)
+			{
+				return NotFound();
+			}
+
+			message.IsRead = true; // Маркиране на съобщението като прочетено
+			context.SaveChanges();
+
 			return RedirectToAction("Index");
 		}
 	}

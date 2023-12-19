@@ -96,9 +96,12 @@
 			</div>
 		}
 	</div>
-	<a asp-action="Add" asp-controller="StudyMaterials" class="btn btn-success">
-		Add New StudyMaterials
-	</a>
+	@if (!User.IsInRole("Student"))
+	{
+		<a asp-action="Add" asp-controller="StudyMaterials" class="btn btn-success">
+			Add New StudyMaterials
+		</a>
+	}
 	<div>
 		<nav aria-label="Page navigation">
 			<ul class="pagination">
