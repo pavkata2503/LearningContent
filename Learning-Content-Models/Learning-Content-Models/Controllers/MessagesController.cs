@@ -11,7 +11,7 @@ namespace Learning_Content_Models.Controllers
     public class MessagesController : Controller
     {
         private readonly ApplicationDbContext context;
-        private readonly UserManager<ApplicationUser> _userManager;
+        public readonly UserManager<ApplicationUser> _userManager;
 
         public MessagesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
@@ -49,6 +49,7 @@ namespace Learning_Content_Models.Controllers
             var user = await _userManager.FindByIdAsync(userId);
             message.Sender = user.Name;
             message.SendDate= DateTime.Now;
+            message.SenderEmail= User.Identity.Name;
 			message.IsRead = false; // Задаване на начален статус "непрочетено"
 
 			context.Messages.Add(message);
