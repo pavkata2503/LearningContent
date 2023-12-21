@@ -1,8 +1,10 @@
 ﻿using Learning_Content_Models.Data;
 using Learning_Content_Models.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client;
 
 namespace Learning_Content_Models.Controllers
 {
@@ -17,9 +19,14 @@ namespace Learning_Content_Models.Controllers
             _userManager = userManager;
             _roleManager = roleManager;
         }
+		public IActionResult Index()
+		{
+			List<ApplicationUser> users = _userManager.Users.ToList();
+			return View(users);
+		}
 
-        // Action to show a form to create a new user
-        public IActionResult CreateUser()
+		// Action to show a form to create a new user
+		public IActionResult CreateUser()
         {
             // Populate a dropdown with roles (e.g., Cashier, User)
             ViewBag.Roles = _roleManager.Roles.Where(r => r.Name != Roles.Admin.ToString()).ToList();
@@ -52,10 +59,10 @@ namespace Learning_Content_Models.Controllers
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
-
             // If ModelState is not valid, redisplay the form
             ViewBag.Roles = _roleManager.Roles.Where(r => r.Name != Roles.Admin.ToString()).ToList();
             return View(model);
         }
+        
     }
 }

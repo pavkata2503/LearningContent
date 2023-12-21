@@ -18,11 +18,6 @@
 <!-- Add the following form for search and sorting -->
 @* <form method="get" action="@Url.Action("Search")">
     <div class="form-group">
-        <label for="searchString">Search:</label>
-        <input type="text" name="searchString" class="form-control" value="@ViewBag.CurrentFilter" />
-    </div>
-
-    <div class="form-group">
         <label for="sortOrder">Sort By:</label>
         <select name="sortOrder" class="form-control">
             <option value="Title">Title</option>
@@ -39,30 +34,27 @@
 
 <!-- Display the study materials -->
 <body>
-
-	@* <form asp-controller="StudyMaterials" asp-action="Index" method="get">
-	<label for="pageSize">Page Size:</label>
-	<select name="pageSize" id="pageSize" onchange="this.form.submit()">
-	@foreach (var option in ViewBag.PageSizeOptions)
-	{
-	<option value="@option">@option</option>
-	}
-	</select>
-	</form> *@
-
 	<div>
 		<label for="pageSize">Select the number of materials:</label>
 		<select id="pageSize" name="pageSize">
 			<option value="5">5</option>
 			<option value="10">10</option>
 			<option value="15">15</option>
-			<option value="20">20</option>
 		</select>
 		<button id="applyPageSize">Apply</button>
 	</div>
 
+	@* <div>
+		<!-- Pagination controls -->
+		<label for="sortByDate">Sort By Date:</label>
+		<select id="sortByDate" onchange="sortMaterials()">
+			<option value="asc">Ascending</option>
+			<option value="desc">Descending</option>
+		</select>
+	</div> *@
+
 	<input type="text" id="searchInput" placeholder="Search by title or desc..." />
-	 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+	<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 		@foreach (var item in Model)
 		{
 			<div class="col search">
@@ -73,13 +65,46 @@
 						<p class="card-text">@item.Subject</p>
 						<p class="card-text">@item.CreatedByName</p>
 						<p class="card-text desc">@item.Description</p>
+						@if (!string.IsNullOrEmpty(item.FileTitle))
+						{
+							@if (item.FileTitle.Contains(".pdf"))
+							{
+								<embed src="/uploads/@item.FileTitle" type="application/pdf" 
+								width="280" height="400" />
+							}
+							else if (item.FileTitle.Contains(".doc") || item.FileTitle.Contains(".docx") || item.FileTitle.Contains(".pptx"))
+							{
+								<a href="/uploads/@item.FileTitle" target="_blank">View Document</a>
+							}
+							else if (item.FileTitle.Contains(".mp4"))
+							{
+								<video width="320" height="240" controls>
+									<source src="movie.mp4" type="video/mp4">
+									<source src="movie.ogg" type="video/ogg">
+									Your browser does not support the video tag.
+								</video>
 
-						@* @if (!string.IsNullOrEmpty(item.Title))
-					{
-					<div class="col-md-4">
-					<p><img style="width:280px;height:400px" src="/Uploads/@item.FileUpload"></p>
-					</div>
-					} *@
+							}
+							else if (item.FileTitle.Contains(".mp3"))
+							{
+								<audio controls autoplay>
+									<source src="horse.ogg" type="audio/ogg">
+									<source src="horse.mp3" type="audio/mpeg">
+									Your browser does not support the audio element.
+								</audio>
+							}
+							else if (item.FileTitle.Contains(".jpg") || item.FileTitle.Contains(".png") || item.FileTitle.Contains(".jpeg"))
+							{
+								<div class="col-md-4">
+									<p><img style="width:280px;height:400px" src="/Uploads/@item.FileTitle"></p>
+								</div>
+							}
+							else
+							{
+								<p>The site does not support this type of file</p>
+							}
+						}
+
 						<!-- Add other fields as needed -->
 						<div class="d-flex justify-content-between align-items-center">
 							<div class="btn-group">
@@ -191,15 +216,6 @@
 	</table>
 
 
-	@* <div class="m-2">
-	<label class="form-label" for="ProfilePicture">
-	Profile Picture
-	</label>
-	<input type="file" asp-for="Input.ImageFile" />
-	</div>
-	<button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button> *@
-
-
 
 	<script>
 		function searchMaterial() {
@@ -235,6 +251,39 @@
 		});
 	</script>
 
+	@* <script>
+		function sortMaterials() {
+			var sortOrder = document.getElementById("sortByDate").value;
+			document.cookie = "sortOrder=" + sortOrder;
+
+			// Set the selected option in the dropdown
+			document.getElementById("sortByDate").value = sortOrder;
+
+			var url = "/StudyMaterials/Index?pageSize=@ViewBag.PageSize&sortOrder=" + sortOrder;
+			window.location.href = url;
+		}
+
+		// Ensure the initial selected option is set on page load
+		window.onload = function () {
+			var sortOrder = getCookie("sortOrder");
+			if (sortOrder) {
+				document.getElementById("sortByDate").value = sortOrder;
+			}
+		};
+
+		// Function to get cookie value by name
+		function getCookie(name) {
+			var cookieArray = document.cookie.split(';');
+			for (var i = 0; i < cookieArray.length; i++) {
+				var cookie = cookieArray[i].trim();
+				if (cookie.indexOf(name + "=") === 0) {
+					return cookie.substring(name.length + 1);
+				}
+			}
+			return null;
+		}
+	</script> *@
+
 	@section scripts {
 		<script>
 			document.addEventListener("DOMContentLoaded", function () {
@@ -258,13 +307,5 @@
 			});
 		</script>
 	}
-
-
-
-	@* <script>
-	document.getElementById("pageSize").onchange = function () {
-	this.form.submit();
-	};
-	</script> *@
 </body>
 </html>

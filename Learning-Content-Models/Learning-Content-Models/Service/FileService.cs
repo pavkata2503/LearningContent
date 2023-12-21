@@ -25,7 +25,7 @@ namespace Learning_Content_Models.Service
 
 				// Check the allowed extenstions
 				var ext = Path.GetExtension(imageFile.FileName);
-				var allowedExtensions = new string[] { ".jpg", ".png", ".jpeg" };
+				var allowedExtensions = new string[] { ".jpg", ".png", ".jpeg", ".docx", ".doc", ".pdf", ".pptx", ".mp3", ".mp4" };
 				if (!allowedExtensions.Contains(ext))
 				{
 					string msg = string.Format("Only {0} extensions are allowed",

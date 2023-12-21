@@ -29,6 +29,7 @@ namespace Learning_Content_Models.Models
 		//Upload File
 		[NotMapped]
 		public IFormFile FileUpload { get; set; }
+		public string FileTitle { get; set; }
 
     }
 }

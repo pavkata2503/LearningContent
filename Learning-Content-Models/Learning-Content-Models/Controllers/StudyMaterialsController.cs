@@ -164,15 +164,16 @@ namespace Learning_Content_Models.Controllers
 			if (studyMaterial.FileUpload!=null)
 			{
 				var fileResult = _fileService.SaveImage(studyMaterial.FileUpload);
-				//if (fileResult.Item1 == 1)
-				//{
-				//	studyMaterial.Title = fileResult.Item2;
-				//}
-				//else
-				//{
-				//	ModelState.AddModelError(string.Empty, fileResult.Item2);
-				//	return View(studyMaterial);
-				//}
+				if (fileResult.Item1 == 1)
+				{
+					studyMaterial.FileTitle = studyMaterial.Title;
+					studyMaterial.FileTitle = fileResult.Item2;
+				}
+				else
+				{
+					ModelState.AddModelError(string.Empty, fileResult.Item2);
+					return View(studyMaterial);
+				}
 			}
 
 			context.StudyMaterials.Add(studyMaterial);
@@ -203,9 +204,23 @@ namespace Learning_Content_Models.Controllers
             }
             var user = await _userManager.FindByIdAsync(userId);
             studyMaterial.CreatedByName = user.Name;
+			if (studyMaterial.FileUpload != null)
+			{
+				var fileResult = _fileService.SaveImage(studyMaterial.FileUpload);
+				if (fileResult.Item1 == 1)
+				{
+					studyMaterial.FileTitle = studyMaterial.Title;
+					studyMaterial.FileTitle = fileResult.Item2;
+				}
+				else
+				{
+					ModelState.AddModelError(string.Empty, fileResult.Item2);
+					return View(studyMaterial);
+				}
+			}
 
 
-            context.StudyMaterials.Update(studyMaterial);
+			context.StudyMaterials.Update(studyMaterial);
             context.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -2,7 +2,7 @@
 @model Learning_Content_Models.Models.StudyMaterial
 
 <h2>Edit StudyMaterial</h2>
-<form method="post" asp-controller="StudyMaterials" asp-action="Edit">
+<form method="post" asp-controller="StudyMaterials" asp-action="Edit" enctype="multipart/form-data">
     <div class="form-control">
         <label asp-for="Title" class="form-label"></label>
         <input asp-for="Title" class="form-control" />
@@ -38,6 +38,11 @@
     <div class="form-group">
         <label asp-for="CreateDate" class="form-label"></label>
         <input asp-for="CreateDate" type="date" class="form-control" />
+    </div>
+    <div class="m-2">
+        <label class="form-label" for="FileUpload">
+        </label>
+        <input type="file" asp-for="FileUpload" class="form-control" />
     </div>
     <input type="submit" value="Update" class="btn btn-primary" asp-controller="StudyMaterials" />
 </form>
