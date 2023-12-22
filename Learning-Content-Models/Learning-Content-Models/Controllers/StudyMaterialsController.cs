@@ -218,6 +218,14 @@ namespace Learning_Content_Models.Controllers
 					return View(studyMaterial);
 				}
 			}
+			else
+			{
+				var existingMaterial=context.StudyMaterials.AsNoTracking().FirstOrDefault(m=>m.Id==studyMaterial.Id);
+				if (existingMaterial!=null)
+				{
+					studyMaterial.FileTitle = existingMaterial.FileTitle;
+				}
+			}
 
 
 			context.StudyMaterials.Update(studyMaterial);

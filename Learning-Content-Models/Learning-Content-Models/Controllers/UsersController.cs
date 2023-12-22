@@ -4,29 +4,33 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 
 namespace Learning_Content_Models.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly ApplicationDbContext _dbContext;
 
-        public UsersController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        public UsersController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, ApplicationDbContext dbContext)
         {
             _userManager = userManager;
             _roleManager = roleManager;
-        }
-		public IActionResult Index()
-		{
-			List<ApplicationUser> users = _userManager.Users.ToList();
-			return View(users);
-		}
+            _dbContext = dbContext;
+        }   
+        public IActionResult Index()
+        {
+            List<ApplicationUser> users = _userManager.Users.ToList();
 
-		// Action to show a form to create a new user
-		public IActionResult CreateUser()
+            return View(users);
+        }
+
+        // Action to show a form to create a new user
+        public IActionResult CreateUser()
         {
             // Populate a dropdown with roles (e.g., Cashier, User)
             ViewBag.Roles = _roleManager.Roles.Where(r => r.Name != Roles.Admin.ToString()).ToList();
@@ -63,6 +67,22 @@ namespace Learning_Content_Models.Controllers
             ViewBag.Roles = _roleManager.Roles.Where(r => r.Name != Roles.Admin.ToString()).ToList();
             return View(model);
         }
-        
+
+
+        [HttpPost]
+        public IActionResult Delete(string id)
+        {
+            var user = _dbContext.Users.Find(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            _dbContext.Users.Remove(user);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }
