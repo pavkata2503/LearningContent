@@ -27,6 +27,7 @@ namespace Learning_Content_Models.Models
 		public string Receiver {  get; set; }
 		public string Sender {  get; set; }
 		public string SenderEmail {  get; set; }
+		public string? SearchQuery {  get; set; }
 
 		//public int ReceiverId { get; set; }
 

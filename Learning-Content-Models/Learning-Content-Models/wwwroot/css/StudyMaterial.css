@@ -1,8 +1,110 @@
 ﻿body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url("https://st2.depositphotos.com/3470617/6425/v/950/depositphotos_64252303-stock-illustration-school-theme-seamless.jpg");
+    background-size: cover; /* Adjust according to your needs */
 }
 .btn-group .date {
     margin-top:5px;
     margin-bottom: 0px;
     margin-left: 100px;
     align-items: center;
+}
+.materials {
+    display: flex;
+    
+}
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+.articles {
+    display: grid;
+    width: 80%;
+    grid-template-columns: repeat(3, 1fr); /* Три колони с равно странично място */
+    /*gap: 80px; Разстояние между малките div-ове */
+}
+.filters {
+    width: 20%;
+    border-left: 3px solid black;
+}
+.card {
+    height: 420px; /* Примерна височина на малкия div */
+    overflow: hidden;
+    background-color: lightblue; /* Примерен цвят на фона */
+    border: 1px solid #333; /* Примерна граница */
+    margin: 20px 55px 20px 0px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    box-shadow: 10px 10px 15px rgba(0.5,0.5,0.5,0.5);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 0px 15px;
+    height: 50%;
+}
+
+.card-title {
+    font-size: 23px;
+    margin: 8px 0px;
+    margin-bottom: 10px;
+}
+
+.card-class {
+    padding: 0;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+}
+.date {
+    display: inline-block;
+}
+
+.card-text {
+    padding: 0;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.desc {
+    margin-top: 10px;
+}
+
+.file-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .file-container img {
+        width: 280px;
+        height: 400px;
+    }
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+    .btn-group a,
+    .btn-group button {
+        margin-right: 10px;
+    }
+
+.date {
+    margin-top: 10px;
 }

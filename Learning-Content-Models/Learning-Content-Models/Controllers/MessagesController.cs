@@ -5,6 +5,7 @@ using Learning_Content_Models.Service.IService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Learning_Content_Models.Controllers
 {
@@ -19,12 +20,22 @@ namespace Learning_Content_Models.Controllers
             this._userManager = userManager;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string TextMessage)
         {
-            var messages = context.Messages
-            .ToList();
+			var messages = context.Messages
+			.ToList();
+			// Retrieve messages from the database
+			//var messages = context.Messages.AsQueryable();
+			if (!string.IsNullOrEmpty(TextMessage))
+			{
+				// Filter messages by the search term
+				messages = messages.Where(m => m.Text.Contains(TextMessage)).ToList();
+			}
+			// Order messages by send date in descending order (newest to oldest)
+			messages = messages.OrderBy(o => o.SendDate).ToList();
+			messages.First().SearchQuery = TextMessage;
 
-            return View(messages);
+			return View(messages);
         }
 
         public IActionResult Add()

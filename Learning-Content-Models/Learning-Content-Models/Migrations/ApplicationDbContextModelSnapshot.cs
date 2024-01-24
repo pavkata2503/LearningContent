@@ -111,6 +111,9 @@ namespace Learning_Content_Models.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("SearchQuery")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("SendDate")
                         .HasColumnType("datetime2");
 
