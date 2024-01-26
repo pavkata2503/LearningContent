@@ -82,6 +82,8 @@ namespace Learning_Content_Models.Areas.Identity.Pages.Account
             [Display(Name = "Email")]
             public string Email { get; set; }
             public string Name { get; set; }
+            public string FirstName { get; set; }
+            public string SecondName { get; set; }
             public string Desciption { get; set; }
 
             /// <summary>

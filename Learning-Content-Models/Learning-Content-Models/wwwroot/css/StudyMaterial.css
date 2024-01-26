@@ -16,10 +16,6 @@
     display: flex;
     
 }
-.highlight {
-    background-color: yellow;
-    font-weight: bold;
-}
 .articles {
     display: grid;
     width: 80%;
@@ -107,4 +103,23 @@
 
 .date {
     margin-top: 10px;
+}
+.filter-search {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+    .filter-search p {
+        font-size: 21px;
+        margin-bottom: 13px;
+    }
+
+input {
+    border: 1px solid black;
+    border-radius: 30px;
+    height: 25px;
+    margin-bottom: 13px;
 }

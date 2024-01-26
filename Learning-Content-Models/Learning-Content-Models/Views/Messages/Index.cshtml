@@ -11,12 +11,39 @@
 @using System.Text.RegularExpressions
 @model IEnumerable<Learning_Content_Models.Models.Message>
 @{
+    string search = string.Empty;
+    if (Model != null && Model.First().SearchQuery != null)
+    {
+        search = Model.First().SearchQuery;
+    }
+
+    // Function to highlight search keyword
+    Func<string, IHtmlContent> HighlightSearchKeyword = (text) =>
+    {
+        if (!string.IsNullOrEmpty(search))
+        {
+            // Use regular expression to replace search keyword with highlighted span
+            string pattern = $"({Regex.Escape(search)})";
+            string highlightedText = Regex.Replace(text, pattern, "<span class='highlight'>$1</span>", RegexOptions.IgnoreCase);
+            return new HtmlString(highlightedText);
+        }
+        return new HtmlString(text);
+    };
+}
+
+<style>
+    .highlight {
+        color: black;
+        font-weight: bold;
+    }
+</style>
+@* @{
 	string search = string.Empty;
 	if(Model != null && Model.First().SearchQuery != null)
 	{
 		search = Model.First().SearchQuery;
 	}
-}
+} *@
 
 <link rel="stylesheet" href="/css/StudyMaterial.css" asp-append-version="true" />
 
@@ -36,19 +63,8 @@
 			<div class="col search">
 				<div class="card shadow-sm">
 					<div class="card-body">
-						<h3 class="card-text name">
-							@{
-								int searchIndex = item.Text.IndexOf(search);
-								int lastIndex = search.Length;
 
-								string resultFirst = item.Text.Substring(0, searchIndex);
-								string resultLast = item.Text.Substring(lastIndex, item.Text.Length);
-								string searchResult = item.Text.Substring(searchIndex, lastIndex);
-
-
-								<a>@resultFirst <span style="color: red;">@searchResult</span> @resultLast</a>
-							}
-						</h3>
+						<h3 class="text">@HighlightSearchKeyword(item.Text)</h3>
 						<p class="card-text">Изпратено от: @item.Sender</p>
 						<p class="card-text">Изпратено за: @item.Receiver</p>
 						<p>
@@ -85,3 +101,6 @@
 <a asp-action="Add" asp-controller="Messages" class="btn btn-success">
 	Add New Message
 </a>
+
+
+

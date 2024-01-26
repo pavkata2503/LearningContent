@@ -45,12 +45,12 @@
 	</div>
 
 	@* <div>
-		<!-- Pagination controls -->
-		<label for="sortByDate">Sort By Date:</label>
-		<select id="sortByDate" onchange="sortMaterials()">
-			<option value="asc">Ascending</option>
-			<option value="desc">Descending</option>
-		</select>
+	<!-- Pagination controls -->
+	<label for="sortByDate">Sort By Date:</label>
+	<select id="sortByDate" onchange="sortMaterials()">
+	<option value="asc">Ascending</option>
+	<option value="desc">Descending</option>
+	</select>
 	</div> *@
 
 	<input type="text" id="searchInput" placeholder="Search by title or desc..." />
@@ -64,7 +64,7 @@
 						<div class="card-body">
 							<h1 class="card-title name">@item.Title</h1>
 							<p class="card-text">@item.Subject</p>
-							<p class="card-text">@item.Subject</p>
+							<p class="card-text">@item.CreatedByName</p>
 							<p class="card-class desc">@item.Class</p>
 							<div class="card-footer">
 								<button>Виж</button>
@@ -78,176 +78,211 @@
 					</div>
 				}
 			</div>
-			<div class="filters">
-				<p>filters</p>
-
+				<div class="filters">
+					@using (Html.BeginForm("Index", "StudyMaterials", FormMethod.Get))
+					{
+					<p>filters</p>
+					<div class="created-name filter-search">
+						<p>Created Name:</p>
+						<input type="search" name="created-name" value="@ViewBag.CreatedName" />
+					</div>
+					<div class="category filter-search">
+						<p>Category:</p>
+						<select name="category">
+							<option value="">Select Category</option>
+							@foreach (var categoryValue in Enum.GetValues(typeof(Category)))
+							{
+								<option value="@categoryValue">@categoryValue</option>
+							}
+						</select>
+					</div>
+					<div class="subject filter-search">
+						<p>Subject:</p>
+						<input type="search" name="subject" value="@ViewBag.Subject" />
+					</div>
+					<div class="typefile filter-search">
+						<p>TypeFile:</p>
+						<select name="typefile">
+							<option value="">Select TypeFile</option>
+							@foreach (var typefileValue in Enum.GetValues(typeof(TypeFile)))
+							{
+								<option value="@typefileValue">@typefileValue</option>
+							}
+						</select>
+					</div>
+					<div class="class filter-search">
+						<p>Class:</p>
+						<input type="search" name="classFilter" value="@ViewBag.ClassFilter" />
+						<input type="submit" value="Filter" />
+					</div>
+				}
+				</div>
 			</div>
-		</div>
-	</main>
-	@if (!User.IsInRole("Student"))
-	{
-		<a asp-action="Add" asp-controller="StudyMaterials" class="btn btn-success">
-			Add New StudyMaterials
-		</a>
-	}
-	<div>
-		<nav aria-label="Page navigation">
-			<ul class="pagination">
-				<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
-					<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-					   asp-route-pageNumber="1" asp-route-pageSize="@ViewBag.PageSize">First</a>
-				</li>
-				<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
-					<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-					   asp-route-pageNumber="@(ViewBag.CurrentPage - 1)" asp-route-pageSize="@ViewBag.PageSize">Previous</a>
-				</li>
-				<li class="page-item">
-					<a class="page-link">Page @(ViewBag.CurrentPage) of @(ViewBag.TotalPages)</a>
-				</li>
-				<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
-					<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-					   asp-route-pageNumber="@(ViewBag.CurrentPage + 1)" asp-route-pageSize="@ViewBag.PageSize">Next</a>
-				</li>
-				<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
-					<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-					   asp-route-pageNumber="@ViewBag.TotalPages" asp-route-pageSize="@ViewBag.PageSize">Last</a>
-				</li>
-			</ul>
-		</nav>
-	</div>
-
-
-	<h2>Study Materials</h2>
-
-	@using (Html.BeginForm("Index", "StudyMaterials", FormMethod.Get))
-	{
+		</main>
+				@if (!User.IsInRole("Student"))
+				{
+			<a asp-action="Add" asp-controller="StudyMaterials" class="btn btn-success">
+				Add New StudyMaterials
+			</a>
+				}
 		<div>
-			<label for="createdName">Created Name:</label>
-			<input type="text" name="createdName" value="@ViewBag.CreatedName" />
+			<nav aria-label="Page navigation">
+				<ul class="pagination">
+					<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+						<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
+						   asp-route-pageNumber="1" asp-route-pageSize="@ViewBag.PageSize">First</a>
+					</li>
+					<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+						<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
+						   asp-route-pageNumber="@(ViewBag.CurrentPage - 1)" asp-route-pageSize="@ViewBag.PageSize">Previous</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link">Page @(ViewBag.CurrentPage) of @(ViewBag.TotalPages)</a>
+					</li>
+					<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+						<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
+						   asp-route-pageNumber="@(ViewBag.CurrentPage + 1)" asp-route-pageSize="@ViewBag.PageSize">Next</a>
+					</li>
+					<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+						<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
+						   asp-route-pageNumber="@ViewBag.TotalPages" asp-route-pageSize="@ViewBag.PageSize">Last</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
 
-			<label for="category">Category:</label>
-			<select name="category">
-				<option value="">Select Category</option>
-				@foreach (var categoryValue in Enum.GetValues(typeof(Category)))
+
+		<h2>Study Materials</h2>
+
+				@using (Html.BeginForm("Index", "StudyMaterials", FormMethod.Get))
 				{
-					<option value="@categoryValue">@categoryValue</option>
-				}
-			</select>
-			<label for="typefile">TypeFile:</label>
-			<select name="typefile">
-				<option value="">Select TypeFile</option>
-				@foreach (var typefileValue in Enum.GetValues(typeof(TypeFile)))
-				{
-					<option value="@typefileValue">@typefileValue</option>
-				}
-			</select>
-			@* <label for="typеfile">Typе File:</label>
+			<div>
+				<label for="createdName">Created Name:</label>
+				<input type="text" name="createdName" value="@ViewBag.CreatedName" />
+
+				<label for="category">Category:</label>
+				<select name="category">
+					<option value="">Select Category</option>
+							@foreach (var categoryValue in Enum.GetValues(typeof(Category)))
+							{
+						<option value="@categoryValue">@categoryValue</option>
+							}
+				</select>
+				<label for="typefile">TypeFile:</label>
+				<select name="typefile">
+					<option value="">Select TypeFile</option>
+							@foreach (var typefileValue in Enum.GetValues(typeof(TypeFile)))
+							{
+						<option value="@typefileValue">@typefileValue</option>
+							}
+				</select>
+						@* <label for="typеfile">Typе File:</label>
 		<input type="text" name="typеfile" value="@ViewBag.TypеFile" /> *@
 
-			<label for="subject">Subject:</label>
-			<input type="text" name="subject" value="@ViewBag.Subject" />
+				<label for="subject">Subject:</label>
+				<input type="text" name="subject" value="@ViewBag.Subject" />
 
-			<label for="classFilter">Class:</label>
-			<input type="text" name="classFilter" value="@ViewBag.ClassFilter" />
+				<label for="classFilter">Class:</label>
+				<input type="text" name="classFilter" value="@ViewBag.ClassFilter" />
 
-			<input type="submit" value="Filter" />
-		</div>
+				<input type="submit" value="Filter" />
+			</div>
+				}
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Created By</th>
+					<th>Category</th>
+					<th>Type File</th>
+					<th>Subject</th>
+					<th>Class</th>
+				</tr>
+			</thead>
+			<tbody>
+						@foreach (var material in Model)
+						{
+					<tr>
+						<td>@material.CreatedByName</td>
+						<td>@material.Category</td>
+						<td>@material.TypeFile</td>
+						<td>@material.Subject</td>
+						<td>@material.Class</td>
+					</tr>
+						}
+			</tbody>
+		</table>
+
+
+
+		<script>
+			function searchMaterial() {
+				// Get the search query from the input field
+				var query = document.getElementById("searchInput").value.toLowerCase();
+
+				// Get all the movie elements
+				var materials = document.getElementsByClassName("search");
+
+				// Loop through each movie element and check if the title or genre matches the search query
+				for (var i = 0; i < materials.length; i++) {
+					var material = materials[i];
+					var titleElement = material.getElementsByClassName("name")[0];
+					var descElement = material.getElementsByClassName("desc")[0];
+
+					var title = titleElement.innerText.toLowerCase();
+					var desc = descElement.innerText.toLowerCase();
+
+					// If the movie's title or genre contains the search query, display it; otherwise, hide it
+					if (title.includes(query) || desc.includes(query)) {
+						material.style.display = "table-row";
+					} else {
+						material.style.display = "none";
+					}
+				}
+			}
+
+			// Add an event listener to the search input field
+			var searchInput = document.getElementById("searchInput");
+			searchInput.addEventListener("keyup", function () {
+				// Call the searchMovies function
+				searchMaterial();
+			});
+		</script>
+
+				@* <script>
+	function sortMaterials() {
+	var sortOrder = document.getElementById("sortByDate").value;
+	document.cookie = "sortOrder=" + sortOrder;
+
+	// Set the selected option in the dropdown
+	document.getElementById("sortByDate").value = sortOrder;
+
+	var url = "/StudyMaterials/Index?pageSize=@ViewBag.PageSize&sortOrder=" + sortOrder;
+	window.location.href = url;
 	}
 
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Created By</th>
-				<th>Category</th>
-				<th>Type File</th>
-				<th>Subject</th>
-				<th>Class</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach (var material in Model)
-			{
-				<tr>
-					<td>@material.CreatedByName</td>
-					<td>@material.Category</td>
-					<td>@material.TypeFile</td>
-					<td>@material.Subject</td>
-					<td>@material.Class</td>
-				</tr>
-			}
-		</tbody>
-	</table>
+	// Ensure the initial selected option is set on page load
+	window.onload = function () {
+	var sortOrder = getCookie("sortOrder");
+	if (sortOrder) {
+	document.getElementById("sortByDate").value = sortOrder;
+	}
+	};
 
-
-
-	<script>
-		function searchMaterial() {
-			// Get the search query from the input field
-			var query = document.getElementById("searchInput").value.toLowerCase();
-
-			// Get all the movie elements
-			var materials = document.getElementsByClassName("search");
-
-			// Loop through each movie element and check if the title or genre matches the search query
-			for (var i = 0; i < materials.length; i++) {
-				var material = materials[i];
-				var titleElement = material.getElementsByClassName("name")[0];
-				var descElement = material.getElementsByClassName("desc")[0];
-
-				var title = titleElement.innerText.toLowerCase();
-				var desc = descElement.innerText.toLowerCase();
-
-				// If the movie's title or genre contains the search query, display it; otherwise, hide it
-				if (title.includes(query) || desc.includes(query)) {
-					material.style.display = "table-row";
-				} else {
-					material.style.display = "none";
-				}
-			}
-		}
-
-		// Add an event listener to the search input field
-		var searchInput = document.getElementById("searchInput");
-		searchInput.addEventListener("keyup", function () {
-			// Call the searchMovies function
-			searchMaterial();
-		});
-	</script>
-
-	@* <script>
-		function sortMaterials() {
-			var sortOrder = document.getElementById("sortByDate").value;
-			document.cookie = "sortOrder=" + sortOrder;
-
-			// Set the selected option in the dropdown
-			document.getElementById("sortByDate").value = sortOrder;
-
-			var url = "/StudyMaterials/Index?pageSize=@ViewBag.PageSize&sortOrder=" + sortOrder;
-			window.location.href = url;
-		}
-
-		// Ensure the initial selected option is set on page load
-		window.onload = function () {
-			var sortOrder = getCookie("sortOrder");
-			if (sortOrder) {
-				document.getElementById("sortByDate").value = sortOrder;
-			}
-		};
-
-		// Function to get cookie value by name
-		function getCookie(name) {
-			var cookieArray = document.cookie.split(';');
-			for (var i = 0; i < cookieArray.length; i++) {
-				var cookie = cookieArray[i].trim();
-				if (cookie.indexOf(name + "=") === 0) {
-					return cookie.substring(name.length + 1);
-				}
-			}
-			return null;
-		}
+	// Function to get cookie value by name
+	function getCookie(name) {
+	var cookieArray = document.cookie.split(';');
+	for (var i = 0; i < cookieArray.length; i++) {
+	var cookie = cookieArray[i].trim();
+	if (cookie.indexOf(name + "=") === 0) {
+	return cookie.substring(name.length + 1);
+	}
+	}
+	return null;
+	}
 	</script> *@
 
-	@section scripts {
+				@section scripts {
 		<script>
 			document.addEventListener("DOMContentLoaded", function () {
 				// Attach event listener to the Apply button
@@ -269,6 +304,6 @@
 				});
 			});
 		</script>
-	}
-</body>
-</html>
+				}
+	</body>
+	</html>
