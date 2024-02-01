@@ -1,5 +1,8 @@
 ﻿@using Learning_Content_Models.Models.Enums
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Identity
 @model IEnumerable<Learning_Content_Models.Models.StudyMaterial>
+@inject UserManager<ApplicationUser> UserManager
 
 
 
@@ -15,6 +18,7 @@
 	<link rel="stylesheet" href="/css/StudyMaterial.css" asp-append-version="true" />
 	@* @await RenderSectionAsync("Head", false) *@
 </head>
+
 <!-- Add the following form for search and sorting -->
 @* <form method="get" action="@Url.Action("Search")">
     <div class="form-group">
@@ -34,6 +38,15 @@
 
 <!-- Display the study materials -->
 <body>
+	@{
+		var userId = User.Claims.FirstOrDefault(a => a.Type == ClaimTypes.NameIdentifier)?.Value;
+
+		if (userId == null)
+		{
+			throw new ArgumentException("Invalid user.");
+		}
+		var user = await UserManager.FindByIdAsync(userId);
+	}
 	<div>
 		<label for="pageSize">Select the number of materials:</label>
 		<select id="pageSize" name="pageSize">
@@ -57,30 +70,36 @@
 	<main>
 		<div class="materials">
 			<div class="articles">
-				@foreach (var item in Model)
-				{
-					<div class="card">
-						<img class="card-img-top" src="@item.URL" alt="Card image cap">
-						<div class="card-body">
-							<h1 class="card-title name">@item.Title</h1>
-							<p class="card-text">@item.Subject</p>
-							<p class="card-text">@item.CreatedByName</p>
-							<p class="card-class desc">@item.Class</p>
-							<div class="card-footer">
-								<button>Виж</button>
-								@if (!User.IsInRole("Student"))
+					@foreach (var item in Model)
+					{
+						<div class="card">
+							<img class="card-img-top" src="@item.URL" alt="Card image cap">
+							<div class="card-body">
+								<h1 class="card-title name">@item.Title</h1>
+								<p class="card-text">@item.Subject</p>
+								<p class="card-text">@item.CreatedByName</p>
+								<p class="card-class desc">@item.Class</p>
+								<div class="card-footer">
+									<button>Виж</button>
+								@if (user.Name == @item.CreatedByName|| User.IsInRole("Admin"))
 								{
-									<button>Изтрии</button>
+									<a asp-action="Edit" asp-route-id="@item.Id"
+									   class="btn btn-primary">Edit</a>
 								}
-								<p class="date">07/11 2005</p>
+									@if (!User.IsInRole("Student"))
+									{
+										<button>Изтрии</button>
+									}
+									<p class="date">07/11 2005</p>
+								</div>
 							</div>
 						</div>
-					</div>
+					}
 				}
 			</div>
-				<div class="filters">
-					@using (Html.BeginForm("Index", "StudyMaterials", FormMethod.Get))
-					{
+			<div class="filters">
+				@using (Html.BeginForm("Index", "StudyMaterials", FormMethod.Get))
+				{
 					<p>filters</p>
 					<div class="created-name filter-search">
 						<p>Created Name:</p>
@@ -116,140 +135,140 @@
 						<input type="submit" value="Filter" />
 					</div>
 				}
-				</div>
 			</div>
-		</main>
-				@if (!User.IsInRole("Student"))
-				{
-			<a asp-action="Add" asp-controller="StudyMaterials" class="btn btn-success">
-				Add New StudyMaterials
-			</a>
-				}
-		<div>
-			<nav aria-label="Page navigation">
-				<ul class="pagination">
-					<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
-						<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-						   asp-route-pageNumber="1" asp-route-pageSize="@ViewBag.PageSize">First</a>
-					</li>
-					<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
-						<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-						   asp-route-pageNumber="@(ViewBag.CurrentPage - 1)" asp-route-pageSize="@ViewBag.PageSize">Previous</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link">Page @(ViewBag.CurrentPage) of @(ViewBag.TotalPages)</a>
-					</li>
-					<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
-						<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-						   asp-route-pageNumber="@(ViewBag.CurrentPage + 1)" asp-route-pageSize="@ViewBag.PageSize">Next</a>
-					</li>
-					<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
-						<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-						   asp-route-pageNumber="@ViewBag.TotalPages" asp-route-pageSize="@ViewBag.PageSize">Last</a>
-					</li>
-				</ul>
-			</nav>
 		</div>
+	</main>
+	@if (!User.IsInRole("Student"))
+	{
+		<a asp-action="Add" asp-controller="StudyMaterials" class="btn btn-success">
+			Add New StudyMaterials
+		</a>
+	}
+	<div>
+		<nav aria-label="Page navigation">
+			<ul class="pagination">
+				<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+					<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
+					   asp-route-pageNumber="1" asp-route-pageSize="@ViewBag.PageSize">First</a>
+				</li>
+				<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+					<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
+					   asp-route-pageNumber="@(ViewBag.CurrentPage - 1)" asp-route-pageSize="@ViewBag.PageSize">Previous</a>
+				</li>
+				<li class="page-item">
+					<a class="page-link">Page @(ViewBag.CurrentPage) of @(ViewBag.TotalPages)</a>
+				</li>
+				<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+					<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
+					   asp-route-pageNumber="@(ViewBag.CurrentPage + 1)" asp-route-pageSize="@ViewBag.PageSize">Next</a>
+				</li>
+				<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+					<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
+					   asp-route-pageNumber="@ViewBag.TotalPages" asp-route-pageSize="@ViewBag.PageSize">Last</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
 
 
-		<h2>Study Materials</h2>
+	<h2>Study Materials</h2>
 
-				@using (Html.BeginForm("Index", "StudyMaterials", FormMethod.Get))
+	@using (Html.BeginForm("Index", "StudyMaterials", FormMethod.Get))
+	{
+		<div>
+			<label for="createdName">Created Name:</label>
+			<input type="text" name="createdName" value="@ViewBag.CreatedName" />
+
+			<label for="category">Category:</label>
+			<select name="category">
+				<option value="">Select Category</option>
+				@foreach (var categoryValue in Enum.GetValues(typeof(Category)))
 				{
-			<div>
-				<label for="createdName">Created Name:</label>
-				<input type="text" name="createdName" value="@ViewBag.CreatedName" />
-
-				<label for="category">Category:</label>
-				<select name="category">
-					<option value="">Select Category</option>
-							@foreach (var categoryValue in Enum.GetValues(typeof(Category)))
-							{
-						<option value="@categoryValue">@categoryValue</option>
-							}
-				</select>
-				<label for="typefile">TypeFile:</label>
-				<select name="typefile">
-					<option value="">Select TypeFile</option>
-							@foreach (var typefileValue in Enum.GetValues(typeof(TypeFile)))
-							{
-						<option value="@typefileValue">@typefileValue</option>
-							}
-				</select>
-						@* <label for="typеfile">Typе File:</label>
+					<option value="@categoryValue">@categoryValue</option>
+				}
+			</select>
+			<label for="typefile">TypeFile:</label>
+			<select name="typefile">
+				<option value="">Select TypeFile</option>
+				@foreach (var typefileValue in Enum.GetValues(typeof(TypeFile)))
+				{
+					<option value="@typefileValue">@typefileValue</option>
+				}
+			</select>
+			@* <label for="typеfile">Typе File:</label>
 		<input type="text" name="typеfile" value="@ViewBag.TypеFile" /> *@
 
-				<label for="subject">Subject:</label>
-				<input type="text" name="subject" value="@ViewBag.Subject" />
+			<label for="subject">Subject:</label>
+			<input type="text" name="subject" value="@ViewBag.Subject" />
 
-				<label for="classFilter">Class:</label>
-				<input type="text" name="classFilter" value="@ViewBag.ClassFilter" />
+			<label for="classFilter">Class:</label>
+			<input type="text" name="classFilter" value="@ViewBag.ClassFilter" />
 
-				<input type="submit" value="Filter" />
-			</div>
-				}
+			<input type="submit" value="Filter" />
+		</div>
+	}
 
-		<table class="table">
-			<thead>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Created By</th>
+				<th>Category</th>
+				<th>Type File</th>
+				<th>Subject</th>
+				<th>Class</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var material in Model)
+			{
 				<tr>
-					<th>Created By</th>
-					<th>Category</th>
-					<th>Type File</th>
-					<th>Subject</th>
-					<th>Class</th>
+					<td>@material.CreatedByName</td>
+					<td>@material.Category</td>
+					<td>@material.TypeFile</td>
+					<td>@material.Subject</td>
+					<td>@material.Class</td>
 				</tr>
-			</thead>
-			<tbody>
-						@foreach (var material in Model)
-						{
-					<tr>
-						<td>@material.CreatedByName</td>
-						<td>@material.Category</td>
-						<td>@material.TypeFile</td>
-						<td>@material.Subject</td>
-						<td>@material.Class</td>
-					</tr>
-						}
-			</tbody>
-		</table>
+			}
+		</tbody>
+	</table>
 
 
 
-		<script>
-			function searchMaterial() {
-				// Get the search query from the input field
-				var query = document.getElementById("searchInput").value.toLowerCase();
+	<script>
+		function searchMaterial() {
+			// Get the search query from the input field
+			var query = document.getElementById("searchInput").value.toLowerCase();
 
-				// Get all the movie elements
-				var materials = document.getElementsByClassName("search");
+			// Get all the movie elements
+			var materials = document.getElementsByClassName("search");
 
-				// Loop through each movie element and check if the title or genre matches the search query
-				for (var i = 0; i < materials.length; i++) {
-					var material = materials[i];
-					var titleElement = material.getElementsByClassName("name")[0];
-					var descElement = material.getElementsByClassName("desc")[0];
+			// Loop through each movie element and check if the title or genre matches the search query
+			for (var i = 0; i < materials.length; i++) {
+				var material = materials[i];
+				var titleElement = material.getElementsByClassName("name")[0];
+				var descElement = material.getElementsByClassName("desc")[0];
 
-					var title = titleElement.innerText.toLowerCase();
-					var desc = descElement.innerText.toLowerCase();
+				var title = titleElement.innerText.toLowerCase();
+				var desc = descElement.innerText.toLowerCase();
 
-					// If the movie's title or genre contains the search query, display it; otherwise, hide it
-					if (title.includes(query) || desc.includes(query)) {
-						material.style.display = "table-row";
-					} else {
-						material.style.display = "none";
-					}
+				// If the movie's title or genre contains the search query, display it; otherwise, hide it
+				if (title.includes(query) || desc.includes(query)) {
+					material.style.display = "table-row";
+				} else {
+					material.style.display = "none";
 				}
 			}
+		}
 
-			// Add an event listener to the search input field
-			var searchInput = document.getElementById("searchInput");
-			searchInput.addEventListener("keyup", function () {
-				// Call the searchMovies function
-				searchMaterial();
-			});
-		</script>
+		// Add an event listener to the search input field
+		var searchInput = document.getElementById("searchInput");
+		searchInput.addEventListener("keyup", function () {
+			// Call the searchMovies function
+			searchMaterial();
+		});
+	</script>
 
-				@* <script>
+	@* <script>
 	function sortMaterials() {
 	var sortOrder = document.getElementById("sortByDate").value;
 	document.cookie = "sortOrder=" + sortOrder;
@@ -282,7 +301,7 @@
 	}
 	</script> *@
 
-				@section scripts {
+	@section scripts {
 		<script>
 			document.addEventListener("DOMContentLoaded", function () {
 				// Attach event listener to the Apply button
@@ -304,6 +323,6 @@
 				});
 			});
 		</script>
-				}
-	</body>
-	</html>
+	}
+</body>
+</html>

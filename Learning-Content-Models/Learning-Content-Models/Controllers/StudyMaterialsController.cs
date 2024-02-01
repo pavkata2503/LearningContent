@@ -188,7 +188,7 @@ namespace Learning_Content_Models.Controllers
             {
                 return NotFound();
             }
-            ViewBag.User = User.Identity.Name.ToList();
+            //ViewBag.User = User.Identity.Name.ToList();
 
             return View(studyMaterial);
         }
@@ -198,12 +198,12 @@ namespace Learning_Content_Models.Controllers
         {
             var userId = User.Claims.FirstOrDefault(a => a.Type == ClaimTypes.NameIdentifier)?.Value;
 
-            if (userId == null)
-            {
-                throw new ArgumentException("Invalid user.");
-            }
-            var user = await _userManager.FindByIdAsync(userId);
-            studyMaterial.CreatedByName = user.Name;
+			if (userId == null)
+			{
+				throw new ArgumentException("Invalid user.");
+			}
+			var user = await _userManager.FindByIdAsync(userId);
+			studyMaterial.CreatedByName = user.Name;
 			if (studyMaterial.FileUpload != null)
 			{
 				var fileResult = _fileService.SaveImage(studyMaterial.FileUpload);
