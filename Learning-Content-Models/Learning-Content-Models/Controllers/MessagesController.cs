@@ -33,7 +33,7 @@ namespace Learning_Content_Models.Controllers
 			}
 			// Order messages by send date in descending order (newest to oldest)
 			messages = messages.OrderBy(o => o.SendDate).ToList();
-			messages.First().SearchQuery = TextMessage;
+			//messages.First().SearchQuery = TextMessage;
 
 			return View(messages);
         }

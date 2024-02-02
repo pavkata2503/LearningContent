@@ -83,7 +83,7 @@ namespace Learning_Content_Models.Areas.Identity.Pages.Account
             public string Email { get; set; }
             public string Name { get; set; }
             public string FirstName { get; set; }
-            public string SecondName { get; set; }
+            public string LastName { get; set; }
             public string Desciption { get; set; }
 
             /// <summary>
@@ -128,6 +128,8 @@ namespace Learning_Content_Models.Areas.Identity.Pages.Account
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 user.Name = Input.Name;
                 user.Description = Input.Desciption;
+                user.FirstName = Input.FirstName;
+                user.LastName = Input.LastName;
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
 

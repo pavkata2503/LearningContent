@@ -10,7 +10,7 @@
 @using Microsoft.DotNet.Scaffolding.Shared.Messaging
 @using System.Text.RegularExpressions
 @model IEnumerable<Learning_Content_Models.Models.Message>
-@{
+@* @{
     string search = string.Empty;
     if (Model != null && Model.First().SearchQuery != null)
     {
@@ -29,7 +29,7 @@
         }
         return new HtmlString(text);
     };
-}
+} *@
 
 <style>
     .highlight {
@@ -47,14 +47,15 @@
 
 <link rel="stylesheet" href="/css/StudyMaterial.css" asp-append-version="true" />
 
-<div>
+@* <div>
 	<form asp-action="Index" method="get">
 		<div class="form-group">
 			<input type="text" name="TextMessage" placeholder="Search by keyword" />
 			<button type="submit">Search</button>
 		</div>
 	</form>
-</div>
+</div> *@
+<input type="text" id="searchInput" placeholder="Search by title or genre..." />
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 	@foreach (var item in Model)
 	{
@@ -64,7 +65,7 @@
 				<div class="card shadow-sm">
 					<div class="card-body">
 
-						<h3 class="text">@HighlightSearchKeyword(item.Text)</h3>
+						<h3 class="text">@item.Text</h3>
 						<p class="card-text">Изпратено от: @item.Sender</p>
 						<p class="card-text">Изпратено за: @item.Receiver</p>
 						<p>
@@ -97,6 +98,34 @@
 			</div>
 		}
 	}
+	<script>
+		function searchMovies() {
+			var query = document.getElementById("searchInput").value.toLowerCase();
+			var movies = document.getElementsByClassName("search");
+			for (var i = 0; i < movies.length; i++) {
+				var movie = movies[i];
+				var titleElement = movie.getElementsByClassName("text")[0];
+
+				var title = titleElement.innerText.toLowerCase();
+
+				// Bold the searched word in the title
+				var boldTitle = title.replace(new RegExp(query, 'ig'), '<b>$&</b>');
+				titleElement.innerHTML = boldTitle;
+
+				// Check for inclusion and set display property
+				if (title.includes(query)) {
+					movie.style.display = "table-row";
+				} else {
+					movie.style.display = "none";
+				}
+			}
+		}
+
+		var searchInput = document.getElementById("searchInput");
+		searchInput.addEventListener("keyup", function () {
+			searchMovies();
+		});
+	</script>
 </div>
 <a asp-action="Add" asp-controller="Messages" class="btn btn-success">
 	Add New Message

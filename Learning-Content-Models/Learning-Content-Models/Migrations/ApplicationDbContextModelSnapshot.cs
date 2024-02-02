@@ -44,6 +44,12 @@ namespace Learning_Content_Models.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -101,6 +107,9 @@ namespace Learning_Content_Models.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AppliationUserId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
 
@@ -109,9 +118,6 @@ namespace Learning_Content_Models.Migrations
 
                     b.Property<string>("Receiver")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SearchQuery")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("SendDate")
@@ -320,9 +326,11 @@ namespace Learning_Content_Models.Migrations
 
             modelBuilder.Entity("Learning_Content_Models.Models.Message", b =>
                 {
-                    b.HasOne("Learning_Content_Models.Models.ApplicationUser", null)
+                    b.HasOne("Learning_Content_Models.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("Messages")
                         .HasForeignKey("ApplicationUserId");
+
+                    b.Navigation("ApplicationUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
