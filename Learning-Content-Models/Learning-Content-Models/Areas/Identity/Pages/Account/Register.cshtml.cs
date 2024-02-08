@@ -143,6 +143,10 @@ namespace Learning_Content_Models.Areas.Identity.Pages.Account
                     {
                         await _userManager.AddToRoleAsync(user, Roles.Student.ToString());
                     }
+                    else
+                    {
+						await _userManager.AddToRoleAsync(user, Roles.Student.ToString());
+					}
 
                     _logger.LogInformation("User created a new account with password.");
 

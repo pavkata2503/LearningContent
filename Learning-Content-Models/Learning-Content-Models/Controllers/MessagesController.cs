@@ -2,6 +2,7 @@
 using Learning_Content_Models.Models;
 using Learning_Content_Models.Service;
 using Learning_Content_Models.Service.IService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -9,6 +10,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Learning_Content_Models.Controllers
 {
+    [Authorize]
     public class MessagesController : Controller
     {
         private readonly ApplicationDbContext context;
@@ -26,13 +28,13 @@ namespace Learning_Content_Models.Controllers
 			.ToList();
 			// Retrieve messages from the database
 			//var messages = context.Messages.AsQueryable();
-			if (!string.IsNullOrEmpty(TextMessage))
-			{
-				// Filter messages by the search term
-				messages = messages.Where(m => m.Text.Contains(TextMessage)).ToList();
-			}
+			//if (!string.IsNullOrEmpty(TextMessage))
+			//{
+			//	// Filter messages by the search term
+			//	messages = messages.Where(m => m.Text.Contains(TextMessage)).ToList();
+			//}
 			// Order messages by send date in descending order (newest to oldest)
-			messages = messages.OrderBy(o => o.SendDate).ToList();
+			messages = messages.OrderByDescending(o => o.SendDate).ToList();
 			//messages.First().SearchQuery = TextMessage;
 
 			return View(messages);
