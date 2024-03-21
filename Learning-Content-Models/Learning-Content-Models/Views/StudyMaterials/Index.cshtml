@@ -19,22 +19,6 @@
 	@* @await RenderSectionAsync("Head", false) *@
 </head>
 
-<!-- Add the following form for search and sorting -->
-@* <form method="get" action="@Url.Action("Search")">
-    <div class="form-group">
-        <label for="sortOrder">Sort By:</label>
-        <select name="sortOrder" class="form-control">
-            <option value="Title">Title</option>
-            <option value="Date">Date</option>
-            <!-- Add more options for other sorting options if needed -->
-        </select>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Apply Filters and Sort</button>
-
-    <button type="submit" class="btn btn-primary">Search</button>
-</form>  *@
-
 
 <!-- Display the study materials -->
 <body>
@@ -47,40 +31,51 @@
 		}
 		var user = await UserManager.FindByIdAsync(userId);
 	}
-	<div>
-		<label for="pageSize">Select the number of materials:</label>
-		<select id="pageSize" name="pageSize">
-			<option value="5">5</option>
-			<option value="10">10</option>
-			<option value="15">15</option>
-		</select>
-		<button id="applyPageSize">Apply</button>
-	</div>
 
-	@* <div>
-	<!-- Pagination controls -->
-	<label for="sortByDate">Sort By Date:</label>
-	<select id="sortByDate" onchange="sortMaterials()">
-	<option value="asc">Ascending</option>
-	<option value="desc">Descending</option>
-	</select>
-	</div> *@
-
-	<input type="text" id="searchInput" placeholder="Search by title or desc..." />
 	<main>
+		<div>
+			<label for="pageSize">Select the number of materials:</label>
+			<select id="pageSize" name="pageSize">
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="15">15</option>
+			</select>
+			<button id="applyPageSize">Apply</button>
+		</div>
+
+		<div>
+			<form asp-controller="StudyMaterials" asp-action="Index" method="get">
+				<label for="sortOrder">Sort By:</label>
+				<select id="sortOrder" name="sortOrder">
+					<option value="">Select</option>
+					<option value="date_asc">Oldest First</option>
+					<option value="date_desc">Newest First</option>
+				</select>
+				<button type="submit">Apply</button>
+			</form>
+		</div>
+		<input type="text" id="searchInput" placeholder="Search by title or desc..." />
 		<div class="materials">
 			<div class="articles">
 				@foreach (var item in Model)
 				{
 					<div class="card search">
 						<img class="card-img-top" src="@item.URL" alt="Card image cap">
-						<div class="card-body">
-							<h1 class="card-title name">@item.Title</h1>
-							<p class="card-text">@item.Subject</p>
-							<p class="card-text">@item.CreatedByName</p>
-							<p class="card-class desc">@item.Class</p>
+						<div class="course-content">
+							<div class="d-flex justify-content-between align-items-center mb-3">
+								<p>@item.Subject</p>
+								<p class="price">@item.Class клас</p>
+							</div>
+
+							<h3 class="name">@item.Title</h3>
+							<div class="trainer d-flex justify-content-between align-items-center">
+								<div class="trainer-profile d-flex align-items-center">
+									<span>@item.CreatedByName</span>
+								</div>
+							</div>
 							<div class="card-footer">
-								<button>Виж</button>
+								<a asp-action="Details" asp-route-id="@item.Id"
+								   class="btn btn-primary">Виж</a>
 								@if (user.Name == @item.CreatedByName || User.IsInRole("Admin"))
 								{
 									<a asp-action="Edit" asp-route-id="@item.Id"
@@ -93,8 +88,9 @@
 										<button type="submit">Изтрии</button>
 									</form>
 								}
-								<p class="date">07/11 2005</p>
+								<p class="date">@item.CreateDate</p>
 							</div>
+
 						</div>
 					</div>
 				}
@@ -139,102 +135,100 @@
 				}
 			</div>
 		</div>
-	</main>
-	@if (!User.IsInRole("Student"))
-	{
-		<a asp-action="Add" asp-controller="StudyMaterials" class="btn btn-success">
-			Add New StudyMaterials
-		</a>
-	}
-	<div>
-		<nav aria-label="Page navigation">
-			<ul class="pagination">
-				<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
-					<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-					   asp-route-pageNumber="1" asp-route-pageSize="@ViewBag.PageSize">First</a>
-				</li>
-				<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
-					<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-					   asp-route-pageNumber="@(ViewBag.CurrentPage - 1)" asp-route-pageSize="@ViewBag.PageSize">Previous</a>
-				</li>
-				<li class="page-item">
-					<a class="page-link">Page @(ViewBag.CurrentPage) of @(ViewBag.TotalPages)</a>
-				</li>
-				<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
-					<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-					   asp-route-pageNumber="@(ViewBag.CurrentPage + 1)" asp-route-pageSize="@ViewBag.PageSize">Next</a>
-				</li>
-				<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
-					<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-					   asp-route-pageNumber="@ViewBag.TotalPages" asp-route-pageSize="@ViewBag.PageSize">Last</a>
-				</li>
-			</ul>
-		</nav>
-	</div>
-
-
-	<h2>Study Materials</h2>
-
-	@using (Html.BeginForm("Index", "StudyMaterials", FormMethod.Get))
-	{
+		@if (!User.IsInRole("Student"))
+		{
+			<a asp-action="Add" asp-controller="StudyMaterials" class="btn btn-success">
+				Add New StudyMaterials
+			</a>
+		}
 		<div>
-			<label for="createdName">Created Name:</label>
-			<input type="text" name="createdName" value="@ViewBag.CreatedName" />
-
-			<label for="category">Category:</label>
-			<select name="category">
-				<option value="">Select Category</option>
-				@foreach (var categoryValue in Enum.GetValues(typeof(Category)))
-				{
-					<option value="@categoryValue">@categoryValue</option>
-				}
-			</select>
-			<label for="typefile">TypeFile:</label>
-			<select name="typefile">
-				<option value="">Select TypeFile</option>
-				@foreach (var typefileValue in Enum.GetValues(typeof(TypeFile)))
-				{
-					<option value="@typefileValue">@typefileValue</option>
-				}
-			</select>
-			@* <label for="typеfile">Typе File:</label>
-		<input type="text" name="typеfile" value="@ViewBag.TypеFile" /> *@
-
-			<label for="subject">Subject:</label>
-			<input type="text" name="subject" value="@ViewBag.Subject" />
-
-			<label for="classFilter">Class:</label>
-			<input type="text" name="classFilter" value="@ViewBag.ClassFilter" />
-
-			<input type="submit" value="Filter" />
+			<nav aria-label="Page navigation">
+				<ul class="pagination">
+					<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+						<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
+						   asp-route-pageNumber="1" asp-route-pageSize="@ViewBag.PageSize">First</a>
+					</li>
+					<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+						<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
+						   asp-route-pageNumber="@(ViewBag.CurrentPage - 1)" asp-route-pageSize="@ViewBag.PageSize">Previous</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link">Page @(ViewBag.CurrentPage) of @(ViewBag.TotalPages)</a>
+					</li>
+					<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+						<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
+						   asp-route-pageNumber="@(ViewBag.CurrentPage + 1)" asp-route-pageSize="@ViewBag.PageSize">Next</a>
+					</li>
+					<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+						<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
+						   asp-route-pageNumber="@ViewBag.TotalPages" asp-route-pageSize="@ViewBag.PageSize">Last</a>
+					</li>
+				</ul>
+			</nav>
 		</div>
-	}
 
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Created By</th>
-				<th>Category</th>
-				<th>Type File</th>
-				<th>Subject</th>
-				<th>Class</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach (var material in Model)
-			{
+
+		<h2>Study Materials</h2>
+
+		@using (Html.BeginForm("Index", "StudyMaterials", FormMethod.Get))
+		{
+			<div>
+				<label for="createdName">Created Name:</label>
+				<input type="text" name="createdName" value="@ViewBag.CreatedName" />
+
+				<label for="category">Category:</label>
+				<select name="category">
+					<option value="">Select Category</option>
+					@foreach (var categoryValue in Enum.GetValues(typeof(Category)))
+					{
+						<option value="@categoryValue">@categoryValue</option>
+					}
+				</select>
+				<label for="typefile">TypeFile:</label>
+				<select name="typefile">
+					<option value="">Select TypeFile</option>
+					@foreach (var typefileValue in Enum.GetValues(typeof(TypeFile)))
+					{
+						<option value="@typefileValue">@typefileValue</option>
+					}
+				</select>
+				@* <label for="typеfile">Typе File:</label>
+			<input type="text" name="typеfile" value="@ViewBag.TypеFile" /> *@
+
+				<label for="subject">Subject:</label>
+				<input type="text" name="subject" value="@ViewBag.Subject" />
+
+				<label for="classFilter">Class:</label>
+				<input type="text" name="classFilter" value="@ViewBag.ClassFilter" />
+
+				<input type="submit" value="Filter" />
+			</div>
+		}
+
+		<table class="table">
+			<thead>
 				<tr>
-					<td>@material.CreatedByName</td>
-					<td>@material.Category</td>
-					<td>@material.TypeFile</td>
-					<td>@material.Subject</td>
-					<td>@material.Class</td>
+					<th>Created By</th>
+					<th>Category</th>
+					<th>Type File</th>
+					<th>Subject</th>
+					<th>Class</th>
 				</tr>
-			}
-		</tbody>
-	</table>
-
-
+			</thead>
+			<tbody>
+				@foreach (var material in Model)
+				{
+					<tr>
+						<td>@material.CreatedByName</td>
+						<td>@material.Category</td>
+						<td>@material.TypeFile</td>
+						<td>@material.Subject</td>
+						<td>@material.Class</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</main>
 
 	<script>
 		function searchMaterial() {
@@ -268,6 +262,14 @@
 			// Call the searchMovies function
 			searchMaterial();
 		});
+	</script>
+	<script>
+		function sortMaterials() {
+			var sortOrder = document.getElementById("sortByDate").value;
+
+			var url = "/StudyMaterials/Index?pageSize=@ViewBag.PageSize&sortOrder=" + sortOrder;
+			window.location.href = url;
+		}
 	</script>
 
 	@* <script>

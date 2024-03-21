@@ -52,9 +52,22 @@ namespace Learning_Content_Models.Controllers
 		//    // Pass the paginated materials to the view
 		//    return View(paginatedMaterials.ToList());
 		//}
-		public IActionResult Index(int? pageSize, int? pageNumber, string createdName, string category, string typefile, string subject, string classFilter)
+		public IActionResult Index(string sortOrder,int? pageSize, int? pageNumber, string createdName, string category, string typefile, string subject, string classFilter)
 		{
 			var materials = context.StudyMaterials.AsQueryable();
+
+			ViewBag.DateSortParm = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
+
+			// Apply sorting
+			switch (sortOrder)
+			{
+				case "date_desc":
+					materials = materials.OrderByDescending(s => s.CreateDate);
+					break;
+				default:
+					materials = materials.OrderBy(s => s.CreateDate);
+					break;
+			}
 
 			// Apply filters
 			if (!string.IsNullOrEmpty(createdName))
@@ -248,5 +261,23 @@ namespace Learning_Content_Models.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
-    }
+		public IActionResult Details(int id)
+		{
+			var studyMaterial = context.StudyMaterials.Find(id);
+
+			return View(studyMaterial);
+		}
+		public IActionResult Ascending()
+		{
+			var materials = context.StudyMaterials.OrderBy(s => s.CreateDate).ToList();
+			return View("Index", materials);
+		}
+
+		// Action method to display study materials in descending order of creation date
+		public IActionResult Descending()
+		{
+			var materials = context.StudyMaterials.OrderByDescending(s => s.CreateDate).ToList();
+			return View("Index", materials);
+		}
+	}
 }

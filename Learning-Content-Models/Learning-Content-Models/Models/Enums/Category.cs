@@ -1,10 +1,16 @@
-﻿namespace Learning_Content_Models.Models.Enums
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Learning_Content_Models.Models.Enums
 {
     public enum Category
     {
+        [Display(Name ="Нов Материал")]
         NewMaterial,
-        Exercise,
-        Homework,
-        ForTesting
+		[Display(Name = "Упражнение")]
+		Exercise,
+		[Display(Name = "Домашна работа")]
+		Homework,
+		[Display(Name = "За тест")]
+		ForTesting
     }
 }

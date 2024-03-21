@@ -843,9 +843,9 @@ C:\Users\pavka\OneDrive\Documents\Програвиране C#\За училищ�
 C:\Users\pavka\OneDrive\Documents\Програвиране C#\За училище\LearningContent\Learning-Content-Models\Learning-Content-Models\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\pavka\OneDrive\Documents\Програвиране C#\За училище\LearningContent\Learning-Content-Models\Learning-Content-Models\obj\Debug\net8.0\scopedcss\bundle\Learning-Content-Models.styles.css
 C:\Users\pavka\OneDrive\Documents\Програвиране C#\За училище\LearningContent\Learning-Content-Models\Learning-Content-Models\obj\Debug\net8.0\scopedcss\projectbundle\Learning-Content-Models.bundle.scp.css
-C:\Users\pavka\OneDrive\Documents\Програвиране C#\За училище\LearningContent\Learning-Content-Models\Learning-Content-Models\obj\Debug\net8.0\Learning-Content-Models.csproj.CopyComplete
 C:\Users\pavka\OneDrive\Documents\Програвиране C#\За училище\LearningContent\Learning-Content-Models\Learning-Content-Models\obj\Debug\net8.0\Learning-Content-Models.dll
 C:\Users\pavka\OneDrive\Documents\Програвиране C#\За училище\LearningContent\Learning-Content-Models\Learning-Content-Models\obj\Debug\net8.0\refint\Learning-Content-Models.dll
 C:\Users\pavka\OneDrive\Documents\Програвиране C#\За училище\LearningContent\Learning-Content-Models\Learning-Content-Models\obj\Debug\net8.0\Learning-Content-Models.pdb
 C:\Users\pavka\OneDrive\Documents\Програвиране C#\За училище\LearningContent\Learning-Content-Models\Learning-Content-Models\obj\Debug\net8.0\Learning-Content-Models.genruntimeconfig.cache
 C:\Users\pavka\OneDrive\Documents\Програвиране C#\За училище\LearningContent\Learning-Content-Models\Learning-Content-Models\obj\Debug\net8.0\ref\Learning-Content-Models.dll
+C:\Users\pavka\OneDrive\Documents\Програвиране C#\За училище\LearningContent\Learning-Content-Models\Learning-Content-Models\obj\Debug\net8.0\Learning.8B687DD9.Up2Date

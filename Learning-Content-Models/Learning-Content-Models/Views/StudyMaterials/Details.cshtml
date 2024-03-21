@@ -1,0 +1,95 @@
+﻿@using Learning_Content_Models.Models.Enums
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Identity
+@model Learning_Content_Models.Models.StudyMaterial
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Staterial Details";
+}
+<head>
+</head>
+
+<div class="container mb-4" style="height:75vh;">
+    <div class="row">
+        <h5 class="card-title">@Model.Title</h5>
+    </div>
+    <div class="d-flex gap-5">
+        <div class="row col-6">
+            <img class="card-img-top" src="@Model.URL" alt="Card image cap">
+            @* <div id="carGalleryCarousel" class="carousel slide" data-ride="carousel" style="height: 500px; width: 800px;">
+                <div class="carousel-inner">
+                    @foreach (var photo in Model.FileUpload)
+                    {
+                        <div class="carousel-item @(photo == Model.Photos.First() ? "active" : "")">
+                            <img src="@photo.Url" class="rounded d-block w-100" alt="Car Photo" style="height: 500px; width: 800px; object-fit: cover;" loading="lazy">
+                        </div>
+                    }
+                </div> 
+
+                <!-- Carousel Controls -->
+                <a class="carousel-control-prev" href="#carGalleryCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only"></span>
+                </a>
+                <a class="carousel-control-next" href="#carGalleryCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only"></span>
+                </a>
+            </div> *@
+        </div>
+        <!-- Car Information Section -->
+        <div class="row col-6">
+            <!-- Car Details Card -->
+            <div class="card">
+                <div class="card-body gap-1">
+                    <p style="border-bottom: 1px solid #ccc;"><strong>Category:</strong> @Model.Category</p>
+                    <p style="border-bottom: 1px solid #ccc;"><strong>TypeFile:</strong> @Model.TypeFile</p>
+                    <p style="border-bottom: 1px solid #ccc;"><strong>Subject:</strong> @Model.Subject</p>
+                    <p style="border-bottom: 1px solid #ccc;"><strong>Class:</strong> @Model.Class</p>
+                    <p style="border-bottom: 1px solid #ccc;"><strong>Description:</strong> @Model.Description</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div>
+        <h1>Качени Материали</h1>
+        @if (!string.IsNullOrEmpty(Model.FileTitle))
+        {
+            if (Model.FileTitle.Contains(".pdf"))
+            {
+                <embed src="/uploads/@Model.FileTitle" type="application/pdf"
+                       width="280" height="400">
+            }
+            else if (Model.FileTitle.Contains(".doc") || Model.FileTitle.Contains(".docx") || Model.FileTitle.Contains(".pptx"))
+            {
+                <a href="/uploads/@Model.FileTitle" target="_blank">View Document</a>
+            }
+            else if (Model.FileTitle.Contains(".mp4"))
+            {
+                <video width="320" height="240" controls>
+                    <source src="movie.mp4" type="video/mp4">
+                </video>
+            }
+            else if (Model.FileTitle.Contains(".mp3"))
+            {
+                <audio controls>
+                    <source src="horse.mp3" type="audio/mpeg">
+                </audio>
+            }
+            else if (Model.FileTitle.Contains(".jpg") || Model.FileTitle.Contains(".jpeg") || Model.FileTitle.Contains(".png"))
+            {
+                <img style="width:700px;height:400px" src="/uploads/@Model.FileTitle" />
+            }
+            else
+            {
+                <p>The site does not support this type of file.</p>
+            }
+        }
+        else
+        {
+            <p>Invalid file path</p>
+        }
+    </div>
+</div>

@@ -16,20 +16,20 @@
 					<a class="navbar-brand col-lg-3 me-0" asp-controller="Home" asp-action="Index">Learning Content</a>
 					<ul class="navbar-nav col-lg-6 justify-content-lg-center">
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Index">Home</a>
+							<a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Index">Начало</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" asp-area="" asp-controller="StudyMaterials" asp-action="Index">StudyMaterials</a>
+							<a class="nav-link" asp-area="" asp-controller="StudyMaterials" asp-action="Index">Материали</a>
 						</li>
 						@if (User.IsInRole("Admin"))
 						{
 							<li class="nav-item">
 								<a class="nav-link" asp-area="Identity"
-								   asp-page="/Account/Register">Register</a>
+								   asp-page="/Account/Register">Регистрирай</a>
 							</li>
 						}
 						<li class="nav-item">
-							<a class="nav-link" asp-area="" asp-controller="Messages" asp-action="Index">Messages</a>
+							<a class="nav-link" asp-area="" asp-controller="Messages" asp-action="Index">Съобщения</a>
 						</li>
 						@* <li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
@@ -84,11 +84,11 @@
 			</div>
 		</nav>
 	</header> *@
-	<div class="container">
-		<main role="main" class="pb-3">
+	@* <div class="container"> *@
+		 <main role="main" class=""> 
 			@RenderBody()
-		</main>
-	</div>
+		</main> 
+	@* </div> *@
 
 	@* <footer class="border-top footer text-muted">
 	<div class="container">

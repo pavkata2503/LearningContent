@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-image: url("https://st2.depositphotos.com/3470617/6425/v/950/depositphotos_64252303-stock-illustration-school-theme-seamless.jpg");
+    background-color: #e0891d;
     background-size: cover; /* Adjust according to your needs */
 }
 .btn-group .date {
@@ -26,10 +26,15 @@
     width: 20%;
     border-left: 3px solid black;
 }
+
+.course-content{
+    padding:15px;
+}
+
 .card {
     height: 420px; /* Примерна височина на малкия div */
     overflow: hidden;
-    background-color: lightblue; /* Примерен цвят на фона */
+    background-color: navajowhite; /* Примерен цвят на фона */
     border: 1px solid #333; /* Примерна граница */
     margin: 20px 55px 20px 0px;
     border-radius: 8px;
@@ -66,6 +71,10 @@
 }
 .date {
     display: inline-block;
+}
+
+.search{
+    padding:0px;
 }
 
 .card-text {
@@ -122,4 +131,9 @@ input {
     border-radius: 30px;
     height: 25px;
     margin-bottom: 13px;
+}
+
+.searching-elments {
+    display: block;
+    background-color: blue;
 }

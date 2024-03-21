@@ -10,6 +10,8 @@
 @using Microsoft.DotNet.Scaffolding.Shared.Messaging
 @using System.Text.RegularExpressions
 @model IEnumerable<Learning_Content_Models.Models.Message>
+@inject UserManager<ApplicationUser> UserManager
+
 @* @{
     string search = string.Empty;
     if (Model != null && Model.First().SearchQuery != null)
@@ -30,13 +32,112 @@
         return new HtmlString(text);
     };
 } *@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+		<title></title>
+	<link rel="stylesheet" href="/css/Messages.css" asp-append-version="true" />
+</head>
+<body>
+	@{
+		var userId = User.Claims.FirstOrDefault(a => a.Type == ClaimTypes.NameIdentifier)?.Value;
 
-<style>
+		if (userId == null)
+		{
+			throw new ArgumentException("Invalid user.");
+		}
+		var user = await UserManager.FindByIdAsync(userId);
+	}
+	<style>
+		.highlight {
+			color: black;
+			font-weight: bold;
+		}
+	</style>
+	<div>
+		<a asp-action="Index" asp-route-isRead="true">View Read Messages</a> |
+		<a asp-action="Index" asp-route-isRead="false">View Unread Messages</a> |
+		<a asp-action="Index">View All Messages</a>
+	</div>
+	<input type="text" id="searchInput" placeholder="Search by title or genre..." />
+	<main role="main" class="container">
+		<div class="d-flex align-items-center p-3 my-3 text-white-50 bg-blue rounded box-shadow">
+			<div class="lh-100">
+				<h6 class="mb-0 text-white lh-100">@user.Name</h6>
+				<small>Съобщения</small>
+			</div>
+		</div>
+
+		<div class="my-3 p-3 bg-white rounded box-shadow">
+			<h6 class="border-bottom border-gray pb-2 mb-0">Последни съобщения</h6>
+			@foreach (var message in Model)
+			{
+				if (!message.IsRead)
+				{
+					@* <style>
+						.media{
+							background-color: #808080;
+						}
+					</style> *@
+					<div class="media text-muted pt-3 search">
+						<p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray ">
+							<strong class="d-block text-gray-dark">От: @message.Receiver</strong>
+							<span class="text">@message.Text</span>
+						</p>
+						@* <form asp-action="MarkAsRead" asp-route-id="@message.Id" method="post">
+							<button type="submit" class="btn btn-sm btn-outline-secondary">Прочети</button>
+						</form> *@
+					</div>
+				}
+				else
+				{
+					<div class="media text-muted bg-white pt-3 search">
+						<p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray ">
+							<strong class="d-block text-gray-dark">От: @message.Receiver</strong>
+							<span class="text">@message.Text</span>
+						</p>
+					</div>
+				}
+			}
+			<small class="d-block text-right mt-3">
+				<a href="#">All messages</a>
+			</small>
+		</div>
+	</main>
+	<a asp-action="Add" asp-controller="Messages" class="btn btn-success">
+		Add New Message
+	</a>
+</body>
+</html>
+<script>
+	const searchInput = document.getElementById("searchInput");
+	searchInput.addEventListener("input", function () {
+		searchMessages(this);
+	});
+
+	function searchMessages(inputEl) {
+		const query = inputEl.value.toLowerCase();
+		const textEls = document.getElementsByClassName("text");
+		const textElsDivs = document.getElementsByClassName("search");
+
+		for (let i = 0; i < textEls.length; i++) {
+			const el = textEls[i];
+			const elText = el.innerText.toLowerCase();
+
+			if (elText.includes(query)) {
+				textElsDivs[i].style.display = "block";
+				el.innerHTML = elText.replace(new RegExp(query, 'ig'), '<b style="color: black">$&</b>')
+			} else {
+				textElsDivs[i].style.display = "none";
+			}
+		}
+	}
+</script>
+@* <style>
     .highlight {
         color: black;
         font-weight: bold;
     }
-</style>
+</style> *@
 @* @{
 	string search = string.Empty;
 	if(Model != null && Model.First().SearchQuery != null)
@@ -45,7 +146,7 @@
 	}
 } *@
 
-<link rel="stylesheet" href="/css/StudyMaterial.css" asp-append-version="true" />
+@* <link rel="stylesheet" href="/css/Messages.css" asp-append-version="true" /> *@
 
 @* <div>
 	<form asp-action="Index" method="get">
@@ -55,8 +156,8 @@
 		</div>
 	</form>
 </div> *@
-<input type="text" id="searchInput" placeholder="Search by title or genre..." />
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+@* <input type="text" id="searchInput" placeholder="Search by title or genre..." /> *@
+@*  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 	@foreach (var item in Model)
 	{
 		@if (User.Identity.Name == @item.Receiver || User.Identity.Name == item.SenderEmail || User.IsInRole("Admin"))
@@ -97,7 +198,7 @@
 				</div>
 			</div>
 		}
-	}
+	} 
 	<script>
 		function searchMovies() {
 			var query = document.getElementById("searchInput").value.toLowerCase();
@@ -126,10 +227,6 @@
 			searchMovies();
 		});
 	</script>
-</div>
-<a asp-action="Add" asp-controller="Messages" class="btn btn-success">
-	Add New Message
-</a>
-
+</div> *@
 
 
