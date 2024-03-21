@@ -46,16 +46,14 @@ namespace Learning_Content_Models.Controllers
 
 
 
-		public IActionResult Index(string TextMessage, bool? isRead)
+		public IActionResult Index(string TextMessage, bool? isRead,string receiver)
 		{
 			var messages = context.Messages.AsQueryable();
-
-			// Filter messages by the search term if provided
-			if (!string.IsNullOrEmpty(TextMessage))
+			// Apply filters
+			if (!string.IsNullOrEmpty(receiver))
 			{
-				messages = messages.Where(m => m.Text.Contains(TextMessage));
+				messages = messages.Where(m => m.Sender == receiver);
 			}
-
 			// Filter messages by status (read or unread) if provided
 			if (isRead.HasValue)
 			{

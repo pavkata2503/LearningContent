@@ -58,6 +58,12 @@
 		<a asp-action="Index" asp-route-isRead="false">View Unread Messages</a> |
 		<a asp-action="Index">View All Messages</a>
 	</div>
+	@using (Html.BeginForm("Index", "Messages", FormMethod.Get))
+	{
+		<label for="receiver">Created Name:</label>
+		<input type="text" name="receiver" value="@ViewBag.Receiver" />
+		<input type="submit" value="Filter" />
+	}
 	<input type="text" id="searchInput" placeholder="Search by title or genre..." />
 	<main role="main" class="container">
 		<div class="d-flex align-items-center p-3 my-3 text-white-50 bg-blue rounded box-shadow">
