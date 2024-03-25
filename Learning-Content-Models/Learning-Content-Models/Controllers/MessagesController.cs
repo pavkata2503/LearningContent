@@ -47,9 +47,20 @@ namespace Learning_Content_Models.Controllers
 
 
 
-		public IActionResult Index(string TextMessage, bool? isRead,string receiver, int? pageSize, int? pageNumber)
+		public async Task<IActionResult> Index(string TextMessage, bool? isRead,string receiver, int? pageSize, int? pageNumber)
 		{
-			var messages = context.Messages.AsQueryable();
+			//var messages = context.Messages.AsQueryable();
+			var userId = User.Claims.FirstOrDefault(a => a.Type == ClaimTypes.NameIdentifier)?.Value;
+
+			if (userId == null)
+			{
+				throw new ArgumentException("Invalid user.");
+			}
+			// Fetch user from UserManager
+			var user = await _userManager.FindByIdAsync(userId);
+
+			// Fetch messages for the current user
+			var messages = context.Messages.Where(m => m.Receiver == user.Email);
 			// Apply filters
 			if (!string.IsNullOrEmpty(receiver))
 			{
@@ -77,6 +88,8 @@ namespace Learning_Content_Models.Controllers
 			System.Diagnostics.Debug.WriteLine($"pageSize: {pageSize}");
 			//Pass the paginated materials to the view
 			return View(paginatedMassages.ToList());
+			//var messages2 = messages.Select(m => m.Receiver == user.Email);
+			//return View(messages2.ToList());
 		}
 
 		public IActionResult Add()
