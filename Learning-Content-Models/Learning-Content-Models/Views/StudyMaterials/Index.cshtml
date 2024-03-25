@@ -168,7 +168,7 @@
 		</div>
 
 
-		<h2>Study Materials</h2>
+		@*<h2>Study Materials</h2>
 
 		@using (Html.BeginForm("Index", "StudyMaterials", FormMethod.Get))
 		{
@@ -193,7 +193,7 @@
 					}
 				</select>
 				@* <label for="typеfile">Typе File:</label>
-			<input type="text" name="typеfile" value="@ViewBag.TypеFile" /> *@
+			<input type="text" name="typеfile" value="@ViewBag.TypеFile" /> 
 
 				<label for="subject">Subject:</label>
 				<input type="text" name="subject" value="@ViewBag.Subject" />
@@ -205,7 +205,7 @@
 			</div>
 		}
 
-		<table class="table">
+		 <table class="table">
 			<thead>
 				<tr>
 					<th>Created By</th>
@@ -227,7 +227,7 @@
 					</tr>
 				}
 			</tbody>
-		</table>
+		</table> *@
 	</main>
 
 	<script>

@@ -126,16 +126,16 @@ namespace Learning_Content_Models.Controllers
 			return View(paginatedMaterials.ToList());
 		}
 
-			//public IActionResult Index()
-			//      {
-			//          var materials = context.StudyMaterials
-			//          .ToList();
+		//public IActionResult Index()
+		//      {
+		//          var materials = context.StudyMaterials
+		//          .ToList();
 
-			//          return View(materials);
-			//      }
-			//Add Movie
-
-			public IActionResult Add()
+		//          return View(materials);
+		//      }
+		//Add Movie
+		[Authorize(Roles = "Teacher")]
+		public IActionResult Add()
         {
             return View();
         }
@@ -194,7 +194,8 @@ namespace Learning_Content_Models.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
-        public IActionResult Edit(int id)
+		[Authorize(Roles = "Teacher")]
+		public IActionResult Edit(int id)
         {
             var studyMaterial = context.StudyMaterials
                 .FirstOrDefault(m => m.Id == id);
@@ -248,7 +249,8 @@ namespace Learning_Content_Models.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(int id)
+		[Authorize(Roles = "Teacher")]
+		public IActionResult Delete(int id)
         {
             var studyMaterial = context.StudyMaterials.Find(id);
 

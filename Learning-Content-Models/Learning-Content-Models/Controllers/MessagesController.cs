@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Elfie.Serialization;
 using System;
+using System.Drawing.Printing;
 using System.Security.Claims;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
@@ -46,7 +47,7 @@ namespace Learning_Content_Models.Controllers
 
 
 
-		public IActionResult Index(string TextMessage, bool? isRead,string receiver)
+		public IActionResult Index(string TextMessage, bool? isRead,string receiver, int? pageSize, int? pageNumber)
 		{
 			var messages = context.Messages.AsQueryable();
 			// Apply filters
@@ -62,8 +63,20 @@ namespace Learning_Content_Models.Controllers
 
 			// Order messages by send date in descending order (newest to oldest)
 			messages = messages.OrderByDescending(o => o.SendDate);
+			pageSize = pageSize ?? 5; // Default page size is 5
+			pageNumber = pageNumber ?? 1; // Default page number is 1
+			ViewBag.PageSize = pageSize.Value;
+			ViewBag.CurrentPage = pageNumber.Value;
+			ViewBag.TotalPages = (int)Math.Ceiling((double)messages.Count() / pageSize.Value);
 
-			return View(messages.ToList());
+			// Set the available page size options
+			ViewBag.PageSizeOptions = new List<int> { 5, 10, 15, 20 };
+
+			var paginatedMassages = messages.Skip((pageNumber.Value - 1) * pageSize.Value)
+											  .Take(pageSize.Value);
+			System.Diagnostics.Debug.WriteLine($"pageSize: {pageSize}");
+			//Pass the paginated materials to the view
+			return View(paginatedMassages.ToList());
 		}
 
 		public IActionResult Add()
@@ -86,7 +99,7 @@ namespace Learning_Content_Models.Controllers
 				throw new ArgumentException("Invalid user.");
 			}
 			var user = await _userManager.FindByIdAsync(userId);
-			message.Sender = user.Name;
+			message.Sender = user.Email;
 			message.SendDate = DateTime.Now;
 			message.SenderEmail = User.Identity.Name;
 			message.IsRead = false; // Задаване на начален статус "непрочетено"
