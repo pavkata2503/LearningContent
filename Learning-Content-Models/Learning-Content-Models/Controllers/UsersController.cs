@@ -12,16 +12,18 @@ namespace Learning_Content_Models.Controllers
     //[Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
+        private readonly ApplicationDbContext context;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ApplicationDbContext _dbContext;
 
-        public UsersController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, ApplicationDbContext dbContext)
+        public UsersController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, ApplicationDbContext dbContext)
         {
-            _userManager = userManager;
-            _roleManager = roleManager;
-            _dbContext = dbContext;
-        }   
+            this.context = context;
+            this._userManager = userManager;
+            this._roleManager = roleManager;
+            this._dbContext = dbContext;
+        }
         public IActionResult Index()
         {
             List<ApplicationUser> users = _userManager.Users.ToList();
@@ -29,43 +31,36 @@ namespace Learning_Content_Models.Controllers
             return View(users);
         }
 
-        // Action to show a form to create a new user
-        public IActionResult CreateUser()
+        // Action to show form to edit user
+        public async Task<IActionResult> Edit(string id)
         {
-            // Populate a dropdown with roles (e.g., Cashier, User)
-            ViewBag.Roles = _roleManager.Roles.Where(r => r.Name != Roles.Admin.ToString()).ToList();
-            return View();
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(user);
         }
 
-        // Action to handle form submission to create a new user
+        // Action to handle form submission to edit user
         [HttpPost]
-        public async Task<IActionResult> CreateUser(CreateUserViewModel model)
+        public async Task<IActionResult> Edit(ApplicationUser model)
         {
-            if (ModelState.IsValid)
+            var user = await _userManager.FindByIdAsync(model.Id);
+            if (user == null)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, Name = model.Name };
-                var result = await _userManager.CreateAsync(user, model.Password);
-
-                if (result.Succeeded)
-                {
-                    // Add the selected role to the user
-                    var role = await _roleManager.FindByIdAsync(model.RoleId);
-                    if (role != null)
-                    {
-                        await _userManager.AddToRoleAsync(user, role.Name);
-                    }
-
-                    return RedirectToAction("Index", "Home"); // Redirect to a suitable location
-                }
-
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
+                return NotFound();
             }
-            // If ModelState is not valid, redisplay the form
-            ViewBag.Roles = _roleManager.Roles.Where(r => r.Name != Roles.Admin.ToString()).ToList();
-            return View(model);
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.Email = model.Email;
+            user.Description = model.Description;
+            user.PhoneNumber = model.PhoneNumber;
+            context.Users.Update(user);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+            //return View(model);
         }
 
 

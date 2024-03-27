@@ -1,48 +1,70 @@
 ﻿@using Learning_Content_Models.Models.Enums
 @model Learning_Content_Models.Models.StudyMaterial
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Study Material</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
 
-<h2>Edit StudyMaterial</h2>
-<form method="post" asp-controller="StudyMaterials" asp-action="Edit" enctype="multipart/form-data">
-    <div class="form-control">
-        <label asp-for="Title" class="form-label"></label>
-        <input asp-for="Title" class="form-control" />
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Study Material</h2>
+        <form method="post" asp-controller="StudyMaterials" asp-action="Edit" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>Title</label>
+                <input asp-for="Title" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>URL</label>
+                <input asp-for="URL" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <select asp-for="Category" asp-items="Html.GetEnumSelectList<Category>()" class="form-control">
+                    <option value="">Select a Category</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Type of File</label>
+                <select asp-for="TypeFile" asp-items="Html.GetEnumSelectList<TypeFile>()" class="form-control">
+                    <option value="">Select a Type of File</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Subject</label>
+                <input asp-for="Subject" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Class</label>
+                <input asp-for="Class" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Create Date</label>
+                <input asp-for="CreateDate" type="date" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Upload File</label>
+                <input type="file" asp-for="FileUpload" class="form-control" />
+            </div>
+            <input type="submit" value="Update" class="btn btn-primary" />
+        </form>
     </div>
-    <div class="form-group">
-        <label asp-for="URL" class="form-label"></label>
-        <input asp-for="URL" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Description" class="form-label"></label>
-        <input asp-for="Description" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Category"></label>
-        <select asp-for="Category" asp-items="Html.GetEnumSelectList<Category>()" class="form-control">
-            <option value="">Select an engine type</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label asp-for="TypeFile"></label>
-        <select asp-for="TypeFile" asp-items="Html.GetEnumSelectList<TypeFile>()" class="form-control">
-            <option value="">Select an engine type</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label asp-for="Subject" class="form-label"></label>
-        <input asp-for="Subject" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Class" class="form-label"></label>
-        <input asp-for="Class" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="CreateDate" class="form-label"></label>
-        <input asp-for="CreateDate" type="date" class="form-control" />
-    </div>
-    <div class="m-2">
-        <label class="form-label" for="FileUpload">
-        </label>
-        <input type="file" asp-for="FileUpload" class="form-control" />
-    </div>
-    <input type="submit" value="Update" class="btn btn-primary" asp-controller="StudyMaterials" />
-</form>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

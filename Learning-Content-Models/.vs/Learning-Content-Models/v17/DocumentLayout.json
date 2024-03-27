@@ -3,36 +3,60 @@
   "WorkspaceRootPath": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\views\\studymaterials\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\views\\studymaterials\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\views\\messages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\views\\messages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\controllers\\studymaterialscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\controllers\\studymaterialscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\wwwroot\\css\\studymaterial.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\wwwroot\\css\\studymaterial.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\models\\studymaterial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\models\\studymaterial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\views\\studymaterials\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\views\\studymaterials\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\views\\studymaterials\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\views\\studymaterials\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\wwwroot\\css\\messages.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\wwwroot\\css\\messages.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\controllers\\studymaterialscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\controllers\\studymaterialscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\views\\studymaterials\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\views\\studymaterials\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\areas\\identity\\pages\\account\\resetpassword.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\areas\\identity\\pages\\account\\resetpassword.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\views\\users\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\views\\users\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\views\\studymaterials\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\views\\studymaterials\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +66,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,28 +74,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Views\\Users\\Index.cshtml",
-              "RelativeDocumentMoniker": "Learning-Content-Models\\Views\\Users\\Index.cshtml",
-              "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Views\\Users\\Index.cshtml",
-              "RelativeToolTip": "Learning-Content-Models\\Views\\Users\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAMAAAA",
+              "DocumentIndex": 4,
+              "Title": "Add.cshtml",
+              "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Views\\StudyMaterials\\Add.cshtml",
+              "RelativeDocumentMoniker": "Learning-Content-Models\\Views\\StudyMaterials\\Add.cshtml",
+              "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Views\\StudyMaterials\\Add.cshtml",
+              "RelativeToolTip": "Learning-Content-Models\\Views\\StudyMaterials\\Add.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-25T07:42:38.79Z",
+              "WhenOpened": "2024-03-27T15:10:57.989Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MessagesController.cs",
-              "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Controllers\\MessagesController.cs",
-              "RelativeDocumentMoniker": "Learning-Content-Models\\Controllers\\MessagesController.cs",
-              "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Controllers\\MessagesController.cs",
-              "RelativeToolTip": "Learning-Content-Models\\Controllers\\MessagesController.cs",
-              "ViewState": "AQIAADEAAAAAAAAAAAAAADsAAAAAAAAA",
+              "DocumentIndex": 3,
+              "Title": "StudyMaterial.cs",
+              "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Models\\StudyMaterial.cs",
+              "RelativeDocumentMoniker": "Learning-Content-Models\\Models\\StudyMaterial.cs",
+              "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Models\\StudyMaterial.cs",
+              "RelativeToolTip": "Learning-Content-Models\\Models\\StudyMaterial.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAuwCAAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T22:28:11.24Z",
+              "WhenOpened": "2024-03-27T14:59:14.343Z",
               "EditorCaption": ""
             },
             {
@@ -82,71 +106,145 @@
               "RelativeDocumentMoniker": "Learning-Content-Models\\Views\\Messages\\Index.cshtml",
               "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Views\\Messages\\Index.cshtml",
               "RelativeToolTip": "Learning-Content-Models\\Views\\Messages\\Index.cshtml",
-              "ViewState": "AQIAAIEAAAAAAAAAAAASwI8AAAAFAAAA",
+              "ViewState": "AQIAAH8AAAAAAAAAAAASwIkAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-20T21:35:59.643Z",
+              "WhenOpened": "2024-03-26T10:02:34.371Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Messages.css",
-              "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\css\\Messages.css",
-              "RelativeDocumentMoniker": "Learning-Content-Models\\wwwroot\\css\\Messages.css",
-              "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\css\\Messages.css",
-              "RelativeToolTip": "Learning-Content-Models\\wwwroot\\css\\Messages.css",
-              "ViewState": "AQIAADMAAAAAAAAAAAAkwCAAAAAYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-03-20T21:34:01.382Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Views\\StudyMaterials\\Details.cshtml",
-              "RelativeDocumentMoniker": "Learning-Content-Models\\Views\\StudyMaterials\\Details.cshtml",
-              "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Views\\StudyMaterials\\Details.cshtml",
-              "RelativeToolTip": "Learning-Content-Models\\Views\\StudyMaterials\\Details.cshtml",
-              "ViewState": "AQIAADAAAAAAAAAAAAAAADYAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-20T19:16:35.276Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "StudyMaterial.cs",
-              "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Models\\StudyMaterial.cs",
-              "RelativeDocumentMoniker": "Learning-Content-Models\\Models\\StudyMaterial.cs",
-              "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Models\\StudyMaterial.cs",
-              "RelativeToolTip": "Learning-Content-Models\\Models\\StudyMaterial.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAAABcAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T18:42:44.348Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Views\\StudyMaterials\\Index.cshtml",
               "RelativeDocumentMoniker": "Learning-Content-Models\\Views\\StudyMaterials\\Index.cshtml",
               "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Views\\StudyMaterials\\Index.cshtml",
               "RelativeToolTip": "Learning-Content-Models\\Views\\StudyMaterials\\Index.cshtml",
-              "ViewState": "AQIAAE4AAAAAAAAAAAAAAFUAAAAJAAAA",
+              "ViewState": "AQIAAC8BAAAAAAAAAAAkwEsBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-20T18:17:18.43Z"
+              "WhenOpened": "2024-03-26T06:23:36.93Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 11,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Views\\Users\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Learning-Content-Models\\Views\\Users\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Views\\Users\\Edit.cshtml",
+              "RelativeToolTip": "Learning-Content-Models\\Views\\Users\\Edit.cshtml",
+              "ViewState": "AQIAABkAAAAAAAAAAAAAACgAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-25T20:41:48.766Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Learning-Content-Models\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Learning-Content-Models\\Controllers\\UsersController.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAmwCoAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-25T08:15:16.059Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "StudyMaterialsController.cs",
               "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Controllers\\StudyMaterialsController.cs",
               "RelativeDocumentMoniker": "Learning-Content-Models\\Controllers\\StudyMaterialsController.cs",
               "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Controllers\\StudyMaterialsController.cs",
               "RelativeToolTip": "Learning-Content-Models\\Controllers\\StudyMaterialsController.cs",
-              "ViewState": "AQIAAHkAAAAAAAAAAAAAAI8AAAAPAAAA",
+              "ViewState": "AQIAAI4AAAAAAAAAAAAQwKUAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-20T18:07:54.559Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StudyMaterial.css",
+              "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\css\\StudyMaterial.css",
+              "RelativeDocumentMoniker": "Learning-Content-Models\\wwwroot\\css\\StudyMaterial.css",
+              "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\css\\StudyMaterial.css",
+              "RelativeToolTip": "Learning-Content-Models\\wwwroot\\css\\StudyMaterial.css",
+              "ViewState": "AQIAADwAAAAAAAAAAAAAAAUAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-03-26T09:43:00.594Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Register.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "RelativeDocumentMoniker": "Learning-Content-Models\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "RelativeToolTip": "Learning-Content-Models\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "ViewState": "AQIAAMAAAAAAAAAAAAAgwNcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-25T21:04:13.642Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ResetPassword.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Areas\\Identity\\Pages\\Account\\ResetPassword.cshtml.cs",
+              "RelativeDocumentMoniker": "Learning-Content-Models\\Areas\\Identity\\Pages\\Account\\ResetPassword.cshtml.cs",
+              "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Areas\\Identity\\Pages\\Account\\ResetPassword.cshtml.cs",
+              "RelativeToolTip": "Learning-Content-Models\\Areas\\Identity\\Pages\\Account\\ResetPassword.cshtml.cs",
+              "ViewState": "AQIAAEkAAAAAAAAAAAAwwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-26T06:36:00.597Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MessagesController.cs",
+              "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Controllers\\MessagesController.cs",
+              "RelativeDocumentMoniker": "Learning-Content-Models\\Controllers\\MessagesController.cs",
+              "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Controllers\\MessagesController.cs",
+              "RelativeToolTip": "Learning-Content-Models\\Controllers\\MessagesController.cs",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAAADsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T22:28:11.24Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "Learning-Content-Models\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeToolTip": "Learning-Content-Models\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ViewState": "AQIAABMAAAAAAAAAAAASwGAAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-25T21:04:09.591Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Views\\StudyMaterials\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Learning-Content-Models\\Views\\StudyMaterials\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Views\\StudyMaterials\\Edit.cshtml",
+              "RelativeToolTip": "Learning-Content-Models\\Views\\StudyMaterials\\Edit.cshtml",
+              "ViewState": "AQIAADIAAAAAAAAAAAAAAD0AAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-25T20:46:49.157Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Views\\Users\\Index.cshtml",
+              "RelativeDocumentMoniker": "Learning-Content-Models\\Views\\Users\\Index.cshtml",
+              "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Views\\Users\\Index.cshtml",
+              "RelativeToolTip": "Learning-Content-Models\\Views\\Users\\Index.cshtml",
+              "ViewState": "AQIAADIAAAAAAAAAAAAAAEMAAABQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-26T06:16:12.989Z"
             }
           ]
         }

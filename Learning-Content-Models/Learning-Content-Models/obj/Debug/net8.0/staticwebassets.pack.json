@@ -105,6 +105,10 @@
       "PackagePath": "staticwebassets\\Uploads\\9b446c58-b6e7-42f7-a73c-146ed7586688.jpg"
     },
     {
+      "Id": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\Uploads\\a6f85b87-8da0-4bc2-a59c-94da0533aa39.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\a6f85b87-8da0-4bc2-a59c-94da0533aa39.jpg"
+    },
+    {
       "Id": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\Uploads\\b73681c2-2d32-4d36-9d23-c504be0cda78.png",
       "PackagePath": "staticwebassets\\Uploads\\b73681c2-2d32-4d36-9d23-c504be0cda78.png"
     },
@@ -117,8 +121,16 @@
       "PackagePath": "staticwebassets\\Uploads\\c24a6f72-194d-4a8a-8cf5-5090fe560f14.pdf"
     },
     {
+      "Id": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\Uploads\\c330d2de-e2c8-46b4-b0ea-37e2501981b3.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\c330d2de-e2c8-46b4-b0ea-37e2501981b3.jpg"
+    },
+    {
       "Id": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\Uploads\\cde9e455-4c1a-4ffd-a3dc-2a17b6f7977b.jpg",
       "PackagePath": "staticwebassets\\Uploads\\cde9e455-4c1a-4ffd-a3dc-2a17b6f7977b.jpg"
+    },
+    {
+      "Id": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\Uploads\\d49c3ba0-a01d-44e0-a996-67ec447a0783.pdf",
+      "PackagePath": "staticwebassets\\Uploads\\d49c3ba0-a01d-44e0-a996-67ec447a0783.pdf"
     },
     {
       "Id": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\Uploads\\d74655b5-3a08-4fa3-9cea-b2d4424a176b.pptx",

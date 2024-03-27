@@ -11,16 +11,25 @@ namespace Learning_Content_Models.Models
 		[Key]
 		public int Id { get; set; }
 		public string Title { get; set; }
-		public string URL { get; set; }	
+		public string URL { get; set; }
+		[Required(ErrorMessage = "Описанието е задължителен")]
 		public string Description { get; set; }
 
         [EnumDataType(typeof(Category))]
-        public Category Category { get; set; }
+		[Required(ErrorMessage = "Категорията е задължителен")]
+		public Category Category { get; set; }
 
         [EnumDataType(typeof(TypeFile))]
-        public TypeFile TypeFile { get; set; }
-        public string Subject { get; set; }
-        [Range(1, 12)]
+		[Required(ErrorMessage = "Вида на файла е задължителен")]
+		public TypeFile TypeFile { get; set; }
+		public int AppliationUserId { get; set; }
+		public ApplicationUser ApplicationUser { get; set; }
+
+		[Required(ErrorMessage = "Предметът е задължителен")]
+		[StringLength(50, ErrorMessage = "Описанието не трябва да надвишава 50 знака")]
+		public string Subject { get; set; }
+		[Required(ErrorMessage = "Класът е задължителен")]
+		[Range(1, 12, ErrorMessage = "Класът е между 1 и 12")]
         public int Class { get; set; }
 		public DateTime CreateDate { get; set; }
 

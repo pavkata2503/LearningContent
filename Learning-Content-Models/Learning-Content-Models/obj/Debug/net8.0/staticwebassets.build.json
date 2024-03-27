@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fflnpikptHkvafU3FiLTYTY/Qh+/nWm9OJ1uT0OcZjQ=",
+  "Hash": "ueM901whD27OdJ/kkGZJeHWc6JKvM1DABX2K0vrPEDE=",
   "Source": "Learning-Content-Models",
   "BasePath": "_content/Learning-Content-Models",
   "Mode": "Default",
@@ -4976,6 +4976,25 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\9b446c58-b6e7-42f7-a73c-146ed7586688.jpg"
     },
     {
+      "Identity": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\Uploads\\a6f85b87-8da0-4bc2-a59c-94da0533aa39.jpg",
+      "SourceId": "Learning-Content-Models",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\",
+      "BasePath": "_content/Learning-Content-Models",
+      "RelativePath": "Uploads/a6f85b87-8da0-4bc2-a59c-94da0533aa39.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\a6f85b87-8da0-4bc2-a59c-94da0533aa39.jpg"
+    },
+    {
       "Identity": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\Uploads\\b73681c2-2d32-4d36-9d23-c504be0cda78.png",
       "SourceId": "Learning-Content-Models",
       "SourceType": "Discovered",
@@ -5033,6 +5052,25 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\c24a6f72-194d-4a8a-8cf5-5090fe560f14.pdf"
     },
     {
+      "Identity": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\Uploads\\c330d2de-e2c8-46b4-b0ea-37e2501981b3.jpg",
+      "SourceId": "Learning-Content-Models",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\",
+      "BasePath": "_content/Learning-Content-Models",
+      "RelativePath": "Uploads/c330d2de-e2c8-46b4-b0ea-37e2501981b3.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\c330d2de-e2c8-46b4-b0ea-37e2501981b3.jpg"
+    },
+    {
       "Identity": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\Uploads\\cde9e455-4c1a-4ffd-a3dc-2a17b6f7977b.jpg",
       "SourceId": "Learning-Content-Models",
       "SourceType": "Discovered",
@@ -5050,6 +5088,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Uploads\\cde9e455-4c1a-4ffd-a3dc-2a17b6f7977b.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\Uploads\\d49c3ba0-a01d-44e0-a996-67ec447a0783.pdf",
+      "SourceId": "Learning-Content-Models",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\",
+      "BasePath": "_content/Learning-Content-Models",
+      "RelativePath": "Uploads/d49c3ba0-a01d-44e0-a996-67ec447a0783.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\d49c3ba0-a01d-44e0-a996-67ec447a0783.pdf"
     },
     {
       "Identity": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\Uploads\\d74655b5-3a08-4fa3-9cea-b2d4424a176b.pptx",

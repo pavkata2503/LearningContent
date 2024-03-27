@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #e0891d;
+    background-color: white;
     background-size: cover; /* Adjust according to your needs */
 }
 .btn-group .date {

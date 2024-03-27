@@ -126,14 +126,6 @@ namespace Learning_Content_Models.Controllers
 			return View(paginatedMaterials.ToList());
 		}
 
-		//public IActionResult Index()
-		//      {
-		//          var materials = context.StudyMaterials
-		//          .ToList();
-
-		//          return View(materials);
-		//      }
-		//Add Movie
 		[Authorize(Roles = "Teacher")]
 		public IActionResult Add()
         {
@@ -141,59 +133,40 @@ namespace Learning_Content_Models.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(StudyMaterial studyMaterial)
-        {
-            //ApplicationUser currentUser = await _userManager.GetUserAsync(User);
-            //studyMaterial.CreatedByName = currentUser?.UserName;
+		public async Task<IActionResult> Add(StudyMaterial studyMaterial)
+		{
+				var userId = User.Claims.FirstOrDefault(a => a.Type == ClaimTypes.NameIdentifier)?.Value;
 
-
-            //string currentUser = _userManager.GetUserName(User);
-            //studyMaterial.CreatedByName = currentUser; 
-
-
-            //string currentUser = await _userManager.GetUserAsync(Name);
-            var userId = User.Claims.FirstOrDefault(a => a.Type == ClaimTypes.NameIdentifier)?.Value;
-
-            if (userId == null)
-            {
-                throw new ArgumentException("Invalid user.");
-            }
-           var user= await _userManager.FindByIdAsync(userId);
-            studyMaterial.CreatedByName=user.Name;
-
-			//if (Input.ImageFile != null)
-			//{
-			//	var result = _fileService.SaveImage(Input.ImageFile);
-			//	if (result.Item1 == 1)
-			//	{
-			//		var oldImage = user.ProfilePicture;
-			//		user.ProfilePicture = result.Item2;
-			//		await _userManager.UpdateAsync(user);
-			//		var deleteUser = _fileService.DeleteImage(oldImage);
-			//	}
-			//}
-
-			//await _signInManager.RefreshSignInAsync(user);
-			//StatusMessage = "Your profile has been updated";
-			if (studyMaterial.FileUpload!=null)
-			{
-				var fileResult = _fileService.SaveImage(studyMaterial.FileUpload);
-				if (fileResult.Item1 == 1)
+				if (userId == null)
 				{
-					studyMaterial.FileTitle = studyMaterial.Title;
-					studyMaterial.FileTitle = fileResult.Item2;
+					throw new ArgumentException("Invalid user.");
 				}
-				else
-				{
-					ModelState.AddModelError(string.Empty, fileResult.Item2);
-					return View(studyMaterial);
-				}
-			}
 
-			context.StudyMaterials.Add(studyMaterial);
-            context.SaveChanges();
-            return RedirectToAction("Index");
-        }
+				var user = await _userManager.FindByIdAsync(userId);
+
+				studyMaterial.CreatedByName = user.Name;
+
+				if (studyMaterial.FileUpload != null)
+				{
+					var fileResult = _fileService.SaveImage(studyMaterial.FileUpload);
+					if (fileResult.Item1 == 1)
+					{
+						studyMaterial.FileTitle = studyMaterial.Title;
+						studyMaterial.FileTitle = fileResult.Item2;
+					}
+					else
+					{
+						ModelState.AddModelError(string.Empty, fileResult.Item2);
+						return View(studyMaterial);
+					}
+				}
+
+				context.StudyMaterials.Add(studyMaterial);
+				context.SaveChanges();
+				return RedirectToAction("Index");
+
+            return View(studyMaterial);
+		}
 		[Authorize(Roles = "Teacher")]
 		public IActionResult Edit(int id)
         {

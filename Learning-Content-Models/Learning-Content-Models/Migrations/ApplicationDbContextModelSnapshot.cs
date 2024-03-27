@@ -150,6 +150,12 @@ namespace Learning_Content_Models.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AppliationUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("Category")
                         .HasColumnType("int");
 
@@ -173,7 +179,8 @@ namespace Learning_Content_Models.Migrations
 
                     b.Property<string>("Subject")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -187,6 +194,8 @@ namespace Learning_Content_Models.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("StudyMaterials");
                 });
@@ -328,6 +337,15 @@ namespace Learning_Content_Models.Migrations
                 {
                     b.HasOne("Learning_Content_Models.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("Messages")
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.Navigation("ApplicationUser");
+                });
+
+            modelBuilder.Entity("Learning_Content_Models.Models.StudyMaterial", b =>
+                {
+                    b.HasOne("Learning_Content_Models.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
                         .HasForeignKey("ApplicationUserId");
 
                     b.Navigation("ApplicationUser");
