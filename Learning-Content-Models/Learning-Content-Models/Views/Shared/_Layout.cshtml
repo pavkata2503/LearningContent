@@ -6,29 +6,35 @@
 	<title>@ViewData["Title"] - Learning_Content_Models</title>
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	@* <link ref="icon" href="/favicon.ico" type="image/x-icon"/>
+	<link ref="shortcut icon" href="/favicon.ico" type="image/x-icon"/> *@
 </head>
 <body>
 	<header>
 
-		<nav class="navbar navbar-expand-lg bg-body-tertiary rounded border-bottom box-shadow mb-3" aria-label="Thirteenth navbar example">
+		<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
-					<a class="navbar-brand col-lg-3 me-0" asp-controller="Home" asp-action="Index">Learning Content</a>
+					<a class="navbar-brand active col-lg-3 me-0" asp-controller="Home" asp-action="Index">Learning Content</a>
 					<ul class="navbar-nav col-lg-6 justify-content-lg-center">
 						<li class="nav-item">
 							<a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Index">Начало</a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item active">
 							<a class="nav-link" asp-area="" asp-controller="StudyMaterials" asp-action="Index">Материали</a>
 						</li>
 						@if (User.IsInRole("Admin"))
 						{
-							<li class="nav-item">
+							<li class="nav-item active">
 								<a class="nav-link" asp-area="Identity"
 								   asp-page="/Account/Register">Регистрирай</a>
 							</li>
+							<li class="nav-item active">
+								<a class="nav-link" asp-area="" asp-controller="Users" asp-action="Index">Потребители</a>
+							</li>
 						}
-						<li class="nav-item">
+
+						<li class="nav-item active">
 							<a class="nav-link" asp-area="" asp-controller="Messages" asp-action="Index">Съобщения</a>
 						</li>
 						@* <li class="nav-item dropdown">
@@ -84,7 +90,7 @@
 			</div>
 		</nav>
 	</header> *@
-	@* <div class="container"> *@
+	@* <div class="container">  *@
 		 <main role="main" class=""> 
 			@RenderBody()
 		</main> 

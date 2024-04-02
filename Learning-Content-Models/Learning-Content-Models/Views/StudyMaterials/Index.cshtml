@@ -14,9 +14,7 @@
 
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/css/StudyMaterial.css" asp-append-version="true" />
-
-	<link rel="stylesheet" href="/css/StudyMaterial.css" asp-append-version="true" />
+	<link rel="stylesheet" href="/css/CardCSS.css" asp-append-version="true" />
 	@* @await RenderSectionAsync("Head", false) *@
 </head>
 
@@ -32,236 +30,221 @@
 		}
 		var user = await UserManager.FindByIdAsync(userId);
 	}
+	<style>
+		.sorting {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.mat-des {
+			display: flex;
+			justify-content: space-between;
+		}
+		.p{
+			margin-bottom:0px;
+		}
+	</style>
 
 	<main>
 		<div>
-			<label for="pageSize">Select the number of materials:</label>
-			<select id="pageSize" name="pageSize">
-				<option value="5">5</option>
-				<option value="10">10</option>
-				<option value="15">15</option>
-			</select>
-			<button id="applyPageSize">Apply</button>
-		</div>
-
-		<div>
-			<form asp-controller="StudyMaterials" asp-action="Index" method="get">
-				<label for="sortOrder">Sort By:</label>
-				<select id="sortOrder" name="sortOrder">
-					<option value="">Select</option>
-					<option value="date_asc">Oldest First</option>
-					<option value="date_desc">Newest First</option>
-				</select>
-				<button type="submit">Apply</button>
-			</form>
-		</div>
-		<input type="text" id="searchInput" placeholder="Search by title or desc..." />
-		<div class="materials">
-			<div class="articles">
-				@foreach (var item in Model)
-				{
-					<div class="card search">
-						<img class="card-img-top" src="@item.URL" alt="Card image cap">
-						<div class="course-content">
-							<div class="d-flex justify-content-between align-items-center mb-3">
-								<p>@item.Subject</p>
-								<p class="price">@item.Class клас</p>
-							</div>
-
-							<h3 class="name">@item.Title</h3>
-							<div class="trainer d-flex justify-content-between align-items-center">
-								<div class="trainer-profile d-flex align-items-center">
-									<span>@item.CreatedByName</span>
-								</div>
-							</div>
-							<div class="card-footer">
-								<a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Виж</a>
-								@if (user.Name == @item.CreatedByName || User.IsInRole("Teacher"))
-								{
-									<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>
-								}
-								@if (!User.IsInRole("Student"))
-								{
-									<form asp-action="Delete" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Are you sure you want to delete this material?');">
-										<button type="submit" class="btn btn-danger">Изтрии</button>
-									</form>
-								}
-								<p class="date">@item.CreateDate</p>
-							</div>
 
 
-						</div>
+			<section class="light">
+				<div class="sorting">
+					<div>
+						<label for="pageSize">Избери брой на материалите:</label>
+						<select id="pageSize" name="pageSize">
+							<option value="5">5</option>
+							<option value="10">10</option>
+							<option value="15">15</option>
+						</select>
+						<button id="applyPageSize">Приложи</button>
 					</div>
-				}
-			</div>
-			<div class="filters">
+
+					<div>
+						<form asp-controller="StudyMaterials" asp-action="Index" method="get">
+							<label for="sortOrder">Сортирай по:</label>
+							<select id="sortOrder" name="sortOrder">
+								<option value="">Избери</option>
+								<option value="date_asc">Най-нови</option>
+								<option value="date_desc">Най-стари</option>
+							</select>
+							<button type="submit">Приложи</button>
+						</form>
+					</div>
+					<div>
+						@using (Html.BeginForm("Index", "StudyMaterials", FormMethod.Get))
+						{
+							<label for="searchInput">Търси:</label>
+							<input type="search" name="search" id="searchInput" value="@ViewBag.Search" />
+							<button type="submit">Търси</button>
+						}
+					</div>
+					@* <input type="text" id="searchInput" placeholder="Search by title or desc..." /> *@
+				</div>
 				@using (Html.BeginForm("Index", "StudyMaterials", FormMethod.Get))
 				{
-					<p>filters</p>
-					<div class="created-name filter-search">
-						<p>Created Name:</p>
-						<input type="search" name="created-name" value="@ViewBag.CreatedName" />
-					</div>
-					<div class="category filter-search">
-						<p>Category:</p>
-						<select name="category">
-							<option value="">Select Category</option>
-							@foreach (var categoryValue in Enum.GetValues(typeof(Category)))
-							{
-								<option value="@categoryValue">@categoryValue</option>
-							}
-						</select>
-					</div>
-					<div class="subject filter-search">
-						<p>Subject:</p>
-						<input type="search" name="subject" value="@ViewBag.Subject" />
-					</div>
-					<div class="typefile filter-search">
-						<p>TypeFile:</p>
-						<select name="typefile">
-							<option value="">Select TypeFile</option>
-							@foreach (var typefileValue in Enum.GetValues(typeof(TypeFile)))
-							{
-								<option value="@typefileValue">@typefileValue</option>
-							}
-						</select>
-					</div>
-					<div class="class filter-search">
-						<p>Class:</p>
-						<input type="search" name="classFilter" value="@ViewBag.ClassFilter" />
-						<input type="submit" value="Filter" />
-					</div>
+					<div class="sorting">
+						<div class="created-name filter-search">
+							<p>Учител:</p>
+							<input type="search" name="created-name" value="@ViewBag.CreatedName" />
+						</div>
+						<div class="category filter-search">
+							<p>Категория:</p>
+							<select name="category">
+								<option value="">Избери Категория</option>
+								@foreach (var categoryValue in Enum.GetValues(typeof(Category)))
+								{
+									<option value="@categoryValue">@categoryValue</option>
+								}
+							</select>
+						</div>
+						<div class="subject filter-search">
+							<p>Предмет:</p>
+							<input type="search" name="subject" value="@ViewBag.Subject" />
+						</div>
+						<div class="typefile filter-search">
+							<p>Тип Файл:</p>
+							<select name="typefile">
+								<option value="">Избери Тип Файл</option>
+								@foreach (var typefileValue in Enum.GetValues(typeof(TypeFile)))
+								{
+									<option value="@typefileValue">@typefileValue</option>
+								}
+							</select>
+						</div>
+						<div class="class filter-search">
+							<p>Клас:</p>
+							<input type="search" name="classFilter" value="@ViewBag.ClassFilter" />
+							<input type="submit" value="Filter" />
+						</div>
+
+					</div>	
 				}
-			</div>
-		</div>
-		@if (!User.IsInRole("Student"))
-		{
-			<a asp-action="Add" asp-controller="StudyMaterials" class="btn btn-primary mb-3">
-				Add New StudyMaterials
-			</a>
-		}
-		<div>
-			<nav aria-label="Page navigation">
-				<ul class="pagination">
-					<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
-						<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-						   asp-route-pageNumber="1" asp-route-pageSize="@ViewBag.PageSize">First</a>
-					</li>
-					<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
-						<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-						   asp-route-pageNumber="@(ViewBag.CurrentPage - 1)" asp-route-pageSize="@ViewBag.PageSize">Previous</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link">Page @(ViewBag.CurrentPage) of @(ViewBag.TotalPages)</a>
-					</li>
-					<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
-						<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-						   asp-route-pageNumber="@(ViewBag.CurrentPage + 1)" asp-route-pageSize="@ViewBag.PageSize">Next</a>
-					</li>
-					<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
-						<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-						   asp-route-pageNumber="@ViewBag.TotalPages" asp-route-pageSize="@ViewBag.PageSize">Last</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-
-
-		@*<h2>Study Materials</h2>
-
-		@using (Html.BeginForm("Index", "StudyMaterials", FormMethod.Get))
-		{
-			<div>
-				<label for="createdName">Created Name:</label>
-				<input type="text" name="createdName" value="@ViewBag.CreatedName" />
-
-				<label for="category">Category:</label>
-				<select name="category">
-					<option value="">Select Category</option>
-					@foreach (var categoryValue in Enum.GetValues(typeof(Category)))
+				<div class="container py-2">
+					<div class="h1 text-center text-dark" id="pageHeaderTitle">Материали</div>
+					@foreach (var material in Model)
 					{
-						<option value="@categoryValue">@categoryValue</option>
+
+						<article class="postcard light blue search">
+							<a class="postcard__img_link" href="#">
+								<img class="postcard__img" src="@material.URL" alt="Image Title" />
+							</a>
+							<div class="postcard__text t-dark">
+								<h1 class="postcard__title blue name"><a href="#">@material.Title</a></h1>
+								<div class="postcard__subtitle small">
+									<time datetime="2020-05-25 12:00:00">
+										<i class="fas fa-calendar-alt mr-2"></i>@material.CreateDate.ToShortDateString()
+									</time>
+								</div>
+								<div class="postcard__bar"></div>
+								@* <div class="postcard__preview-txt desc">@material.Description</div> *@
+								<div class="mat-des">
+									<div>
+										<ul class="postcard__tagbox">
+											<li class="tag__item"><i class="fas fa-tag mr-2"></i>@material.CreatedByName</li>
+											<li class="tag__item"><i class="fas fa-clock mr-2"></i>@material.Subject</li>
+											<li class="tag__item play blue">
+												<a href="#">@material.Class клас</a>
+											</li>
+										</ul>
+									</div>
+									<div>
+										<ul class="postcard__tagbox">
+											@if (User.IsInRole("Teacher"))
+											{
+												<li class="tag__item play blue">
+													<a asp-action="Edit" asp-route-id="@material.Id" class="btn btn-secondary">Edit</a>
+												</li>
+											}
+											<li class="tag__item play blue">
+												<a asp-action="Details" asp-route-id="@material.Id" class="btn btn-secondary">Виж</a>
+											</li>
+											@if (User.IsInRole("Teacher"))
+											{
+												<li class="tag__item play blue">
+													<form asp-action="Delete" asp-route-id="@material.Id" method="post" onsubmit="return confirm('Are you sure you want to delete this material?');">
+														<button type="submit" class="btn btn-secondary">Изтрии</button>
+													</form>
+
+												</li>
+											}
+										</ul>
+									</div>
+								</div>
+							</div>
+						</article>
 					}
-				</select>
-				<label for="typefile">TypeFile:</label>
-				<select name="typefile">
-					<option value="">Select TypeFile</option>
-					@foreach (var typefileValue in Enum.GetValues(typeof(TypeFile)))
-					{
-						<option value="@typefileValue">@typefileValue</option>
-					}
-				</select>
-				@* <label for="typеfile">Typе File:</label>
-			<input type="text" name="typеfile" value="@ViewBag.TypеFile" /> 
-
-				<label for="subject">Subject:</label>
-				<input type="text" name="subject" value="@ViewBag.Subject" />
-
-				<label for="classFilter">Class:</label>
-				<input type="text" name="classFilter" value="@ViewBag.ClassFilter" />
-
-				<input type="submit" value="Filter" />
-			</div>
-		}
-
-		 <table class="table">
-			<thead>
-				<tr>
-					<th>Created By</th>
-					<th>Category</th>
-					<th>Type File</th>
-					<th>Subject</th>
-					<th>Class</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach (var material in Model)
+				</div>
+				@if (!User.IsInRole("Student"))
 				{
-					<tr>
-						<td>@material.CreatedByName</td>
-						<td>@material.Category</td>
-						<td>@material.TypeFile</td>
-						<td>@material.Subject</td>
-						<td>@material.Class</td>
-					</tr>
+					<a asp-action="Add" asp-controller="StudyMaterials" class="btn btn-primary mb-3">
+						Add New StudyMaterials
+					</a>
 				}
-			</tbody>
-		</table> *@
+				<div>
+					<nav aria-label="Page navigation">
+						<ul class="pagination mb-0">
+							<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+								<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
+								   asp-route-pageNumber="1" asp-route-pageSize="@ViewBag.PageSize">First</a>
+							</li>
+							<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+								<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
+								   asp-route-pageNumber="@(ViewBag.CurrentPage - 1)" asp-route-pageSize="@ViewBag.PageSize">Previous</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link">Page @(ViewBag.CurrentPage) of @(ViewBag.TotalPages)</a>
+							</li>
+							<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+								<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
+								   asp-route-pageNumber="@(ViewBag.CurrentPage + 1)" asp-route-pageSize="@ViewBag.PageSize">Next</a>
+							</li>
+							<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+								<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
+								   asp-route-pageNumber="@ViewBag.TotalPages" asp-route-pageSize="@ViewBag.PageSize">Last</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</section>
 	</main>
 
-	<script>
-		function searchMaterial() {
-			// Get the search query from the input field
-			var query = document.getElementById("searchInput").value.toLowerCase();
 
-			// Get all the movie elements
-			var materials = document.getElementsByClassName("search");
+	@* <script>
+	function searchMaterial() {
+	// Get the search query from the input field
+	var query = document.getElementById("searchInput").value.toLowerCase();
 
-			// Loop through each movie element and check if the title or genre matches the search query
-			for (var i = 0; i < materials.length; i++) {
-				var material = materials[i];
-				var titleElement = material.getElementsByClassName("name")[0];
-				// var descElement = material.getElementsByClassName("desc")[0];
+	// Get all the movie elements
+	var materials = document.getElementsByClassName("search");
 
-				var title = titleElement.innerText.toLowerCase();
-				// var desc = descElement.innerText.toLowerCase();
+	// Loop through each movie element and check if the title or genre matches the search query
+	for (var i = 0; i < materials.length; i++) {
+	var material = materials[i];
+	var titleElement = material.getElementsByClassName("name")[0];
+	var descElement = material.getElementsByClassName("desc")[0];
 
-				// If the movie's title or genre contains the search query, display it; otherwise, hide it || desc.includes(query)
-				if (title.includes(query)) {
-					material.style.display = "table-row";
-				} else {
-					material.style.display = "none";
-				}
-			}
-		}
+	var title = titleElement.innerText.toLowerCase();
+	var desc = descElement.innerText.toLowerCase();
 
-		// Add an event listener to the search input field
-		var searchInput = document.getElementById("searchInput");
-		searchInput.addEventListener("keyup", function () {
-			// Call the searchMovies function
-			searchMaterial();
-		});
+	// If the movie's title or genre contains the search query, display it; otherwise, hide it || desc.includes(query)
+	if (title.includes(query) || desc.includes(query)) {
+	material.style.display = "table-row";
+	} else {
+	material.style.display = "none";
+	}
+	}
+	}
+
+	// Add an event listener to the search input field
+	var searchInput = document.getElementById("searchInput");
+	searchInput.addEventListener("keyup", function () {
+	// Call the searchMovies function
+	searchMaterial();
+	});
 	</script>
+	*@
 	<script>
 		function sortMaterials() {
 			var sortOrder = document.getElementById("sortByDate").value;
@@ -270,39 +253,6 @@
 			window.location.href = url;
 		}
 	</script>
-
-	@* <script>
-	function sortMaterials() {
-	var sortOrder = document.getElementById("sortByDate").value;
-	document.cookie = "sortOrder=" + sortOrder;
-
-	// Set the selected option in the dropdown
-	document.getElementById("sortByDate").value = sortOrder;
-
-	var url = "/StudyMaterials/Index?pageSize=@ViewBag.PageSize&sortOrder=" + sortOrder;
-	window.location.href = url;
-	}
-
-	// Ensure the initial selected option is set on page load
-	window.onload = function () {
-	var sortOrder = getCookie("sortOrder");
-	if (sortOrder) {
-	document.getElementById("sortByDate").value = sortOrder;
-	}
-	};
-
-	// Function to get cookie value by name
-	function getCookie(name) {
-	var cookieArray = document.cookie.split(';');
-	for (var i = 0; i < cookieArray.length; i++) {
-	var cookie = cookieArray[i].trim();
-	if (cookie.indexOf(name + "=") === 0) {
-	return cookie.substring(name.length + 1);
-	}
-	}
-	return null;
-	}
-	</script> *@
 
 	@section scripts {
 		<script>
@@ -327,5 +277,6 @@
 			});
 		</script>
 	}
+
 </body>
 </html>

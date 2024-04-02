@@ -36,6 +36,7 @@
                 <select asp-for="TypeFile" asp-items="Html.GetEnumSelectList<TypeFile>()" class="form-control">
                     <option value="">Select a Type of File</option>
                 </select>
+                <span asp-validation-for="TypeFile" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label>URL</label>
@@ -70,5 +71,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
 </body>
 </html>

@@ -19,17 +19,17 @@ using Learning_Content_Models.Models.Enums;
 
 namespace Learning_Content_Models.Controllers
 {
-    [Authorize]
-    public class StudyMaterialsController : Controller
-    {
-        private readonly ApplicationDbContext context;
-        private readonly UserManager<ApplicationUser> _userManager;
-	    private readonly IFileService _fileService;
+	[Authorize]
+	public class StudyMaterialsController : Controller
+	{
+		private readonly ApplicationDbContext context;
+		private readonly UserManager<ApplicationUser> _userManager;
+		private readonly IFileService _fileService;
 
 		public StudyMaterialsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IFileService fileService)
-        {
-            this.context = context;
-            this._userManager = userManager;
+		{
+			this.context = context;
+			this._userManager = userManager;
 			this._fileService = fileService;
 		}
 		//Pagination Working
@@ -52,7 +52,7 @@ namespace Learning_Content_Models.Controllers
 		//    // Pass the paginated materials to the view
 		//    return View(paginatedMaterials.ToList());
 		//}
-		public IActionResult Index(string sortOrder,int? pageSize, int? pageNumber, string createdName, string category, string typefile, string subject, string classFilter)
+		public IActionResult Index(string sortOrder, int? pageSize, int? pageNumber, string createdName, string category, string typefile, string subject, string classFilter, string search)
 		{
 			var materials = context.StudyMaterials.AsQueryable();
 
@@ -73,6 +73,10 @@ namespace Learning_Content_Models.Controllers
 			if (!string.IsNullOrEmpty(createdName))
 			{
 				materials = materials.Where(m => m.CreatedByName == createdName);
+			}
+			if (!string.IsNullOrEmpty(search))
+			{
+				materials = materials.Where(m => m.Title.Contains(search) || m.Description.Contains(search));
 			}
 
 			if (!string.IsNullOrEmpty(category) && Enum.TryParse<Category>(category, out var parsedCategory))
@@ -128,63 +132,67 @@ namespace Learning_Content_Models.Controllers
 
 		[Authorize(Roles = "Teacher")]
 		public IActionResult Add()
-        {
-            return View();
-        }
+		{
+			return View();
+		}
 
-        [HttpPost]
+		[HttpPost]
 		public async Task<IActionResult> Add(StudyMaterial studyMaterial)
 		{
-				var userId = User.Claims.FirstOrDefault(a => a.Type == ClaimTypes.NameIdentifier)?.Value;
 
-				if (userId == null)
+			var userId = User.Claims.FirstOrDefault(a => a.Type == ClaimTypes.NameIdentifier)?.Value;
+
+			if (userId == null)
+			{
+				throw new ArgumentException("Invalid user.");
+			}
+
+			var user = await _userManager.FindByIdAsync(userId);
+
+			studyMaterial.CreatedByName = user.Name;
+
+			if (studyMaterial.FileUpload != null)
+			{
+				var fileResult = _fileService.SaveImage(studyMaterial.FileUpload);
+				if (fileResult.Item1 == 1)
 				{
-					throw new ArgumentException("Invalid user.");
+					studyMaterial.FileTitle = studyMaterial.Title;
+					studyMaterial.FileTitle = fileResult.Item2;
 				}
-
-				var user = await _userManager.FindByIdAsync(userId);
-
-				studyMaterial.CreatedByName = user.Name;
-
-				if (studyMaterial.FileUpload != null)
+				else
 				{
-					var fileResult = _fileService.SaveImage(studyMaterial.FileUpload);
-					if (fileResult.Item1 == 1)
-					{
-						studyMaterial.FileTitle = studyMaterial.Title;
-						studyMaterial.FileTitle = fileResult.Item2;
-					}
-					else
-					{
-						ModelState.AddModelError(string.Empty, fileResult.Item2);
-						return View(studyMaterial);
-					}
+					ModelState.AddModelError(string.Empty, fileResult.Item2);
+					return View(studyMaterial);
 				}
-
+			}
+			if (ModelState.IsValid)
+			{
 				context.StudyMaterials.Add(studyMaterial);
 				context.SaveChanges();
 				return RedirectToAction("Index");
+			}
+			return View("Add", studyMaterial);
 
-            return View(studyMaterial);
+			//return View(studyMaterial);
 		}
 		[Authorize(Roles = "Teacher")]
 		public IActionResult Edit(int id)
-        {
-            var studyMaterial = context.StudyMaterials
-                .FirstOrDefault(m => m.Id == id);
-            if (studyMaterial == null)
-            {
-                return NotFound();
-            }
-            //ViewBag.User = User.Identity.Name.ToList();
+		{
+			var studyMaterial = context.StudyMaterials
+				.FirstOrDefault(m => m.Id == id);
+			if (studyMaterial == null)
+			{
+				return NotFound();
+			}
+			//ViewBag.User = User.Identity.Name.ToList();
 
-            return View(studyMaterial);
-        }
+			return View(studyMaterial);
+		}
 
-        [HttpPost]
-        public async Task<IActionResult> Edit(StudyMaterial studyMaterial)
-        {
-            var userId = User.Claims.FirstOrDefault(a => a.Type == ClaimTypes.NameIdentifier)?.Value;
+		[HttpPost]
+		public async Task<IActionResult> Edit(StudyMaterial studyMaterial)
+		{
+			var userId = User.Claims.FirstOrDefault(a => a.Type == ClaimTypes.NameIdentifier)?.Value;
 
 			if (userId == null)
 			{
@@ -208,8 +216,8 @@ namespace Learning_Content_Models.Controllers
 			}
 			else
 			{
-				var existingMaterial=context.StudyMaterials.AsNoTracking().FirstOrDefault(m=>m.Id==studyMaterial.Id);
-				if (existingMaterial!=null)
+				var existingMaterial = context.StudyMaterials.AsNoTracking().FirstOrDefault(m => m.Id == studyMaterial.Id);
+				if (existingMaterial != null)
 				{
 					studyMaterial.FileTitle = existingMaterial.FileTitle;
 				}
@@ -217,25 +225,25 @@ namespace Learning_Content_Models.Controllers
 
 
 			context.StudyMaterials.Update(studyMaterial);
-            context.SaveChanges();
-            return RedirectToAction("Index");
-        }
+			context.SaveChanges();
+			return RedirectToAction("Index");
+		}
 
-        [HttpPost]
+		[HttpPost]
 		[Authorize(Roles = "Teacher")]
 		public IActionResult Delete(int id)
-        {
-            var studyMaterial = context.StudyMaterials.Find(id);
+		{
+			var studyMaterial = context.StudyMaterials.Find(id);
 
-            if (studyMaterial == null)
-            {
-                return NotFound();
-            }
+			if (studyMaterial == null)
+			{
+				return NotFound();
+			}
 
-            context.StudyMaterials.Remove(studyMaterial);
-            context.SaveChanges();
-            return RedirectToAction("Index");
-        }
+			context.StudyMaterials.Remove(studyMaterial);
+			context.SaveChanges();
+			return RedirectToAction("Index");
+		}
 		public IActionResult Details(int id)
 		{
 			var studyMaterial = context.StudyMaterials.Find(id);

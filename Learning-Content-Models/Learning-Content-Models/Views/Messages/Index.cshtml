@@ -11,31 +11,14 @@
 @using System.Text.RegularExpressions
 @model IEnumerable<Learning_Content_Models.Models.Message>
 @inject UserManager<ApplicationUser> UserManager
-
-@* @{
-    string search = string.Empty;
-    if (Model != null && Model.First().SearchQuery != null)
-    {
-        search = Model.First().SearchQuery;
-    }
-
-    // Function to highlight search keyword
-    Func<string, IHtmlContent> HighlightSearchKeyword = (text) =>
-    {
-        if (!string.IsNullOrEmpty(search))
-        {
-            // Use regular expression to replace search keyword with highlighted span
-            string pattern = $"({Regex.Escape(search)})";
-            string highlightedText = Regex.Replace(text, pattern, "<span class='highlight'>$1</span>", RegexOptions.IgnoreCase);
-            return new HtmlString(highlightedText);
-        }
-        return new HtmlString(text);
-    };
-} *@
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
 	<title></title>
 	<link rel="stylesheet" href="/css/Messages.css" asp-append-version="true" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 	@{
@@ -53,9 +36,19 @@
 			font-weight: bold;
 		}
 
+		.modal {
+			text-align: center;
+		}
+
+		.modal-dialog {
+			display: inline-block;
+			text-align: left;
+			vertical-align: middle;
+		}
+
 		.unread {
-    opacity: 0.7; /* Променете стойностите на opacity, за да регулирате степента на затъмнение */
-}
+			opacity: 0.7; /* Променете стойностите на opacity, за да регулирате степента на затъмнение */
+		}
 
 
 		.media-body {
@@ -65,22 +58,24 @@
 
 		.filtaring {
 			display: flex;
+			margin-top: 20px;
 			flex-direction: row;
 			justify-content: space-evenly;
 		}
 	</style>
+
 	<div class="filtaring">
 		<div>
-			<a asp-action="Index" asp-route-isRead="true" class="btn btn-primary">View Read Messages</a>
-			<a asp-action="Index" asp-route-isRead="false" class="btn btn-primary">View Unread Messages</a>
+			<a asp-action="Index" asp-route-isRead="true" class="btn btn-primary">Прочетени</a>
+			<a asp-action="Index" asp-route-isRead="false" class="btn btn-primary">Непрочетени</a>
 		</div>
 		@using (Html.BeginForm("Index", "Messages", FormMethod.Get))
 		{
-			<label for="receiver">Created Name:</label>
+			<label for="receiver">Изпращач:</label>
 			<input type="text" name="receiver" value="@ViewBag.Receiver" />
-			<input type="submit" value="Filter" />
+			<input type="submit" value="Търси" />
 		}
-		<input type="text" id="searchInput" placeholder="Search by title or genre..." />
+		<input type="text" id="searchInput" placeholder="Търси по текст..." />
 	</div>
 	<main role="main" class="container">
 		<div class="d-flex align-items-center p-3 my-3 text-white-50 bg-blue rounded box-shadow">
@@ -96,24 +91,23 @@
 			{
 				if (message.Receiver == user.Email)
 				{
-					@* <style>
-			.media{
-			background-color: #808080;
-			}
-			</style> *@
 					<div class="media text-muted border-bottom pt-3 search">
 						<p class="media-body mb-0 pb-2 small lh-125 border-gray ">
-							@if (@message.Sender == user.Email)
+							@if (@message.Sender == user.Name)
 							{
 								<strong class="d-block text-gray-dark">От: Мен</strong>
-								<!-- Button to view message text -->
-								<button type="button" class="btn btn-info btn-sm view-message">View Message</button>
+								<!-- Button trigger modal -->
+								<button type="button" class="btn btn-info btn-sm view-message" data-toggle="modal" data-target="#exampleModalLong-@message.Id">
+									Прочети
+								</button>
 							}
 							else
 							{
 								<strong class="d-block text-gray-dark">От: @message.Sender</strong>
-								<!-- Button to view message text -->
-								<button type="button" class="btn btn-info btn-sm view-message">View Message</button>
+								<!-- Button trigger modal -->
+								<button type="button" class="btn btn-info btn-sm view-message" data-toggle="modal" data-target="#exampleModalLong-@message.Id">
+									Прочети
+								</button>
 							}
 							<!-- Button to view message text -->
 						</p>
@@ -129,60 +123,59 @@
 				</form> *@
 					</div>
 				}
-				else
-				{
-					<div class="media text-muted bg-white border-bottom pt-3 search">
-						<p class="media-body mb-0 small pb-2 lh-125 border-gray ">
-							<strong class="d-block text-gray-dark">От: @message.Receiver</strong>
-							<!-- Button to view message text -->
-							<button type="button" class="btn btn-info btn-sm view-message">View Message</button>
-						</p>
-						<div class="media-body pb-1">
-							<span class="text">@message.Text</span>
-							<form asp-action="Delete" asp-route-id="@message.Id" method="post"
-								  onsubmit="return confirm('Are you sure you want to delete this movie?');">
-								<button class="btn btn-danger btn-sm delete-message" type="submit">Изтрии</button>
-							</form>
+				@* else
+			{
+			<div class="media text-muted bg-white border-bottom pt-3 search">
+			<p class="media-body mb-0 small pb-2 lh-125 border-gray ">
+			<strong class="d-block text-gray-dark">От: @message.Receiver</strong>
+			<!-- Button trigger modal -->
+			<button type="button" class="btn btn-info btn-sm view-message" data-toggle="modal" data-target="#exampleModalLong-@message.Id">
+			Прочети
+			</button>
+			</p>
+			<div class="media-body pb-1">
+			<span class="text">@message.Text</span>
+			<form asp-action="Delete" asp-route-id="@message.Id" method="post"
+			onsubmit="return confirm('Are you sure you want to delete this movie?');">
+			<button class="btn btn-danger btn-sm delete-message" type="submit">Изтрии</button>
+			</form>
+			</div>
+			</div>
+
+			} *@
+
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModalLong-@message.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle-@message.Id" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" style="width:500px;">
+						<div class="modal-content" style="height:500px;">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLongTitle">Съобщение</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p><strong>Sender:</strong> @message.Sender</p>
+								<p><strong>Date:</strong> @message.SendDate.ToShortDateString()</p>
+								<hr>
+								<p>@message.Text</p>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Затвори</button>
+							</div>
 						</div>
 					</div>
-
-				}
+				</div>
 			}
 			<small class="d-block text-right mt-3">
-				<a href="#">All messages</a>
+				<a asp-action="Index">Всички съобщения</a>
 			</small>
 		</div>
 	</main>
 	<a asp-action="Add" asp-controller="Messages" class="btn btn-success mb-3">
-		Add New Message
+		Добави
 	</a>
-	<div>
-		<nav aria-label="Page navigation">
-			<ul class="pagination">
-				<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
-					<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-					   asp-route-pageNumber="1" asp-route-pageSize="@ViewBag.PageSize">First</a>
-				</li>
-				<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
-					<a class="page-link" asp-action="Index" asp-controller="Messages"
-					   asp-route-pageNumber="@(ViewBag.CurrentPage - 1)" asp-route-pageSize="@ViewBag.PageSize">Previous</a>
-				</li>
-				<li class="page-item">
-					<a class="page-link">Page @(ViewBag.CurrentPage) of @(ViewBag.TotalPages)</a>
-				</li>
-				<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
-					<a class="page-link" asp-action="Index" asp-controller="Messages"
-					   asp-route-pageNumber="@(ViewBag.CurrentPage + 1)" asp-route-pageSize="@ViewBag.PageSize">Next</a>
-				</li>
-				<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
-					<a class="page-link" asp-action="Index" asp-controller="Messages"
-					   asp-route-pageNumber="@ViewBag.TotalPages" asp-route-pageSize="@ViewBag.PageSize">Last</a>
-				</li>
-			</ul>
-		</nav>
-	</div>
 </body>
-</html>
 <script>
 	const searchInput = document.getElementById("searchInput");
 	searchInput.addEventListener("input", function () {
@@ -207,5 +200,4 @@
 		}
 	}
 </script>
-
-
+</html>

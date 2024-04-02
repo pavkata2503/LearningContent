@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ueM901whD27OdJ/kkGZJeHWc6JKvM1DABX2K0vrPEDE=",
+  "Hash": "oonBqOiAi6WlN8WlgSdB9nQIqszL44jjPSYPKfwRfnk=",
   "Source": "Learning-Content-Models",
   "BasePath": "_content/Learning-Content-Models",
   "Mode": "Default",
@@ -3285,6 +3285,25 @@
       "OriginalItemSpec": "wwwroot\\assets\\vendor\\swiper\\swiper-bundle.min.js.map"
     },
     {
+      "Identity": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\css\\CardCSS.css",
+      "SourceId": "Learning-Content-Models",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\",
+      "BasePath": "_content/Learning-Content-Models",
+      "RelativePath": "css/CardCSS.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\CardCSS.css"
+    },
+    {
       "Identity": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\css\\Home.css",
       "SourceId": "Learning-Content-Models",
       "SourceType": "Discovered",
@@ -4900,6 +4919,25 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\6f8eaea5-c7c8-461e-a36e-552feaf30285.pptx"
     },
     {
+      "Identity": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\Uploads\\84a9805e-e98d-4ef4-b674-3b69a1b748c9.pptx",
+      "SourceId": "Learning-Content-Models",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\",
+      "BasePath": "_content/Learning-Content-Models",
+      "RelativePath": "Uploads/84a9805e-e98d-4ef4-b674-3b69a1b748c9.pptx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\84a9805e-e98d-4ef4-b674-3b69a1b748c9.pptx"
+    },
+    {
       "Identity": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\Uploads\\864215c8-467f-4875-af0d-0f605f31763a.png",
       "SourceId": "Learning-Content-Models",
       "SourceType": "Discovered",
@@ -4955,6 +4993,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Uploads\\996a36f6-5ec3-4c92-b436-e6e2460d305b.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\Uploads\\998994a0-4834-4fcd-8972-75df824b1c18.pptx",
+      "SourceId": "Learning-Content-Models",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\",
+      "BasePath": "_content/Learning-Content-Models",
+      "RelativePath": "Uploads/998994a0-4834-4fcd-8972-75df824b1c18.pptx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\998994a0-4834-4fcd-8972-75df824b1c18.pptx"
     },
     {
       "Identity": "C:\\Users\\pavka\\OneDrive\\Documents\\Програвиране C#\\За училище\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\wwwroot\\Uploads\\9b446c58-b6e7-42f7-a73c-146ed7586688.jpg",

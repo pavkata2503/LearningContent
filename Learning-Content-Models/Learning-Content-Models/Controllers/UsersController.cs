@@ -9,7 +9,7 @@ using Microsoft.Identity.Client;
 
 namespace Learning_Content_Models.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         private readonly ApplicationDbContext context;

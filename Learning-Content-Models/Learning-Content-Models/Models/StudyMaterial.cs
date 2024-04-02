@@ -1,5 +1,6 @@
 ﻿using Humanizer.Localisation;
 using Learning_Content_Models.Models.Enums;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
@@ -22,7 +23,9 @@ namespace Learning_Content_Models.Models
         [EnumDataType(typeof(TypeFile))]
 		[Required(ErrorMessage = "Вида на файла е задължителен")]
 		public TypeFile TypeFile { get; set; }
+		[ValidateNever]
 		public int AppliationUserId { get; set; }
+		[ValidateNever]
 		public ApplicationUser ApplicationUser { get; set; }
 
 		[Required(ErrorMessage = "Предметът е задължителен")]
@@ -34,6 +37,7 @@ namespace Learning_Content_Models.Models
 		public DateTime CreateDate { get; set; }
 
 		// New property to store the name of the user who created the study material
+		[ValidateNever]
 		public string CreatedByName { get; set; }
 		//Upload File
 		[NotMapped]
