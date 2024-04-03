@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\views\\messages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\views\\messages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|solutionrelative:learning-content-models\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FC9BA18B-9920-4715-92CC-4122D7A153CD}|Learning-Content-Models\\Learning-Content-Models.csproj|c:\\users\\pavka\\onedrive\\documents\\\u043F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 c#\\\u0437\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\learningcontent\\learning-content-models\\learning-content-models\\controllers\\studymaterialscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -110,7 +110,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -178,13 +178,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Views\\Messages\\Index.cshtml",
               "RelativeDocumentMoniker": "Learning-Content-Models\\Views\\Messages\\Index.cshtml",
               "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Views\\Messages\\Index.cshtml",
               "RelativeToolTip": "Learning-Content-Models\\Views\\Messages\\Index.cshtml",
-              "ViewState": "AQIAAHAAAAAAAAAAAADwv38AAAANAAAA",
+              "ViewState": "AQIAAJcAAAAAAAAAAADwv8IAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-03-27T16:09:19.717Z",
               "EditorCaption": ""
@@ -203,13 +203,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Learning-Content-Models\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\pavka\\OneDrive\\Documents\\\u041F\u0440\u043E\u0433\u0440\u0430\u0432\u0438\u0440\u0430\u043D\u0435 C#\\\u0417\u0430 \u0443\u0447\u0438\u043B\u0438\u0449\u0435\\LearningContent\\Learning-Content-Models\\Learning-Content-Models\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Learning-Content-Models\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAA9AAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAACAAAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-03-27T16:09:40.921Z",
               "EditorCaption": ""
