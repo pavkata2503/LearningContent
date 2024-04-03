@@ -8,11 +8,12 @@ namespace Learning_Content_Models.Models
 	{
 		[Key] 
 		public int Id { get; set; }
+		[Required(ErrorMessage = "Текста е задължителен")]
 		public string Text {  get; set; }
+		[Required(ErrorMessage = "Получателят е задължителен")]
 		public string Receiver {  get; set; }
 		public string Sender {  get; set; }
 		public string SenderEmail {  get; set; }
-		//public string? SearchQuery {  get; set; }
 		public int AppliationUserId {  get; set; }
 		public ApplicationUser ApplicationUser {  get; set; }
 		public DateTime SendDate { get; set; }

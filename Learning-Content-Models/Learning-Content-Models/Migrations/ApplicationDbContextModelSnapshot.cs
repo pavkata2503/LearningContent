@@ -174,7 +174,6 @@ namespace Learning_Content_Models.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FileTitle")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Subject")

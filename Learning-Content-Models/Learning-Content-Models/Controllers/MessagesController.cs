@@ -112,14 +112,20 @@ namespace Learning_Content_Models.Controllers
 				throw new ArgumentException("Invalid user.");
 			}
 			var user = await _userManager.FindByIdAsync(userId);
-			message.Sender = user.Email;
+			message.Sender = user.Name;
 			message.SendDate = DateTime.Now;
 			message.SenderEmail = User.Identity.Name;
 			message.IsRead = false; // Задаване на начален статус "непрочетено"
+			ModelState.Remove("SenderEmail");
+			ModelState.Remove("Sender");
+			ModelState.Remove("ApplicationUser");
+			if (ModelState.IsValid) {
 
-			context.Messages.Add(message);
-			context.SaveChanges();
-			return RedirectToAction("Index");
+				context.Messages.Add(message);
+				context.SaveChanges();
+				return RedirectToAction("Index");
+			}
+			return View("Add", message);
 		}
 
 		[HttpPost]

@@ -222,11 +222,14 @@ namespace Learning_Content_Models.Controllers
 					studyMaterial.FileTitle = existingMaterial.FileTitle;
 				}
 			}
+			if (ModelState.IsValid)
+			{
 
-
-			context.StudyMaterials.Update(studyMaterial);
-			context.SaveChanges();
-			return RedirectToAction("Index");
+				context.StudyMaterials.Update(studyMaterial);
+				context.SaveChanges();
+				return RedirectToAction("Index");
+			}
+			return View("Edit", studyMaterial);
 		}
 
 		[HttpPost]

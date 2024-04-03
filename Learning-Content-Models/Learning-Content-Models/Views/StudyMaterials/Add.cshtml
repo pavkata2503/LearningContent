@@ -26,10 +26,12 @@
             <div class="form-group">
                 <label>Title</label>
                 <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label>Upload File</label>
                 <input type="file" asp-for="FileUpload" class="form-control" />
+                <span asp-validation-for="FileUpload" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label>Type of File</label>
@@ -41,16 +43,19 @@
             <div class="form-group">
                 <label>URL</label>
                 <input asp-for="URL" class="form-control" />
+                <span asp-validation-for="URL" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label>Description</label>
                 <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label>Category</label>
                 <select asp-for="Category" asp-items="Html.GetEnumSelectList<Category>()" class="form-control">
                     <option value="">Select a Category</option>
                 </select>
+                <span asp-validation-for="Category" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label>Create Date</label>
@@ -59,10 +64,12 @@
             <div class="form-group">
                 <label>Subject</label>
                 <input asp-for="Subject" class="form-control" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label>Class</label>
                 <input asp-for="Class" class="form-control" />
+                <span asp-validation-for="Class" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-primary">Create</button>
         </form>

@@ -2784,6 +2784,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery\LICENSE.txt))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\0393e1cb-1880-468a-84fa-b5da093229e1.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Learning-Content-Models</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Learning-Content-Models</BasePath>
+      <RelativePath>Uploads/0393e1cb-1880-468a-84fa-b5da093229e1.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\0393e1cb-1880-468a-84fa-b5da093229e1.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\05bf5d88-7eba-400f-9553-49341ecc9dc9.pptx))">
       <SourceType>Package</SourceType>
       <SourceId>Learning-Content-Models</SourceId>
@@ -3040,6 +3056,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\577ddca9-54ec-4305-8098-e5c14cb4ec4d.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\591a209d-482e-421a-b149-b787ff09439c.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>Learning-Content-Models</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Learning-Content-Models</BasePath>
+      <RelativePath>Uploads/591a209d-482e-421a-b149-b787ff09439c.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\591a209d-482e-421a-b149-b787ff09439c.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\59461666-f0d3-4338-8692-9f42579c9d44.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>Learning-Content-Models</SourceId>
@@ -3151,6 +3183,38 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\864215c8-467f-4875-af0d-0f605f31763a.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\8e360db5-7037-488a-857f-ccf921db27dd.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Learning-Content-Models</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Learning-Content-Models</BasePath>
+      <RelativePath>Uploads/8e360db5-7037-488a-857f-ccf921db27dd.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\8e360db5-7037-488a-857f-ccf921db27dd.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\9062799d-5e07-4264-a7c1-d98540889a4a.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>Learning-Content-Models</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Learning-Content-Models</BasePath>
+      <RelativePath>Uploads/9062799d-5e07-4264-a7c1-d98540889a4a.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\9062799d-5e07-4264-a7c1-d98540889a4a.pdf))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\95dffb33-ae0e-409d-a9ba-a4766d77241a.pptx))">
       <SourceType>Package</SourceType>
@@ -3296,6 +3360,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\c330d2de-e2c8-46b4-b0ea-37e2501981b3.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\cc26f90d-adc3-49a3-912c-3d11afafad9b.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>Learning-Content-Models</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Learning-Content-Models</BasePath>
+      <RelativePath>Uploads/cc26f90d-adc3-49a3-912c-3d11afafad9b.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\cc26f90d-adc3-49a3-912c-3d11afafad9b.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\cde9e455-4c1a-4ffd-a3dc-2a17b6f7977b.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>Learning-Content-Models</SourceId>
@@ -3311,6 +3391,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\cde9e455-4c1a-4ffd-a3dc-2a17b6f7977b.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\cfa8dea4-1ba3-4036-9ff5-71d03effda47.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>Learning-Content-Models</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Learning-Content-Models</BasePath>
+      <RelativePath>Uploads/cfa8dea4-1ba3-4036-9ff5-71d03effda47.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\cfa8dea4-1ba3-4036-9ff5-71d03effda47.pdf))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\d49c3ba0-a01d-44e0-a996-67ec447a0783.pdf))">
       <SourceType>Package</SourceType>
@@ -3360,6 +3456,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\dcec919b-8196-4d32-9291-1d7d8404d79c.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\e31bd56c-73e9-452d-94ca-d32b1ca01be0.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>Learning-Content-Models</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Learning-Content-Models</BasePath>
+      <RelativePath>Uploads/e31bd56c-73e9-452d-94ca-d32b1ca01be0.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\e31bd56c-73e9-452d-94ca-d32b1ca01be0.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\ed4410a7-fad1-46e5-8183-7ed8dc97fdf0.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>Learning-Content-Models</SourceId>
@@ -3391,6 +3503,38 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\f28079fa-f72f-4dd7-ab4a-34aea7b82795.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\faac9f50-6c47-467d-b1f2-0b91c47d5a17.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>Learning-Content-Models</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Learning-Content-Models</BasePath>
+      <RelativePath>Uploads/faac9f50-6c47-467d-b1f2-0b91c47d5a17.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\faac9f50-6c47-467d-b1f2-0b91c47d5a17.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\fbc2c5a5-37be-4dc4-ab9c-68c8300c4dca.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>Learning-Content-Models</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Learning-Content-Models</BasePath>
+      <RelativePath>Uploads/fbc2c5a5-37be-4dc4-ab9c-68c8300c4dca.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\fbc2c5a5-37be-4dc4-ab9c-68c8300c4dca.pdf))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\fd400d81-1aa8-4cdf-a331-758b794c7968.png))">
       <SourceType>Package</SourceType>
