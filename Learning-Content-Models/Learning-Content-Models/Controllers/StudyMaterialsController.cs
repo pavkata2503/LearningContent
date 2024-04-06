@@ -32,26 +32,6 @@ namespace Learning_Content_Models.Controllers
 			this._userManager = userManager;
 			this._fileService = fileService;
 		}
-		//Pagination Working
-		//public IActionResult Index(int? pageSize, int? pageNumber)
-		//{
-		//    var materials = context.StudyMaterials.AsQueryable();
-
-		//    // Pagination
-		//    pageSize = pageSize ?? 6; // Default page size is 5
-		//    pageNumber = pageNumber ?? 1; // Default page number is 1
-		//    ViewBag.PageSize = pageSize.Value;
-		//    ViewBag.CurrentPage = pageNumber.Value;
-		//    ViewBag.TotalPages = (int)Math.Ceiling((double)materials.Count() / pageSize.Value);
-
-		//    var paginatedMaterials = materials.Skip((pageNumber.Value - 1) * pageSize.Value)
-		//                                     .Take(pageSize.Value);
-
-
-
-		//    // Pass the paginated materials to the view
-		//    return View(paginatedMaterials.ToList());
-		//}
 		public IActionResult Index(string sortOrder, int? pageSize, int? pageNumber, string createdName, string category, string typefile, string subject, string classFilter, string search)
 		{
 			var materials = context.StudyMaterials.AsQueryable();
@@ -84,21 +64,6 @@ namespace Learning_Content_Models.Controllers
 			{
 				materials = materials.Where(m => (int)m.Class == int.Parse(classFilter));
 			}
-
-			// Pagination
-			//pageSize = pageSize ?? 6; // Default page size is 6
-			//pageNumber = pageNumber ?? 1; // Default page number is 1
-			//ViewBag.PageSize = pageSize.Value;
-			//ViewBag.CurrentPage = pageNumber.Value;
-			//ViewBag.TotalPages = (int)Math.Ceiling((double)materials.Count() / pageSize.Value);
-
-			//var paginatedMaterials = materials.Skip((pageNumber.Value - 1) * pageSize.Value)
-			//								  .Take(pageSize.Value);
-
-			//// Pass the paginated materials to the view
-			//return View(paginatedMaterials.ToList());
-
-
 
 			pageSize = pageSize ?? 6; // Default page size is 6
 			pageNumber = pageNumber ?? 1; // Default page number is 1

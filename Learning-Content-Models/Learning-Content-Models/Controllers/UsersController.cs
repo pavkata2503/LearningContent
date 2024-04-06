@@ -32,6 +32,7 @@ namespace Learning_Content_Models.Controllers
         }
 
         // Action to show form to edit user
+        [HttpGet]
         public async Task<IActionResult> Edit(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
