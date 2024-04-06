@@ -20,7 +20,11 @@ namespace Learning_Content_Models.Data
             {
                 UserName = "admin@gmail.com",
                 Email = "admin@gmail.com",
-                Name = "Pavkata",
+                Name = "Павката",
+                FirstName = "Павел",
+                LastName = "Петров",
+                Description = "Това е администратор",
+                PhoneNumber = "0884390393",
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true
             };

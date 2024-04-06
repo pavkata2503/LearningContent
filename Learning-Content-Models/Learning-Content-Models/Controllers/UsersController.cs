@@ -39,11 +39,8 @@ namespace Learning_Content_Models.Controllers
             {
                 return NotFound();
             }
-
             return View(user);
         }
-
-        // Action to handle form submission to edit user
         [HttpPost]
         public async Task<IActionResult> Edit(ApplicationUser model)
         {
@@ -60,7 +57,6 @@ namespace Learning_Content_Models.Controllers
             context.Users.Update(user);
             context.SaveChanges();
             return RedirectToAction("Index");
-            //return View(model);
         }
 
 

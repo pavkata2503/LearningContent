@@ -10,9 +10,9 @@
     <title>Create Study Material</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .container {
+        /* .container {
             margin-top: 50px;
-        }
+        } */
         .form-group {
             margin-bottom: 20px;
         }
@@ -20,23 +20,23 @@
 </head>
 <body>
     <div class="container">
-        <h2>Create Study Material</h2>
+        <h2>Създай учебен материал</h2>
 
         <form method="post" asp-action="Add" asp-controller="StudyMaterials" enctype="multipart/form-data">
             <div class="form-group">
-                <label>Title</label>
+                <label>Заглавие</label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Upload File</label>
+                <label>Качи файл</label>
                 <input type="file" asp-for="FileUpload" class="form-control" />
                 <span asp-validation-for="FileUpload" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Type of File</label>
+                <label>Тип на файла</label>
                 <select asp-for="TypeFile" asp-items="Html.GetEnumSelectList<TypeFile>()" class="form-control">
-                    <option value="">Select a Type of File</option>
+                    <option value="">Избери тип на файла</option>
                 </select>
                 <span asp-validation-for="TypeFile" class="text-danger"></span>
             </div>
@@ -46,32 +46,32 @@
                 <span asp-validation-for="URL" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Description</label>
+                <label>Описание</label>
                 <textarea asp-for="Description" class="form-control" rows="4"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Category</label>
+                <label>Категория</label>
                 <select asp-for="Category" asp-items="Html.GetEnumSelectList<Category>()" class="form-control">
-                    <option value="">Select a Category</option>
+                    <option value="">Избери категория</option>
                 </select>
                 <span asp-validation-for="Category" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Create Date</label>
+                <label>Дата</label>
                 <input asp-for="CreateDate" type="date" class="form-control" />
             </div>
             <div class="form-group">
-                <label>Subject</label>
+                <label>Предмет</label>
                 <input asp-for="Subject" class="form-control" />
                 <span asp-validation-for="Subject" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Class</label>
+                <label>Клас</label>
                 <input asp-for="Class" class="form-control" />
                 <span asp-validation-for="Class" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button style="background:orange;" type="submit" class="btn mb-3">Създай</button>
         </form>
     </div>
 

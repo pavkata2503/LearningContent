@@ -56,20 +56,6 @@ namespace Learning_Content_Models.Controllers
 		{
 			var materials = context.StudyMaterials.AsQueryable();
 
-			ViewBag.DateSortParm = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
-
-			// Apply sorting
-			switch (sortOrder)
-			{
-				case "date_desc":
-					materials = materials.OrderByDescending(s => s.CreateDate);
-					break;
-				default:
-					materials = materials.OrderBy(s => s.CreateDate);
-					break;
-			}
-
-			// Apply filters
 			if (!string.IsNullOrEmpty(createdName))
 			{
 				materials = materials.Where(m => m.CreatedByName == createdName);
@@ -144,7 +130,7 @@ namespace Learning_Content_Models.Controllers
 
 			if (userId == null)
 			{
-				throw new ArgumentException("Invalid user.");
+				throw new ArgumentException("Невалиден потребител.");
 			}
 
 			var user = await _userManager.FindByIdAsync(userId);
@@ -172,8 +158,6 @@ namespace Learning_Content_Models.Controllers
 				return RedirectToAction("Index");
 			}
 			return View("Add", studyMaterial);
-
-			//return View(studyMaterial);
 		}
 		[Authorize(Roles = "Teacher")]
 		public IActionResult Edit(int id)
@@ -184,7 +168,6 @@ namespace Learning_Content_Models.Controllers
 			{
 				return NotFound();
 			}
-			//ViewBag.User = User.Identity.Name.ToList();
 
 			return View(studyMaterial);
 		}

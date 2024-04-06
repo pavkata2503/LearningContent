@@ -85,6 +85,7 @@ namespace Learning_Content_Models.Areas.Identity.Pages.Account
             public string FirstName { get; set; }
             public string LastName { get; set; }
             public string Desciption { get; set; }
+            public string PhoneNumber { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -130,6 +131,7 @@ namespace Learning_Content_Models.Areas.Identity.Pages.Account
                 user.Description = Input.Desciption;
                 user.FirstName = Input.FirstName;
                 user.LastName = Input.LastName;
+                user.PhoneNumber = Input.PhoneNumber;
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
 

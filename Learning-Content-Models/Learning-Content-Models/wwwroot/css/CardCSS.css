@@ -55,7 +55,7 @@ a, a:hover {
 }
 
 &.light {
-    background-color: #e1e5ea;
+    background-color: #ffc014;
 }
 
 .t-dark {
@@ -125,7 +125,8 @@ h1, .h1 {
 
 {
     display: inline-block;
-    background: rgba(83, 83, 83, 0.4);
+    color:white;
+    background: #666460;
     border-radius: 3px;
     padding: 2.5px 10px;
     margin: 0 5px 5px 0;
@@ -224,7 +225,6 @@ h1, .h1 {
     }
 
         .postcard__text:before {
-            content: "";
             position: absolute;
             display: block;
             top: -20%;
