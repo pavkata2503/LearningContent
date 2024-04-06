@@ -65,6 +65,21 @@ namespace Learning_Content_Models.Controllers
 				materials = materials.Where(m => (int)m.Class == int.Parse(classFilter));
 			}
 
+			// Обработка на сортирането
+			switch (sortOrder)
+			{
+				case "date_asc":
+					materials = materials.OrderBy(s => s.CreateDate);
+					break;
+				case "date_desc":
+					materials = materials.OrderByDescending(s => s.CreateDate);
+					break;
+				default:
+					// В случай на невалиден sortOrder или липса на сортиране, може да изберете сортирането по подразбиране
+					materials = materials.OrderBy(s => s.CreateDate);
+					break;
+			}
+
 			pageSize = pageSize ?? 6; // Default page size is 6
 			pageNumber = pageNumber ?? 1; // Default page number is 1
 			ViewBag.PageSize = pageSize.Value;
