@@ -53,7 +53,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h1>@ViewData["Регистрирай потребител"]</h1>
+                        <h1>Регистрирай потребител</h1>
                         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
                             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                             <div class="form-floating">
@@ -108,35 +108,8 @@
                                     <span asp-validation-for="Input.Role" class="text-danger"></span>
                                 </div>
                             }
-                            <button id="registerSubmit" type="submit" class="btn btn-primary btn-register">Регистрирай</button>
+                            <button style="background:orange;" id="registerSubmit" type="submit" class="btn btn-register">Регистрирай</button>
                         </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-md-center">
-            <div class="col-md-6">
-                <div class="card mt-4">
-                    <div class="card-body">
-                        <h3>Use another service to register.</h3>
-                        <hr />
-                        <div class="external-services">
-                            @if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                            {
-                                <p>There are no external authentication services configured.</p>
-                            }
-                            else
-                            {
-                                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                                    <p>
-                                        @foreach (var provider in Model.ExternalLogins!)
-                                        {
-                                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                        }
-                                    </p>
-                                </form>
-                            }
-                        </div>
                     </div>
                 </div>
             </div>

@@ -16,7 +16,7 @@ namespace Learning_Content_Models.Models.Enums
         Presentation,
         [Display(Name = "Аудио")]
         Audio,
-        [Display(Name = "Video")]
+        [Display(Name = "Видео")]
         Video
     }
 }
