@@ -49,15 +49,15 @@
         <div class="row">
             <div class="col-md-4 offset-md-4">
                 <form id="account" method="post" class="login-form">
-                    <h2 class="login-heading">Влез</h2>
+                    <h2 class="login-heading">Влез и започни да учиш!</h2>
                     <hr />
                     <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                     <div class="form-group">
-                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="Email" />
+                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="Електронна поща" />
                         <span asp-validation-for="Input.Email" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input asp-for="Input.Password" type="password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Password" />
+                        <input asp-for="Input.Password" type="password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Парола" />
                         <span asp-validation-for="Input.Password" class="text-danger"></span>
                     </div>
                     <div class="form-group form-check">
@@ -68,7 +68,7 @@
                         <button style="background:orange;" id="login-submit" type="submit" class="btn btn-block">Log in</button>
                     </div>
                     <div class="text-center">
-                        <a style="color:orange;" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                        <a style="color:orange;" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Все още нямате акаунт?</a>
                     </div>
                 </form>
             </div>

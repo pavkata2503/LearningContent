@@ -3,6 +3,10 @@
 @using Microsoft.AspNetCore.Identity
 @model IEnumerable<Learning_Content_Models.Models.StudyMaterial>
 @inject UserManager<ApplicationUser> UserManager
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 
 
@@ -15,20 +19,19 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/CardCSS.css" asp-append-version="true" />
-	@* @await RenderSectionAsync("Head", false) *@
 </head>
-
 
 <!-- Display the study materials -->
 <body>
-	@{
-		var userId = User.Claims.FirstOrDefault(a => a.Type == ClaimTypes.NameIdentifier)?.Value;
+	@if (SignInManager.IsSignedIn(User))
+	{
+			var userId = User.Claims.FirstOrDefault(a => a.Type == ClaimTypes.NameIdentifier)?.Value;
 
-		if (userId == null)
-		{
-			throw new ArgumentException("Invalid user.");
-		}
-		var user = await UserManager.FindByIdAsync(userId);
+			if (userId == null)
+			{
+				throw new ArgumentException("Invalid user.");
+			}
+			var user = await UserManager.FindByIdAsync(userId);
 	}
 	<style>
 		.sorting {
@@ -52,220 +55,183 @@
 
 	<main>
 		<div>
-				<div class="container mt-0">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="pageSize">Избери брой на материалите:</label>
-								<select class="form-control" id="pageSize" name="pageSize">
-									<option value="5">5</option>
-									<option value="10">10</option>
-									<option value="15">15</option>
-								</select>
+			<div class="container mt-0">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="pageSize">Избери брой на материалите:</label>
+							<select class="form-control" id="pageSize" name="pageSize">
+								<option value="5">5</option>
+								<option value="10">10</option>
+								<option value="15">15</option>
+							</select>
 							<button style="background:orange;" class="btn mt-2" id="applyPageSize">Приложи</button>
+						</div>
+					</div>
+					<div class="col-md-6 mt-4">
+						<form class="form-inline" asp-controller="StudyMaterials" asp-action="Index" method="get">
+							<div class="form-group">
+								<label for="sortOrder">Сортирай по:</label>
+								<select class="form-control ml-2" id="sortByDate" name="sortOrder">
+									<option value="">Избери</option>
+									<option value="date_asc">Най-нови</option>
+									<option value="date_desc">Най-стари</option>
+								</select>
+								<button style="background:orange;" type="submit" class="btn ml-2">Приложи</button>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<hr>
+
+				<form asp-controller="StudyMaterials" asp-action="Index" method="get">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="searchInput">Търси:</label>
+								<input type="search" class="form-control" name="search" id="searchInput" value="@ViewBag.Search" />
 							</div>
 						</div>
-						<div class="col-md-6 mt-4">
-							<form class="form-inline" asp-controller="StudyMaterials" asp-action="Index" method="get">
-								<div class="form-group">
-									<label for="sortOrder">Сортирай по:</label>
-								<select class="form-control ml-2" id="sortByDate" name="sortOrder">
-										<option value="">Избери</option>
-										<option value="date_asc">Най-нови</option>
-										<option value="date_desc">Най-стари</option>
-									</select>
-								<button style="background:orange;" type="submit" class="btn ml-2">Приложи</button>
-								</div>
-							</form>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="createdNameInput">Учител:</label>
+								<input type="search" class="form-control" name="created-name" id="createdNameInput" value="@ViewBag.CreatedName" />
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="categorySelect">Категория:</label>
+								<select class="form-control" name="category" id="categorySelect">
+									<option value="">Избери Категория</option>
+									@foreach (var categoryValue in Enum.GetValues(typeof(Category)))
+									{
+										<option value="@categoryValue">@categoryValue</option>
+									}
+								</select>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="subjectInput">Предмет:</label>
+								<input type="search" class="form-control" name="subject" id="subjectInput" value="@ViewBag.Subject" />
+							</div>
 						</div>
 					</div>
 
-					<hr>
-
-					<form asp-controller="StudyMaterials" asp-action="Index" method="get">
-						<div class="row">
-							<div class="col-md-3">
-								<div class="form-group">
-									<label for="searchInput">Търси:</label>
-									<input type="search" class="form-control" name="search" id="searchInput" value="@ViewBag.Search" />
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="form-group">
-									<label for="createdNameInput">Учител:</label>
-									<input type="search" class="form-control" name="created-name" id="createdNameInput" value="@ViewBag.CreatedName" />
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="form-group">
-									<label for="categorySelect">Категория:</label>
-									<select class="form-control" name="category" id="categorySelect">
-										<option value="">Избери Категория</option>
-										@foreach (var categoryValue in Enum.GetValues(typeof(Category)))
-										{
-											<option value="@categoryValue">@categoryValue</option>
-										}
-									</select>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="form-group">
-									<label for="subjectInput">Предмет:</label>
-									<input type="search" class="form-control" name="subject" id="subjectInput" value="@ViewBag.Subject" />
-								</div>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="typeFileSelect">Тип Файл:</label>
+								<select class="form-control" name="typefile" id="typeFileSelect">
+									<option value="">Избери Тип Файл</option>
+									@foreach (var typefileValue in Enum.GetValues(typeof(TypeFile)))
+									{
+										<option value="@typefileValue">@typefileValue</option>
+									}
+								</select>
 							</div>
 						</div>
-
-						<div class="row">
-							<div class="col-md-3">
-								<div class="form-group">
-									<label for="typeFileSelect">Тип Файл:</label>
-									<select class="form-control" name="typefile" id="typeFileSelect">
-										<option value="">Избери Тип Файл</option>
-										@foreach (var typefileValue in Enum.GetValues(typeof(TypeFile)))
-										{
-											<option value="@typefileValue">@typefileValue</option>
-										}
-									</select>
-								</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="classInput">Клас:</label>
+								<input type="search" class="form-control" name="classFilter" id="classInput" value="@ViewBag.ClassFilter" />
 							</div>
-							<div class="col-md-3">
-								<div class="form-group">
-									<label for="classInput">Клас:</label>
-									<input type="search" class="form-control" name="classFilter" id="classInput" value="@ViewBag.ClassFilter" />
-								</div>
-							</div>
-							<div class="col-md-3">
+						</div>
+						<div class="col-md-3">
 							<button style="background:orange;" type="submit" class="btn mt-4">Филтрирай</button>
-							</div>
 						</div>
-					</form>
-
-				</div>
-				<div class="container py-2">
-					<div class="h1 text-center text-dark" id="pageHeaderTitle">Материали</div>
-					@foreach (var material in Model)
-					{
-
-						<article class="postcard light blue search">
-							<a class="postcard__img_link" href="#">
-								<img class="postcard__img" src="@material.URL" alt="Image Title" />
-							</a>
-							<div class="postcard__text t-dark">
-								<h1 class="postcard__title blue name"><a href="#">@material.Title</a></h1>
-								<div class="postcard__subtitle small">
-									<time datetime="2020-05-25 12:00:00">
-										<i class="fas fa-calendar-alt mr-2"></i>@material.CreateDate.ToShortDateString()
-									</time>
-								</div>
-								<div class="postcard__bar"></div>
-								<div class="mat-des">
-									<div>
-										<ul class="postcard__tagbox">
-											<li class="tag__item"><i class="fas fa-tag mr-2"></i>@material.CreatedByName</li>
-											<li class="tag__item"><i class="fas fa-clock mr-2"></i>@material.Subject</li>
-											<li class="tag__item play blue">
-												<a href="#">@material.Class клас</a>
-											</li>
-										</ul>
-									</div>
-									<div>
-										<ul class="postcard__tagbox">
-											@if (User.IsInRole("Teacher"))
-											{
-												<li style="background:none" class="tag__item play blue">
-													<a asp-action="Edit" asp-route-id="@material.Id" class="btn btn-secondary">Edit</a>
-												</li>
-											}
-											<li style="background:none" class="tag__item play blue">
-												<a asp-action="Details" asp-route-id="@material.Id" class="btn btn-secondary">Виж</a>
-											</li>
-											@if (User.IsInRole("Teacher"))
-											{
-												<li style="background:none" class="tag__item play blue">
-													<form asp-action="Delete" asp-route-id="@material.Id" method="post" onsubmit="return confirm('Are you sure you want to delete this material?');">
-														<button type="submit" class="btn btn-secondary">Изтрии</button>
-													</form>
-
-												</li>
-											}
-										</ul>
-									</div>
-								</div>
-							</div>
-						</article>
-					}
-				</div>
+					</div>
+				</form>
 				@if (!User.IsInRole("Student"))
 				{
-					<a asp-action="Add" asp-controller="StudyMaterials" class="btn btn-primary mb-3">
-						Add New StudyMaterials
+					<a style="background:orange;" asp-action="Add" asp-controller="StudyMaterials" class="btn d-block mb-3 mt-3">
+						Добави нов материал
 					</a>
 				}
+			</div>
+			<div class="container py-2">
+				<div class="h1 text-center text-dark" id="pageHeaderTitle">Материали</div>
+				@foreach (var material in Model)
+				{
+
+					<article class="postcard light blue search">
+						<a class="postcard__img_link" href="#">
+							<img class="postcard__img" src="@material.URL" alt="Image Title" />
+						</a>
+						<div class="postcard__text t-dark">
+							<h1 class="postcard__title blue name"><a href="#">@material.Title</a></h1>
+							<div class="postcard__subtitle small">
+								<time datetime="2020-05-25 12:00:00">
+									<i class="fas fa-calendar-alt mr-2"></i>@material.CreateDate.ToShortDateString()
+								</time>
+							</div>
+							<div class="postcard__bar"></div>
+							<div class="mat-des">
+								<div>
+									<ul class="postcard__tagbox">
+										<li class="tag__item"><i class="fas fa-tag mr-2"></i>@material.CreatedByName</li>
+										<li class="tag__item"><i class="fas fa-clock mr-2"></i>@material.Subject</li>
+										<li class="tag__item play blue">
+											<a href="#">@material.Class клас</a>
+										</li>
+									</ul>
+								</div>
+								<div>
+									<ul class="postcard__tagbox">
+										@if (User.IsInRole("Teacher"))
+										{
+											<li style="background:none" class="tag__item play blue">
+												<a asp-action="Edit" asp-route-id="@material.Id" class="btn btn-secondary">Редактирай</a>
+											</li>
+										}
+										<li style="background:none" class="tag__item play blue">
+											<a asp-action="Details" asp-route-id="@material.Id" class="btn btn-secondary">Прегледай</a>
+										</li>
+										@if (User.IsInRole("Teacher"))
+										{
+											<li style="background:none" class="tag__item play blue">
+												<form asp-action="Delete" asp-route-id="@material.Id" method="post" onsubmit="return confirm('Are you sure you want to delete this material?');">
+													<button type="submit" class="btn btn-secondary">Изтрий</button>
+												</form>
+
+											</li>
+										}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</article>
+				}
+			</div>
 			<div class="container d-flex justify-content-center mb-5">
 				<div class="text-center">
 					<nav aria-label="Page navigation">
 						<ul class="pagination mb-0">
 							<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
 								<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-								   asp-route-pageNumber="1" asp-route-pageSize="@ViewBag.PageSize">First</a>
+								   asp-route-pageNumber="1" asp-route-pageSize="@ViewBag.PageSize">Първа</a>
 							</li>
 							<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
 								<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-								   asp-route-pageNumber="@(ViewBag.CurrentPage - 1)" asp-route-pageSize="@ViewBag.PageSize">Previous</a>
+								   asp-route-pageNumber="@(ViewBag.CurrentPage - 1)" asp-route-pageSize="@ViewBag.PageSize">Предишна</a>
 							</li>
 							<li class="page-item">
-								<a class="page-link">Page @(ViewBag.CurrentPage) of @(ViewBag.TotalPages)</a>
+								<a class="page-link">Страница @(ViewBag.CurrentPage) от @(ViewBag.TotalPages)</a>
 							</li>
 							<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
 								<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-								   asp-route-pageNumber="@(ViewBag.CurrentPage + 1)" asp-route-pageSize="@ViewBag.PageSize">Next</a>
+								   asp-route-pageNumber="@(ViewBag.CurrentPage + 1)" asp-route-pageSize="@ViewBag.PageSize">Следваща</a>
 							</li>
 							<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
 								<a class="page-link" asp-action="Index" asp-controller="StudyMaterials"
-								   asp-route-pageNumber="@ViewBag.TotalPages" asp-route-pageSize="@ViewBag.PageSize">Last</a>
+								   asp-route-pageNumber="@ViewBag.TotalPages" asp-route-pageSize="@ViewBag.PageSize">Последна</a>
 							</li>
 						</ul>
 					</nav>
 				</div>
 			</div>
 	</main>
-
-
-	@* <script>
-	function searchMaterial() {
-	// Get the search query from the input field
-	var query = document.getElementById("searchInput").value.toLowerCase();
-
-	// Get all the movie elements
-	var materials = document.getElementsByClassName("search");
-
-	// Loop through each movie element and check if the title or genre matches the search query
-	for (var i = 0; i < materials.length; i++) {
-	var material = materials[i];
-	var titleElement = material.getElementsByClassName("name")[0];
-	var descElement = material.getElementsByClassName("desc")[0];
-
-	var title = titleElement.innerText.toLowerCase();
-	var desc = descElement.innerText.toLowerCase();
-
-	// If the movie's title or genre contains the search query, display it; otherwise, hide it || desc.includes(query)
-	if (title.includes(query) || desc.includes(query)) {
-	material.style.display = "table-row";
-	} else {
-	material.style.display = "none";
-	}
-	}
-	}
-
-	// Add an event listener to the search input field
-	var searchInput = document.getElementById("searchInput");
-	searchInput.addEventListener("keyup", function () {
-	// Call the searchMovies function
-	searchMaterial();
-	});
-	</script>
-	*@
 	<script>
 		function sortMaterials() {
 			var sortOrder = document.getElementById("sortByDate").value;

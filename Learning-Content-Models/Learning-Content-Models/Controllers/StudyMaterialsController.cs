@@ -19,7 +19,7 @@ using Learning_Content_Models.Models.Enums;
 
 namespace Learning_Content_Models.Controllers
 {
-	[Authorize]
+	//[Authorize]
 	public class StudyMaterialsController : Controller
 	{
 		private readonly ApplicationDbContext context;

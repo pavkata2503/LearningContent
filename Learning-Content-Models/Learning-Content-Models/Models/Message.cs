@@ -17,6 +17,6 @@ namespace Learning_Content_Models.Models
 		public int AppliationUserId {  get; set; }
 		public ApplicationUser ApplicationUser {  get; set; }
 		public DateTime SendDate { get; set; }
-		public bool IsRead { get; set; } // Добавено поле за статус на прочитане
+		public bool IsRead { get; set; } // Поле за статус на прочитане
 	}
 }

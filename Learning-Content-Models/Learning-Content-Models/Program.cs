@@ -4,6 +4,7 @@ using Learning_Content_Models.Service;
 using Learning_Content_Models.Service.IService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -54,6 +55,10 @@ app.MapRazorPages();
 using (var scope = app.Services.CreateScope())
 {
     await DbSeeder.SeedRolesAndAdminAsync(scope.ServiceProvider);
+	var serviceProvider = scope.ServiceProvider;
+	var dbContext = serviceProvider.GetRequiredService<ApplicationDbContext>();
+	var dbSeeder = new DbSeeder();
+	await dbSeeder.CreateMaterialSeeder(dbContext);
 }
 
 app.Run();

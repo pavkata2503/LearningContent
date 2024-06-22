@@ -36,7 +36,6 @@ namespace Learning_Content_Models.Models
         public int Class { get; set; }
 		public DateTime CreateDate { get; set; }
 
-		// New property to store the name of the user who created the study material
 		[ValidateNever]
 		public string CreatedByName { get; set; }
 		//Upload File

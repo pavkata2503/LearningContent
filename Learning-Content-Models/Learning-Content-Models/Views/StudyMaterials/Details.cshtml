@@ -18,37 +18,15 @@
 	<div class="d-flex gap-5">
 		<div class="row col-6">
 			<img class="card-img-top" src="@Model.URL" alt="Card image cap">
-			@* <div id="carGalleryCarousel" class="carousel slide" data-ride="carousel" style="height: 500px; width: 800px;">
-			<div class="carousel-inner">
-			@foreach (var photo in Model.FileUpload)
-			{
-			<div class="carousel-item @(photo == Model.Photos.First() ? "active" : "")">
-			<img src="@photo.Url" class="rounded d-block w-100" alt="Car Photo" style="height: 500px; width: 800px; object-fit: cover;" loading="lazy">
-			</div>
-			}
-			</div>
-
-			<!-- Carousel Controls -->
-			<a class="carousel-control-prev" href="#carGalleryCarousel" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="sr-only"></span>
-			</a>
-			<a class="carousel-control-next" href="#carGalleryCarousel" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="sr-only"></span>
-			</a>
-			</div> *@
 		</div>
-		<!-- Car Information Section -->
 		<div class="row col-6">
-			<!-- Car Details Card -->
 			<div class="card">
 				<div class="card-body gap-1">
-					<p style="border-bottom: 1px solid #ccc;"><strong>Category:</strong> @GetCategoryDisplayName(Model.Category)</p>
-					<p style="border-bottom: 1px solid #ccc;"><strong>TypeFile:</strong> @GetTypeFileDisplayName(Model.TypeFile)</p>
-					<p style="border-bottom: 1px solid #ccc;"><strong>Subject:</strong> @Model.Subject</p>
-					<p style="border-bottom: 1px solid #ccc;"><strong>Class:</strong> @Model.Class</p>
-					<p style="border-bottom: 1px solid #ccc;"><strong>Description:</strong> @Model.Description</p>
+					<p style="border-bottom: 1px solid #ccc;"><strong>Категория:</strong> @GetCategoryDisplayName(Model.Category)</p>
+					<p style="border-bottom: 1px solid #ccc;"><strong>Тип на файла:</strong> @GetTypeFileDisplayName(Model.TypeFile)</p>
+					<p style="border-bottom: 1px solid #ccc;"><strong>Предмет:</strong> @Model.Subject</p>
+					<p style="border-bottom: 1px solid #ccc;"><strong>Клас:</strong> @Model.Class</p>
+					<p style="border-bottom: 1px solid #ccc;"><strong>Описание:</strong> @Model.Description</p>
 				</div>
 			</div>
 		</div>
